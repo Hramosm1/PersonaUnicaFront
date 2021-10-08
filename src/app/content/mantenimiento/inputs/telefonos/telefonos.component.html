@@ -1,32 +1,38 @@
 <ng-container [formGroup]="form">
-    <prx-page-header title="Telefonos"></prx-page-header>
-    <div class="container  px-5">
-        <button class="btn btn-primary float-right" (click)="agregarTelefono()">agregar telefono</button>
-        <ng-container formArrayName="telefonos">
-            <div class="row row-cols-1 row-cols-xl-2">
-                <div class="col" *ngFor="let mail of telefonos.controls; let i=index">
-                    <ng-container [formGroupName]="i">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="row">
-                                <div class="form-group col-4">
-                                    <label class="form-label">Codigo Pais</label>
-                                    <select formControlName="codigoPais" class="form-control form-control-rounded">
-                                        <option *ngFor="let ext of telExt" [value]="'+ '+ ext.phone_code ">{{ext.nombre+' - '+ext.phone_code}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-8">
-                                    <label class="form-label">Telefono {{i+1}}</label>
-                                    <input formControlName="telefono" class="form-control form-control-rounded" type="tel"
-                                        placeholder="5555-5555">
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-outline-danger" type="button" (click)="quitarTelefono(i)">x</button>
-                            </div>
-                        </div>
-                    </ng-container>
+  <prx-page-header title="Telefonos"></prx-page-header>
+  <div class="container px-5">
+    <button class="btn btn-primary float-right" (click)="agregarTelefono()">agregar telefono</button>
+    <ng-container formArrayName="telefonos">
+      <div class="row row-cols-1 row-cols-xl-2">
+        <div class="col" *ngFor="let mail of telefonos.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="row">
+                <div class="form-group col-4">
+                  <label class="form-label">Codigo Pais</label>
+                  <select formControlName="codigoPais" class="form-control form-control-rounded">
+                    <option *ngFor="let ext of telExt" [value]="'+ ' + ext.phone_code">
+                      {{ ext.nombre + ' - ' + ext.phone_code }}
+                    </option>
+                  </select>
                 </div>
+                <div class="form-group col-8">
+                  <label class="form-label">Telefono {{ i + 1 }}</label>
+                  <input
+                    formControlName="telefono"
+                    class="form-control form-control-rounded"
+                    type="tel"
+                    placeholder="5555-5555"
+                  />
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-outline-danger" type="button" (click)="quitarTelefono(i)">x</button>
+              </div>
             </div>
-        </ng-container>
-    </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </ng-container>

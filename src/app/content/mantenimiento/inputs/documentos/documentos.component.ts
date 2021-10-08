@@ -6,26 +6,27 @@ import { TiposDocumento } from '../models';
 @Component({
   selector: 'prx-documentos',
   templateUrl: './documentos.component.html',
-  styleUrls: ['./documentos.component.scss']
+  styleUrls: ['./documentos.component.scss'],
 })
 export class DocumentosComponent implements OnInit {
-  form: FormGroup
-  tiposDeDocumento: TiposDocumento[] 
+  form: FormGroup;
+  tiposDeDocumento: TiposDocumento[];
 
-  constructor(private api: ApiService, private fb: FormBuilder, private rootForm: FormGroupDirective) { }
+  constructor(private api: ApiService, private fb: FormBuilder, private rootForm: FormGroupDirective) {}
 
   ngOnInit(): void {
-    this.form = this.rootForm.control
-    this.api.getTiposDocumento().subscribe(res => this.tiposDeDocumento = res)
+    this.form = this.rootForm.control;
+    this.api.getTiposDocumento().subscribe((res) => (this.tiposDeDocumento = res));
   }
 
   get documentos() {
-    return this.form.get('documentos') as FormArray
+    return this.form.get('documentos') as FormArray;
   }
-
 
   nuevoDocumento() {
-    this.documentos.push(this.fb.group({ tipo: ['', Validators.required], documento: ['', Validators.required] }))
+    this.documentos.push(this.fb.group({ tipo: ['', Validators.required], documento: ['', Validators.required] }));
   }
-  eliminarDocumento(i:number){this.documentos.removeAt(i)}
+  eliminarDocumento(i: number) {
+    this.documentos.removeAt(i);
+  }
 }

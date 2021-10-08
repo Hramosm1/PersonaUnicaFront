@@ -43,20 +43,20 @@ export class CredentialsService {
    * @param remember True to remember credentials across sessions.
    */
   setCredentials(credentials: any, value?: any) {
-    this._credentials = credentials
-    sessionStorage.setItem(credentialsKey, JSON.stringify(credentials))
-    console.log(value.remember)
+    this._credentials = credentials;
+    sessionStorage.setItem(credentialsKey, JSON.stringify(credentials));
+    console.log(value.remember);
     if (value.remember) {
-      localStorage.setItem('US', value.username)
-      localStorage.setItem('PS', value.password)
-      localStorage.setItem('REM', value.remember)
+      localStorage.setItem('US', value.username);
+      localStorage.setItem('PS', value.password);
+      localStorage.setItem('REM', value.remember);
     } else {
-      localStorage.removeItem('US')
-      localStorage.removeItem('PS')
-      localStorage.removeItem('REM')
+      localStorage.removeItem('US');
+      localStorage.removeItem('PS');
+      localStorage.removeItem('REM');
     }
   }
-  clearCredentials(){
-    sessionStorage.removeItem(credentialsKey)
+  clearCredentials() {
+    sessionStorage.removeItem(credentialsKey);
   }
 }

@@ -21,7 +21,7 @@ export class AuthenticationService {
     return this.loggedIn;
   }
 
-  constructor(private credentialsService: CredentialsService , private http:HttpClient, private router:Router) {}
+  constructor(private credentialsService: CredentialsService, private http: HttpClient, private router: Router) {}
 
   /**
    * Authenticates the user.
@@ -29,7 +29,7 @@ export class AuthenticationService {
    * @return The user credentials.
    */
   login(context: LoginContext): Observable<any> {
-    return this.http.post(environment.serverUrl+'login/',context)
+    return this.http.post(environment.serverUrl + 'login/', context);
   }
 
   /**
@@ -39,7 +39,6 @@ export class AuthenticationService {
    */
   register(context: RegisterContext) {
     // Replace by proper registration call
-  
   }
 
   /**
@@ -47,7 +46,7 @@ export class AuthenticationService {
    * @return True if the user was logged out successfully.
    */
   logout() {
-    this.credentialsService.clearCredentials()
-    this.router.navigateByUrl('/login')
+    this.credentialsService.clearCredentials();
+    this.router.navigateByUrl('/login');
   }
 }

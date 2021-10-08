@@ -8,17 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./header-user-account.component.scss'],
 })
 export class HeaderUserAccountComponent extends BaseComponent implements OnInit {
-  user:any
-  constructor(private service: CredentialsService, private router: Router, private auth:AuthenticationService) {
+  user: any;
+  constructor(private service: CredentialsService, private router: Router, private auth: AuthenticationService) {
     super();
   }
 
   ngOnInit() {
-    this.user = this.service.credentials
+    this.user = this.service.credentials;
   }
 
   logout() {
-    this.auth.logout()
+    this.auth.logout();
   }
 
   redirect() {

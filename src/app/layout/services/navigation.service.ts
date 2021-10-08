@@ -30,7 +30,7 @@ export class NavigationService {
             icon: { name: faPlus },
             title: 'Nuevo Formulario',
             link: '/mantenimiento/nuevo',
-          }
+          },
         ],
       },
     ]);

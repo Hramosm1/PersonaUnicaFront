@@ -23,21 +23,21 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
   check = faCheck;
 
   constructor(
-    private title:Title,
+    private title: Title,
     //private router: Router,
     private _redirect: RedirectService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private credentialsService:CredentialsService
+    private credentialsService: CredentialsService
   ) {
     super();
     this.isLoading = false;
     this.createForm();
   }
 
-  ngOnInit() { 
-    this.title.setTitle('Login')
+  ngOnInit() {
+    this.title.setTitle('Login');
   }
 
   /**
@@ -47,7 +47,7 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
   login({ valid, value }: { valid: boolean; value: any }) {
     if (valid) {
       this.isLoading = true;
-      
+
       this.authenticationService
         .login(value)
         .pipe(
@@ -58,8 +58,8 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
         .subscribe(
           (credentials) => {
             if (credentials.token) {
-              console.log(credentials)
-              this.credentialsService.setCredentials(credentials, value)
+              console.log(credentials);
+              this.credentialsService.setCredentials(credentials, value);
               this.route.queryParams.subscribe((params) => this.redirect(params));
             }
           },
@@ -80,9 +80,9 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
   }
 
   private createForm() {
-    const us: string = localStorage.getItem('US') || 'user'
-    const pas: string = localStorage.getItem('PS') || ''
-    const remem: boolean = localStorage.getItem('REM') === 'true' || false
+    const us: string = localStorage.getItem('US') || 'user';
+    const pas: string = localStorage.getItem('PS') || '';
+    const remem: boolean = localStorage.getItem('REM') === 'true' || false;
     this.form = this.formBuilder.group({
       username: [us, Validators.required],
       password: [pas, Validators.required],

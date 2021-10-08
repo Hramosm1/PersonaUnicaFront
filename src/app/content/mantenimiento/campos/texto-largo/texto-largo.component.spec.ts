@@ -8,9 +8,8 @@ describe('TextoLargoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextoLargoComponent ]
-    })
-    .compileComponents();
+      declarations: [TextoLargoComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

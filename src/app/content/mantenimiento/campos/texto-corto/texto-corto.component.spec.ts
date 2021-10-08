@@ -8,9 +8,8 @@ describe('TextoCortoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextoCortoComponent ]
-    })
-    .compileComponents();
+      declarations: [TextoCortoComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

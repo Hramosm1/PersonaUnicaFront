@@ -4,22 +4,22 @@ import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } fro
 @Component({
   selector: 'prx-nombres',
   templateUrl: './nombres.component.html',
-  styleUrls: ['./nombres.component.scss']
+  styleUrls: ['./nombres.component.scss'],
 })
 export class NombresComponent implements OnInit {
-  form: FormGroup
-  constructor(private fb: FormBuilder, private rootForm:FormGroupDirective) { }
+  form: FormGroup;
+  constructor(private fb: FormBuilder, private rootForm: FormGroupDirective) {}
 
   ngOnInit(): void {
-    this.form = this.rootForm.control
+    this.form = this.rootForm.control;
   }
-  get nombres(){
-    return this.form.get('nombres') as FormArray
+  get nombres() {
+    return this.form.get('nombres') as FormArray;
   }
-  agregarNombre(){
-    this.nombres.push(this.fb.control('',Validators.required))
+  agregarNombre() {
+    this.nombres.push(this.fb.control('', Validators.required));
   }
-  eliminarNombre(i:number){
-    this.nombres.removeAt(i)
+  eliminarNombre(i: number) {
+    this.nombres.removeAt(i);
   }
 }

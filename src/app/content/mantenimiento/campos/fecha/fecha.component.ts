@@ -4,13 +4,11 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'prx-fecha',
   templateUrl: './fecha.component.html',
-  styleUrls: ['./fecha.component.scss']
+  styleUrls: ['./fecha.component.scss'],
 })
 export class FechaComponent implements OnInit {
-  icon = faCalendar
-  constructor() { }
+  icon = faCalendar;
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

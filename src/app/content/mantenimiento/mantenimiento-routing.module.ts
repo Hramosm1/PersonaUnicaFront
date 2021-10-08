@@ -7,11 +7,11 @@ import { NuevoComponent } from './nuevo/nuevo.component';
 const routes: Routes = [
   { path: 'lista', component: ListaComponent },
   { path: 'nuevo', component: NuevoComponent },
-  { path: 'personaunica', component: FormularioPersonaUnicaComponent }
+  { path: 'personaunica', component: FormularioPersonaUnicaComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MantenimientoRoutingModule { }
+export class MantenimientoRoutingModule {}

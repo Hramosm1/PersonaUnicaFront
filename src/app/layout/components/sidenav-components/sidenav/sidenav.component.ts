@@ -31,12 +31,12 @@ export class SidenavComponent implements OnInit {
     this.hover = false;
   }
 
-  user: any
+  user: any;
   avatar = {
     picture: 'https://manskkp.lv/assets/images/users/default-user.png',
     name: 'pauline myers',
     status: 'online',
-  }
+  };
   icons = {
     faInbox,
     faLock,
@@ -52,13 +52,10 @@ export class SidenavComponent implements OnInit {
   @Input()
   collapsed: boolean;
 
-  constructor(
-    private navigation: NavigationService,
-    private service: CredentialsService
-  ) {}
+  constructor(private navigation: NavigationService, private service: CredentialsService) {}
 
   ngOnInit() {
-    this.user = this.service.credentials
+    this.user = this.service.credentials;
     this.navigation.getNavigationItems().subscribe((groups) => (this.navGroups = groups));
   }
 
@@ -67,9 +64,7 @@ export class SidenavComponent implements OnInit {
     this.sideNavToggled.emit(this.collapsed);
   }
 
-  logout() {
-   
-  }
+  logout() {}
 
   onNavLinkToggle(isOpen: boolean) {
     logger.debug(`Nav link toggled ${isOpen}`);

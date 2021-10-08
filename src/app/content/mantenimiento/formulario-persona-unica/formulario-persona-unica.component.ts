@@ -14,13 +14,11 @@ export class FormularioPersonaUnicaComponent implements OnInit {
   tipos: TiposPersona[];
   generos: Generos[];
   personaUnica: FormGroup;
-  modalRef: BsModalRef;
   constructor(
     private title: Title,
     private fb: FormBuilder,
     private api: ApiService,
-    private credentials: CredentialsService,
-    private modalServide: BsModalService
+    private credentials: CredentialsService
   ) {}
 
   ngOnInit(): void {

@@ -8,9 +8,8 @@ describe('FormularioPersonaUnicaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormularioPersonaUnicaComponent ]
-    })
-    .compileComponents();
+      declarations: [FormularioPersonaUnicaComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

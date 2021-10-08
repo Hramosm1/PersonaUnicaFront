@@ -1,21 +1,23 @@
 <div class="mb-3">
-    <div class="divider dropdown-divider"></div>
-    <div>
-        <label class="form-label">Ingrese su pregunta</label>
-        <input type="text" class="form-control form-control-rounded" placeholder="PREGUNTA SIN TITULO">
+  <div class="divider dropdown-divider"></div>
+  <div>
+    <label class="form-label">Ingrese su pregunta</label>
+    <input type="text" class="form-control form-control-rounded" placeholder="PREGUNTA SIN TITULO" />
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="form-group">
+        <label class="form-label">Añadir opcion</label>
+        <input [(ngModel)]="nuevaOpcion" type="text" class="form-control" placeholder="NUEVA OPCION" />
+        <button class="btn btn-primary btn-rounded" (click)="agregarOpcion()">
+          <prx-icon [icon]="icon"></prx-icon>
+        </button>
+      </div>
     </div>
-    <div class="row mt-3">
-        <div class="col">
-            <div class="form-group">
-                <label class="form-label">Añadir opcion</label>
-                <input [(ngModel)]="nuevaOpcion" type="text" class="form-control" placeholder="NUEVA OPCION">
-                <button class="btn btn-primary btn-rounded" (click)="agregarOpcion()"><prx-icon [icon]="icon"></prx-icon></button> 
-            </div>
-        </div>
-        <div class="col">
-            <ul class="list-group">
-                <li *ngFor="let opcion of opciones" class="list-group-item">{{opcion}}</li>
-              </ul>
-        </div>
+    <div class="col">
+      <ul class="list-group">
+        <li *ngFor="let opcion of opciones" class="list-group-item">{{ opcion }}</li>
+      </ul>
     </div>
+  </div>
 </div>
