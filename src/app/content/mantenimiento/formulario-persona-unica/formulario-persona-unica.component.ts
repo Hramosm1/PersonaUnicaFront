@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ApiService, CredentialsService } from '@app/@core';
 import { Generos, TiposPersona } from '../inputs/models';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'prx-formulario-persona-unica',
@@ -90,6 +90,21 @@ export class FormularioPersonaUnicaComponent implements OnInit {
   }
   submit() {
     this.api.PostRespuestaPersonaUnica(this.personaUnica.value).subscribe((res: any) => {
+      if (res.error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.mensaje,
+        });
+      } else {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Datos Ingresados',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
       this.personaUnica.reset();
     });
   }

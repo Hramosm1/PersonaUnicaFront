@@ -27,6 +27,7 @@ import { UtilsModule } from '@app/blocks/utils';
 import { ListaDeEmpresasComponent } from './lista-de-empresas/lista-de-empresas.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListaEmpleosComponent } from './modals/lista-empleos/lista-empleos.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ListaEmpleosComponent } from './modals/lista-empleos/lista-empleos.comp
     UtilsModule,
     BsDatepickerModule.forRoot(),
     ModalModule,
+    NgxDatatableModule,
   ],
 })
 export class MantenimientoModule {}

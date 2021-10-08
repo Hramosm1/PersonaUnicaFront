@@ -141,5 +141,8 @@
       }
     }
   },
-  "defaultProject": "proxima"
+  "defaultProject": "proxima",
+  "cli": {
+    "analytics": "88913b62-df38-46bc-b6f1-8477b80807c1"
+  }
 }
