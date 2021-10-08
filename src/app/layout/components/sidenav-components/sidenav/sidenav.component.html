@@ -1,0 +1,65 @@
+<div class="sidenav-logo bg-primary">
+  <a class="sidenav-brand" href="javascript:;">
+    <img src="https://www.recagua.com/wp-content/uploads/2020/01/icon-8.png" alt="recagua" class="logo" />
+    <span class="ml-5 bold">RECAGUA</span>
+  </a>
+
+  <prx-menu-toggler class="sidenav-toggler" dark="true" (click)="toggleSidenav()"></prx-menu-toggler>
+</div>
+
+<div class="sidenav-content bg-secondary">
+  <nav class="nav flex-column">
+    <!-- USER -->
+    <div class="nav-item user-sidenav nav-dropdown">
+      <a href="javascript:;" class="nav-link" openParent (onToggle)="user.open = $event">
+        <prx-avatar-info [name]="user.nombre" [info]="user.apellido">
+          <prx-avatar [avatar]="avatar" class="user-picture"></prx-avatar>
+        </prx-avatar-info>
+
+        <prx-dropdown-icon [open]="user.open" class="dd-icon"></prx-dropdown-icon>
+      </a>
+
+      <div class="nav-dropdown-items">
+        <div class="stat">
+          <prx-progress-solid
+            size="xs"
+            [value]="83"
+            suffix="%"
+            label="You're running out of space"
+            class="shadow mb-4 sidenav-progress"
+          ></prx-progress-solid>
+        </div>
+
+        <nav class="nav justify-content-between">
+          <a href="javascript:;" class="nav-link text-truncate m-0" [routerLink]="['/inbox']">
+            <fa-icon [icon]="icons.faInbox" class="mr-1"></fa-icon>
+            <span class="small">Mail</span>
+            <small class="badge badge-primary">7</small>
+          </a>
+          <a href="javascript:;" class="nav-link text-truncate m-0">
+            <fa-icon [icon]="icons.faLock" class="mr-1"></fa-icon>
+            <span class="small">Lock</span>
+          </a>
+          <a href="javascript:;" class="nav-link text-truncate m-0" (click)="logout()">
+            <fa-icon [icon]="icons.faSignOutAlt" class="mr-1"></fa-icon>
+            <span class="small">Logout</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ALL NAVIGATION OPTIONS -->
+    <ng-container *ngFor="let group of navGroups">
+      <div class="nav-header">
+        <span>{{ group.title }}</span>
+      </div>
+
+      <prx-sidenav-item
+        *ngFor="let option of group.items"
+        [option]="option"
+        [collapsed]="collapsed"
+        [hover]="hover"
+      ></prx-sidenav-item>
+    </ng-container>
+  </nav>
+</div>

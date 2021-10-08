@@ -1,0 +1,6 @@
+<div class="mb-3">
+    <div class="divider dropdown-divider"></div>
+    <label class="form-label">Ingrese su Pregunta</label>
+    <input [(ngModel)]="titulo" (ngModelChange)="tituloChange.emit(titulo)" type="text" class="form-control form-control-rounded" placeholder="PREGUNTA SIN TITULO">
+    <input disabled class="form-control form-control-rounded mt-3">
+</div>

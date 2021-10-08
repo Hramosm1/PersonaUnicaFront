@@ -1,0 +1,24 @@
+<ng-container [formGroup]="form">
+    <prx-page-header title="Correos"></prx-page-header>
+    <div class="container px-5">
+        <button class="btn btn-primary float-right" (click)="agregarCorreo()">agregar correo</button>
+        <ng-container formArrayName="correos">
+            <div class="row">
+            <div class="col-6" *ngFor="let mail of correos.controls; let i=index">
+                <div class="row justify-content-between align-items-center">
+                    <div class="form-group col-9">
+                        <label for="noDocumento">Correo {{i+1}}</label>
+                        <input [formControlName]="i" class="form-control form-control-rounded" type="email"
+                            placeholder="example@gmail.com">
+                            <small class="text-danger">Obligatorio</small>
+                    </div>
+                    <div class="col-3"><button class="btn btn-outline-danger" (click)="eliminarCorreo(i)">x</button></div>
+                </div>
+            </div>
+        </div>
+        </ng-container>
+    </div>
+</ng-container>
+<!-- <ng-template #crearEmpleo>
+    <prx-formulario-persona-unica></prx-formulario-persona-unica>
+</ng-template> -->

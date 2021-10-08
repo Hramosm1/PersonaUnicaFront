@@ -1,0 +1,95 @@
+<div class="container">
+  <prx-card>
+    <prx-card-header title="Formulario Persona Unica"></prx-card-header>
+    <prx-card-body>
+      <div class="container mt-5">
+        <form [formGroup]="personaUnica">
+          <div class="row">
+            <div class="col-12 form-group px-5">
+              <label for="tipo" class="control-label">Tipo</label>
+              <select formControlName="tipo" class="form-control form-control-rounded">
+                <option [value]="obTipo.id" *ngFor="let obTipo of tipos">{{ obTipo.tipo_persona | titlecase }}</option>
+              </select>
+            </div>
+            <div class="col-6 row">
+              <div *ngIf="tipo == 1" class="col-6 form-group px-5">
+                <label for="primerApellido" class="control-label">Primer apellido</label>
+                <input formControlName="primerApellido" type="text" class="form-control form-control-rounded" />
+                <small class="text-danger">Obligatorio</small>
+              </div>
+              <div *ngIf="tipo == 1" class="col-6 form-group px-5">
+                <label for="segundoApellido" class="control-label">Segundo apellido</label>
+                <input formControlName="segundoApellido" type="text" class="form-control form-control-rounded" />
+              </div>
+
+              <div *ngIf="tipo == 1" class="col-6 form-group px-5">
+                <label for="genero" class="control-label">Genero</label>
+                <select formControlName="genero" class="form-control form-control-rounded">
+                  <option [value]="obGenero.id" *ngFor="let obGenero of generos">
+                    {{ obGenero.genero | titlecase }}
+                  </option>
+                </select>
+              </div>
+              <div *ngIf="tipo == 2" class="col-6 form-group px-5">
+                <label for="razon social" class="control-label">Razon social</label>
+                <input
+                  formControlName="razonSocial"
+                  type="text"
+                  class="form-control form-control-rounded"
+                  placeholder="Restaurantes McDonald's S.A."
+                />
+              </div>
+              <div class="col-6 form-group px-5">
+                <label for="fechaNacimiento" class="control-label">{{
+                  tipo == 1 ? 'Fecha Nacimiento' : 'Fecha Creacion'
+                }}</label>
+                <input formControlName="fecha" type="text" class="form-control form-control-rounded" bsDatepicker />
+              </div>
+              <div class="col-12 form-group px-5">
+                <label for="razon social" class="control-label">Observaciones</label>
+                <textarea formControlName="observaciones" class="form-control form-control-rounded" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="col-6 row">
+              <div *ngIf="tipo == 2" class="col-6 form-group px-5">
+                <ng-container formArrayName="nombres">
+                  <label for="razon social" class="control-label">Nombre de marca</label>
+                  <input
+                    formControlName="0"
+                    type="text"
+                    class="form-control form-control-rounded"
+                    placeholder="McDonald's"
+                  />
+                </ng-container>
+              </div>
+              <div class="col-12">
+                <prx-nombres *ngIf="tipo == 1"></prx-nombres>
+              </div>
+            </div>
+          </div>
+          <prx-documentos></prx-documentos>
+          <prx-telefonos></prx-telefonos>
+          <prx-direcciones></prx-direcciones>
+          <prx-correos></prx-correos>
+          <prx-empleos *ngIf="tipo == 1"></prx-empleos>
+          <div>
+            <br />
+            <hr />
+            <button
+              class="btn btn-secondary float-right"
+              type="submit"
+              [disabled]="!personaUnica.valid"
+              (click)="submit()"
+            >
+              Subir
+            </button>
+          </div>
+        </form>
+      </div>
+    </prx-card-body>
+    <prx-card-footer></prx-card-footer>
+  </prx-card>
+</div>
+<ng-template #empresas>
+  <prx-lista-de-empresas></prx-lista-de-empresas>
+</ng-template>
