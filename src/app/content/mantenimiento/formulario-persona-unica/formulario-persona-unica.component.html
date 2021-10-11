@@ -43,7 +43,13 @@
                 <label for="fechaNacimiento" class="control-label">{{
                   tipo == 1 ? 'Fecha Nacimiento' : 'Fecha Creacion'
                 }}</label>
-                <input formControlName="fecha" type="text" class="form-control form-control-rounded" bsDatepicker />
+                <input
+                  formControlName="fecha"
+                  type="text"
+                  class="form-control form-control-rounded"
+                  bsDatepicker
+                  [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+                />
               </div>
               <div class="col-12 form-group px-5">
                 <label for="razon social" class="control-label">Observaciones</label>
@@ -60,6 +66,7 @@
                     class="form-control form-control-rounded"
                     placeholder="McDonald's"
                   />
+                  <small class="text-danger">Obligatorio</small>
                 </ng-container>
               </div>
               <div class="col-12">
@@ -76,12 +83,13 @@
             <br />
             <hr />
             <button
-              class="btn btn-secondary float-right"
+              class="btn float-right"
               type="submit"
               [disabled]="!personaUnica.valid"
+              [ngClass]="{ 'btn-danger': personaUnica.valid, 'btn-secondary': !personaUnica.valid }"
               (click)="submit()"
             >
-              Subir
+              Enviar
             </button>
           </div>
         </form>

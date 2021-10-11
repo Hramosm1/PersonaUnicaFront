@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MantenimientoRoutingModule } from './mantenimiento-routing.module';
-import { ListaComponent } from './lista/lista.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
 import { CardsModule } from '@app/blocks/cards/cards.module';
 import { DatePickersModule } from '@app/blocks/date-pickers/date-pickers.module';
@@ -24,14 +23,13 @@ import { TelefonosComponent } from './inputs/telefonos/telefonos.component';
 import { EmpleosComponent } from './inputs/empleos/empleos.component';
 import { DocumentosComponent } from './inputs/documentos/documentos.component';
 import { UtilsModule } from '@app/blocks/utils';
-import { ListaDeEmpresasComponent } from './lista-de-empresas/lista-de-empresas.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListaEmpleosComponent } from './modals/lista-empleos/lista-empleos.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NuevaEmpresaComponent } from './modals/nueva-empresa/nueva-empresa.component';
 
 @NgModule({
   declarations: [
-    ListaComponent,
     NuevoComponent,
     CamposDirective,
     TextoCortoComponent,
@@ -46,8 +44,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     TelefonosComponent,
     EmpleosComponent,
     DocumentosComponent,
-    ListaDeEmpresasComponent,
     ListaEmpleosComponent,
+    NuevaEmpresaComponent,
   ],
   imports: [
     CommonModule,
@@ -59,7 +57,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     IconsModule,
     NavigationsModule,
     UtilsModule,
-    BsDatepickerModule.forRoot(),
+    BsDatepickerModule,
     ModalModule,
     NgxDatatableModule,
   ],

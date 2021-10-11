@@ -3,7 +3,7 @@
   <div class="container px-5">
     <button class="btn btn-primary float-right" (click)="agregarTelefono()">agregar telefono</button>
     <ng-container formArrayName="telefonos">
-      <div class="row row-cols-1 row-cols-xl-2">
+      <div class="row row-cols-1">
         <div class="col" *ngFor="let mail of telefonos.controls; let i = index">
           <ng-container [formGroupName]="i">
             <div class="d-flex align-items-center justify-content-between">
@@ -27,7 +27,9 @@
                 </div>
               </div>
               <div>
-                <button class="btn btn-outline-danger" type="button" (click)="quitarTelefono(i)">x</button>
+                <button class="btn btn-outline-secondary btn-circle btn-sm" type="button" (click)="quitarTelefono(i)">
+                  <prx-icon icon="x" size="sm"></prx-icon>
+                </button>
               </div>
             </div>
           </ng-container>

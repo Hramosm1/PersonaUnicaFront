@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ApiService } from '@app/@core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Empresas } from '../models';
@@ -13,6 +13,7 @@ export class EmpleosComponent implements OnInit {
   form: FormGroup;
   empresas: Array<Empresas>;
   modalRef: BsModalRef;
+  indexTem: number;
   constructor(
     private fb: FormBuilder,
     private rootForm: FormGroupDirective,
@@ -23,11 +24,11 @@ export class EmpleosComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.rootForm.control;
     this.apis.getEmpresas().subscribe((res) => (this.empresas = res));
-    console.log(this.empleos.controls);
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-xl' });
+  openModal(template: TemplateRef<any>, i: number) {
+    this.indexTem = i;
+    this.modalRef = this.modalService.show(template, { class: 'modal-xl modal-dialog-scrollable' });
   }
   get empleos() {
     return this.form.get('empleos') as FormArray;
@@ -36,14 +37,18 @@ export class EmpleosComponent implements OnInit {
   agregarEmpleo() {
     this.empleos.push(
       this.fb.group({
-        empresa: [Number, Validators.required],
-        puesto: ['', Validators.required],
+        empresa: ['', Validators.required],
+        puesto: [''],
         fechaInicio: [new Date(), Validators.required],
         fechaFin: [''],
       })
     );
   }
+
   eliminarEmpleo(i: number) {
     this.empleos.removeAt(i);
+  }
+  asignar(value: Empresas) {
+    (this.empleos.at(this.indexTem) as FormControl).get('empresa').setValue(value.id);
   }
 }

@@ -24,7 +24,6 @@ export class ApiService {
   public getEmpresas = this.inputService.getEmpresas;
   //=================================================================================
   public PostRespuestaPersonaUnica(body: any) {
-    console.log(this.headers);
     return this.http.post(environment.serverUrl + 'personaunica', body, { headers: this.headers });
   }
   public query<T>(route: string, itemType: any): Observable<T[]> {

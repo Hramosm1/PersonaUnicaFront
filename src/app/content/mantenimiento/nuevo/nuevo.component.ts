@@ -30,12 +30,10 @@ export class NuevoComponent implements OnInit {
   }
   crearComponente(componente: 'pregunta' | 'parrafo' | 'selec' | 'fecha' | 'telefono') {
     const index = this.camposDirective.containerRef.length;
-    console.log(index);
     let component;
     switch (componente) {
       case 'pregunta':
         component = this.cfr.resolveComponentFactory(TextoCortoComponent);
-        console.log(component.outputs);
         this.jsonResult.push({ index: index, tipo: componente, titulo: '' });
         break;
       case 'parrafo':

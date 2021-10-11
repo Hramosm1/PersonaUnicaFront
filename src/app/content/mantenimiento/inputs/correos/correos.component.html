@@ -16,7 +16,11 @@
               />
               <small class="text-danger">Obligatorio</small>
             </div>
-            <div class="col-3"><button class="btn btn-outline-danger" (click)="eliminarCorreo(i)">x</button></div>
+            <div class="col-3">
+              <button class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarCorreo(i)">
+                <prx-icon icon="x" size="sm"></prx-icon>
+              </button>
+            </div>
           </div>
         </div>
       </div>

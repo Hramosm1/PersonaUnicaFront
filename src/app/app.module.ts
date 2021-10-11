@@ -12,11 +12,20 @@ import { AppComponent } from './app.component';
 
 import { getBsDatepickerConfiguration, getBsModulesForRoot } from './bootstrap/bootstrap.module';
 
+import {
+  PerfectScrollbarModule,
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+} from 'ngx-perfect-scrollbar';
+
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 /**
  * Perfect Scrollbar Default Configuration
  **/
+const defaultPerfectScrollbarConfiguration: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
 /**
  * Initializing Application
@@ -37,6 +46,8 @@ const initializeApp = (_config: ApplicationConfigurationService) => {
     SharedModule,
     AuthModule,
 
+    PerfectScrollbarModule,
+
     // Ngx Bootstrap
     ...getBsModulesForRoot(),
 
@@ -50,6 +61,12 @@ const initializeApp = (_config: ApplicationConfigurationService) => {
       useFactory: initializeApp,
       deps: [ApplicationConfigurationService],
       multi: true,
+    },
+
+    // PerfectScrollbar Configuration
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: defaultPerfectScrollbarConfiguration,
     },
 
     // Ngx-Bootstrap Datepicker Default Configuration

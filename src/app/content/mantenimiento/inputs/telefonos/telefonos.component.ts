@@ -20,7 +20,7 @@ export class TelefonosComponent implements OnInit {
   agregarTelefono() {
     this.telefonos.push(
       this.fb.group({
-        codigoPais: ['', Validators.required],
+        codigoPais: ['+ 502', Validators.required],
         telefono: ['', Validators.required],
       })
     );

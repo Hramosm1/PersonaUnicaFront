@@ -8,6 +8,7 @@ import { BootstrapModule } from '@app/bootstrap/bootstrap.module';
 import { CardsModule } from '@app/blocks/cards/cards.module';
 import { FormControlsModule } from '@app/blocks/form-controls/form-controls.module';
 import { IconsModule } from '@app/blocks/icons/icons.module';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { UnsanitizePipe } from './pipes/unsanitize.pipe';
 
@@ -17,6 +18,7 @@ const exportModules = [
   HttpClientModule,
   RouterModule,
   TranslateModule,
+  PerfectScrollbarModule,
 
   // custom modules
   BootstrapModule,

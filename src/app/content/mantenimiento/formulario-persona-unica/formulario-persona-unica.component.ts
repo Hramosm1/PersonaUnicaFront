@@ -1,9 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ApiService, CredentialsService } from '@app/@core';
 import { Generos, TiposPersona } from '../inputs/models';
 import Swal from 'sweetalert2';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'prx-formulario-persona-unica',
@@ -14,6 +15,7 @@ export class FormularioPersonaUnicaComponent implements OnInit {
   tipos: TiposPersona[];
   generos: Generos[];
   personaUnica: FormGroup;
+  bsConfig: Partial<BsDatepickerConfig>;
   constructor(
     private title: Title,
     private fb: FormBuilder,
@@ -29,6 +31,7 @@ export class FormularioPersonaUnicaComponent implements OnInit {
   }
   private creacionFormulario(): void {
     this.personaUnica = this.fb.group({
+      idPerfil: '',
       primerApellido: [''],
       segundoApellido: [''],
       genero: [1, Validators.required],
@@ -36,6 +39,7 @@ export class FormularioPersonaUnicaComponent implements OnInit {
       razonSocial: [''],
       fecha: [''],
       observaciones: [''],
+      personaUnica: 0,
       nombreEjecutivo: [parseInt(this.credentials.credentials.idCobrador)],
       nombres: this.fb.array([this.fb.control('', [Validators.required])]),
       correos: this.fb.array([]),
@@ -89,6 +93,9 @@ export class FormularioPersonaUnicaComponent implements OnInit {
     });
   }
   submit() {
+    if (this.documentos.length > 0) {
+      (this.personaUnica.get('personaUnica') as FormControl).setValue(1);
+    }
     this.api.PostRespuestaPersonaUnica(this.personaUnica.value).subscribe((res: any) => {
       if (res.error) {
         Swal.fire({
@@ -104,8 +111,13 @@ export class FormularioPersonaUnicaComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
+        this.personaUnica.reset({
+          genero: 1,
+          tipo: 1,
+          nombreEjecutivo: parseInt(this.credentials.credentials.idCobrador),
+          nombres: [''],
+        });
       }
-      this.personaUnica.reset();
     });
   }
 }

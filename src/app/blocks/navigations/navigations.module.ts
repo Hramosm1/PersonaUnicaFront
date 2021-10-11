@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IconsModule } from '@app/blocks/icons/icons.module';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ContextMenuComponent } from './context-menu/context-menu.component';
@@ -14,7 +15,7 @@ const exports = [ContextMenuComponent, NavLinkComponent, BreadcrumComponent, Dro
 
 @NgModule({
   declarations: [...exports],
-  imports: [CommonModule, BsDropdownModule, IconsModule, RouterModule],
+  imports: [CommonModule, BsDropdownModule, PerfectScrollbarModule, IconsModule, RouterModule],
   exports,
 })
 export class NavigationsModule {}

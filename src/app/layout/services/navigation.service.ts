@@ -21,16 +21,11 @@ export class NavigationService {
             title: 'Formulario Persona Unica',
             link: '/mantenimiento/personaunica',
           },
-          {
-            icon: { name: faHome },
-            title: 'Lista de formularios',
-            link: '/mantenimiento/lista',
-          },
-          {
-            icon: { name: faPlus },
-            title: 'Nuevo Formulario',
-            link: '/mantenimiento/nuevo',
-          },
+          // {
+          //   icon: { name: faPlus },
+          //   title: 'Nuevo Formulario',
+          //   link: '/mantenimiento/nuevo',
+          // },
         ],
       },
     ]);

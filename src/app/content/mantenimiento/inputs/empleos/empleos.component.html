@@ -8,12 +8,13 @@
           <div class="form-group col-6">
             <label for="noDocumento">Empresa</label>
             <div class="input-group">
-              <input type="text" disabled class="form-control" value="example" />
+              <input type="text" disabled class="form-control" formControlName="empresa" />
               <span class="input-group-append">
-                <button type="button" (click)="openModal(empresas)" class="input-group-text">
+                <button type="button" (click)="openModal(empresas, i)" class="input-group-text">
                   <prx-icon icon="server"></prx-icon></button
               ></span>
             </div>
+            <small class="text-danger">Obligatorio</small>
           </div>
           <div class="form-group col-6">
             <label for="noDocumento">Puesto</label>
@@ -33,6 +34,7 @@
               class="form-control form-control-rounded"
               bsDatepicker
             />
+            <small class="text-danger">Obligatorio</small>
           </div>
           <div class="form-group col-6">
             <label class="control-label">Fecha fin</label>
@@ -46,7 +48,9 @@
             <small class="form-text text-muted">si es trabajo actual dejar en blanco</small>
           </div>
           <div class="col">
-            <button class="btn btn-outline-danger float-right" (click)="eliminarEmpleo(i)">x</button>
+            <button class="btn btn-outline-secondary btn-circle btn-sm float-right" (click)="eliminarEmpleo(i)">
+              x
+            </button>
           </div>
         </div>
       </div>
@@ -54,5 +58,5 @@
   </div>
 </ng-container>
 <ng-template #empresas>
-  <prx-lista-empleos></prx-lista-empleos>
+  <prx-lista-empleos [modalRef]="modalRef" (seleccionado)="asignar($event)"></prx-lista-empleos>
 </ng-template>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ApiService } from '@app/@core';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Empresas } from '../../inputs/models';
 
 @Component({
@@ -9,9 +11,23 @@ import { Empresas } from '../../inputs/models';
 })
 export class ListaEmpleosComponent implements OnInit {
   empleos: Empresas[];
-  constructor(private api: ApiService) {}
+  ColumnMode = ColumnMode;
+  @Input() modalRef: BsModalRef;
+  @Output() seleccionado: EventEmitter<Empresas> = new EventEmitter();
+  chillModalRef: BsModalRef;
+  constructor(private api: ApiService, private bsmodalService: BsModalService) {}
 
   ngOnInit(): void {
-    this.api.getEmpresas().subscribe((res) => console.log(res));
+    this.actualizarCampos();
+  }
+  actualizarCampos(e?: any): void {
+    this.api.getEmpresas().subscribe((res) => (this.empleos = res));
+  }
+  openModal(template: TemplateRef<any>) {
+    this.chillModalRef = this.bsmodalService.show(template, { class: 'modal-xl' });
+  }
+  enviarInfo(row: Empresas) {
+    this.seleccionado.emit(row);
+    this.modalRef.hide();
   }
 }

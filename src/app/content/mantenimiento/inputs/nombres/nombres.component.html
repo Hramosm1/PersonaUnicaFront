@@ -8,9 +8,12 @@
         <div class="form-group">
           <label for="noDocumento">Nombre {{ i + 1 }}</label>
           <input [formControlName]="i" class="form-control form-control-rounded" type="text" />
+          <small class="text-danger">Obligatorio</small>
         </div>
         <div>
-          <button *ngIf="i > 0" class="btn btn-outline-danger" (click)="eliminarNombre(i)">x</button>
+          <button *ngIf="i > 0" class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarNombre(i)">
+            <prx-icon icon="x" size="sm"></prx-icon>
+          </button>
         </div>
       </div>
     </ng-container>

@@ -7,19 +7,20 @@
         <div class="row" [formGroupName]="i">
           <div *ngIf="departamentos" class="form-group col-6">
             <label for="noDocumento">Departamento</label>
-            <select
-              (change)="municipiosUpdate(i, dir.value.departamento)"
-              formControlName="departamento"
-              class="form-control form-control-rounded"
-            >
+            <select formControlName="departamento" class="form-control form-control-rounded">
               <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>
             </select>
             <small class="text-danger">Obligatorio</small>
           </div>
-          <div class="form-group col-6">
+          <div *ngIf="direcciones.length > 0" class="form-group col-6">
             <label for="noDocumento">Municipio</label>
             <select formControlName="municipio" class="form-control form-control-rounded">
-              <option *ngFor="let muni of municipios[i]" [value]="muni">{{ muni }}</option>
+              <option
+                *ngFor="let muni of departamentosYMunicipios[direcciones.at(i).value.departamento]"
+                [value]="muni"
+              >
+                {{ muni }}
+              </option>
             </select>
             <small class="text-danger">Obligatorio</small>
           </div>
@@ -56,7 +57,9 @@
             ></textarea>
           </div>
           <div class="col-2">
-            <button class="btn btn-outline-danger" (click)="eliminarDireccion(i)">x</button>
+            <button class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarDireccion(i)">
+              <prx-icon icon="x" size="sm"></prx-icon>
+            </button>
           </div>
         </div>
       </div>

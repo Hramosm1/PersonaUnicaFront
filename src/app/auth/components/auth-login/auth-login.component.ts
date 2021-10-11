@@ -58,7 +58,6 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
         .subscribe(
           (credentials) => {
             if (credentials.token) {
-              console.log(credentials);
               this.credentialsService.setCredentials(credentials, value);
               this.route.queryParams.subscribe((params) => this.redirect(params));
             }

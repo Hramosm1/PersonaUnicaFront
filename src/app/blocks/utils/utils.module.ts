@@ -5,6 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { IconsModule } from '../icons/icons.module';
 import { CardsModule } from '../cards/cards.module';
 import { NavigationsModule } from '../navigations/navigations.module';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { ThemeColorPickerComponent } from './components/theme-color-picker/theme-color-picker.component';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -43,7 +44,15 @@ const exports = [
 
 @NgModule({
   declarations: [...exports, ImgComponent],
-  imports: [CommonModule, RouterModule, BsDropdownModule, IconsModule, CardsModule, NavigationsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    BsDropdownModule,
+    PerfectScrollbarModule,
+    IconsModule,
+    CardsModule,
+    NavigationsModule,
+  ],
   exports,
 })
 export class UtilsModule {}

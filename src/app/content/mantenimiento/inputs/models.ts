@@ -11,7 +11,7 @@ export interface TiposPersona {
   tipo_persona: string;
 }
 export interface Empresas {
-  id: number;
+  id: string;
   nombre: string;
   razon_social: string;
   observaciones: string;
