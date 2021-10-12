@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ApiService, CredentialsService } from '@app/@core';
 import { Generos, TiposPersona } from '../inputs/models';
 import Swal from 'sweetalert2';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'prx-formulario-persona-unica',
@@ -12,6 +13,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./formulario-persona-unica.component.scss'],
 })
 export class FormularioPersonaUnicaComponent implements OnInit {
+  @Input() perfil?: any;
   tipos: TiposPersona[];
   generos: Generos[];
   personaUnica: FormGroup;
@@ -41,7 +43,7 @@ export class FormularioPersonaUnicaComponent implements OnInit {
       observaciones: [''],
       personaUnica: 0,
       nombreEjecutivo: [parseInt(this.credentials.credentials.idCobrador)],
-      nombres: this.fb.array([this.fb.control('', [Validators.required])]),
+      nombres: this.fb.array([]),
       correos: this.fb.array([]),
       empleos: this.fb.array([]),
       documentos: this.fb.array([]),
@@ -49,6 +51,40 @@ export class FormularioPersonaUnicaComponent implements OnInit {
       direcciones: this.fb.array([]),
     });
     this.validacionesFormulario();
+    if (this.perfil) {
+      this.setValues();
+    } else {
+      this.nombres.push(this.fb.control('', [Validators.required]));
+    }
+  }
+  setValues() {
+    const base = _.omit(this.perfil, ['nombres', 'correos', 'empleos', 'documentos', 'telefonos', 'direcciones']);
+    this.personaUnica.patchValue(base);
+    this.setNombres(this.perfil.nombres);
+    this.setCorreos(this.perfil.correos);
+    console.log(this.personaUnica.value);
+  }
+  setNombres(arr: Array<any>) {
+    arr.forEach((element, i) => {
+      this.nombres.push(this.fb.control(element));
+    });
+  }
+  setCorreos(arr: Array<any>) {
+    arr.forEach((element) => {
+      this.correos.push(this.fb.control(element, [Validators.required, Validators.email]));
+    });
+  }
+  setDirecciones(arr: Array<any>) {
+    arr.forEach((element) => {});
+  }
+  settelefonos(arr: Array<any>) {
+    arr.forEach((element) => {});
+  }
+  setEmpleos(arr: Array<any>) {
+    arr.forEach((element) => {});
+  }
+  setDocumentos(arr: Array<any>) {
+    arr.forEach((element) => {});
   }
   get correos() {
     return this.personaUnica.get('correos') as FormArray;

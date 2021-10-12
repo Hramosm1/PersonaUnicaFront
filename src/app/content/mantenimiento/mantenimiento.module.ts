@@ -27,6 +27,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListaEmpleosComponent } from './modals/lista-empleos/lista-empleos.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NuevaEmpresaComponent } from './modals/nueva-empresa/nueva-empresa.component';
+import { ListadoComponent } from './listado/listado.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { NuevaEmpresaComponent } from './modals/nueva-empresa/nueva-empresa.comp
     DocumentosComponent,
     ListaEmpleosComponent,
     NuevaEmpresaComponent,
+    ListadoComponent,
+    PerfilComponent,
   ],
   imports: [
     CommonModule,

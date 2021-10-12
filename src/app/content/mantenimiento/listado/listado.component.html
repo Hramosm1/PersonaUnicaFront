@@ -1,0 +1,28 @@
+<div class="container">
+  <prx-page-header title="Listado personas ingresadas"></prx-page-header>
+  <prx-card>
+    <prx-card-body>
+      <ngx-datatable [rows]="rows" [columnMode]="cm.force" rowHeight="auto" footerHeight="auto" headerHeight="auto">
+        <ngx-datatable-column name="fecha creacion">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.fechaCreacion }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="apellidos">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{
+            row.json.primerApellido + ' ' + row.json.segundoApellido
+          }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="documento">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{
+            tipoDocumentos[row.json.documentos[0].tipo] + ' - ' + row.json.documentos[0].documento
+          }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="documento">
+          <ng-template let-row="row" ngx-datatable-cell-template
+            ><a class="btn btn-warning" [routerLink]="['/mantenimiento/perfil/' + row.id]"
+              ><prx-icon icon="Upload"></prx-icon></a
+          ></ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </prx-card-body>
+  </prx-card>
+</div>

@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Logger } from '../logger.service';
 import { TokenService } from '../authentication/token.service';
 import { InputsService } from '@app/content/mantenimiento/inputs/inputs.service';
+import { PerfilPersona } from '@app/content/mantenimiento/inputs/models';
 const logger = new Logger('ApiService');
 
 @Injectable({
@@ -23,6 +24,12 @@ export class ApiService {
   public getTiposPersona = this.inputService.getTiposPersona;
   public getEmpresas = this.inputService.getEmpresas;
   //=================================================================================
+  public GetPerfil(id: string): Observable<PerfilPersona> {
+    return this.http.get<PerfilPersona>(environment.serverUrl + 'personaunica/' + id, { headers: this.headers });
+  }
+  public GetPerfiles(): Observable<Array<PerfilPersona>> {
+    return this.http.get<Array<PerfilPersona>>(environment.serverUrl + 'personaunica', { headers: this.headers });
+  }
   public PostRespuestaPersonaUnica(body: any) {
     return this.http.post(environment.serverUrl + 'personaunica', body, { headers: this.headers });
   }

@@ -16,3 +16,9 @@ export interface Empresas {
   razon_social: string;
   observaciones: string;
 }
+export interface PerfilPersona {
+  id: string;
+  nombre_ejecutivo: string;
+  fecha_creacion: Date;
+  respuesta_json: string;
+}

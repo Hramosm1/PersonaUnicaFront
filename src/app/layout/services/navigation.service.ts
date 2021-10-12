@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { faLayerGroup, faHome, faPlus, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faLayerGroup, faHome, faPlus, faAddressCard, faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { NavigationOptions } from '../models/navigation';
 
@@ -13,13 +13,18 @@ export class NavigationService {
   getNavigationItems(): Observable<NavigationOptions[]> {
     return of([
       {
-        title: 'mantenimiento',
+        title: 'Persona Unica',
         icon: { name: faLayerGroup },
         items: [
           {
             icon: { name: faAddressCard },
             title: 'Formulario Persona Unica',
             link: '/mantenimiento/personaunica',
+          },
+          {
+            icon: { name: faListAlt },
+            title: 'Listado de personas',
+            link: '/mantenimiento/listado',
           },
           // {
           //   icon: { name: faPlus },
