@@ -7,16 +7,23 @@
           <ng-template let-row="row" ngx-datatable-cell-template>{{ row.fechaCreacion }}</ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="apellidos">
-          <ng-template let-row="row" ngx-datatable-cell-template>{{
-            row.json.primerApellido + ' ' + row.json.segundoApellido
-          }}</ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.json.tipo == 1 ? row.json.primerApellido + ' ' + row.json.segundoApellido : row.json.razonSocial }}
+          </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="documento">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <ng-container *ngIf="row.json.documentos.length > 0">{{
+              tipoDocumentos[row.json.documentos[0].tipo] + ' - ' + row.json.documentos[0].documento
+            }}</ng-container></ng-template
+          >
+        </ngx-datatable-column>
+        <ngx-datatable-column name="tipo">
           <ng-template let-row="row" ngx-datatable-cell-template>{{
-            tipoDocumentos[row.json.documentos[0].tipo] + ' - ' + row.json.documentos[0].documento
+            row.json.tipo == 1 ? 'Individual' : 'Juridica'
           }}</ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="documento">
+        <ngx-datatable-column name="Editar">
           <ng-template let-row="row" ngx-datatable-cell-template
             ><a class="btn btn-warning" [routerLink]="['/mantenimiento/perfil/' + row.id]"
               ><prx-icon icon="Upload"></prx-icon></a

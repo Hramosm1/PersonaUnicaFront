@@ -62,7 +62,6 @@ export class FormularioPersonaUnicaComponent implements OnInit {
     this.personaUnica.patchValue(base);
     this.setNombres(this.perfil.nombres);
     this.setCorreos(this.perfil.correos);
-    console.log(this.personaUnica.value);
   }
   setNombres(arr: Array<any>) {
     arr.forEach((element, i) => {
@@ -75,16 +74,50 @@ export class FormularioPersonaUnicaComponent implements OnInit {
     });
   }
   setDirecciones(arr: Array<any>) {
-    arr.forEach((element) => {});
+    arr.forEach((element) => {
+      this.direcciones.push(
+        this.fb.group({
+          departamento: [element.departamento, Validators.required],
+          municipio: [element.municipio, Validators.required],
+          zona: [element.zona, Validators.required],
+          colonia: [element.colonia],
+          direccion: [element.direccion],
+          referencia: [element.referencia],
+        })
+      );
+    });
   }
   settelefonos(arr: Array<any>) {
-    arr.forEach((element) => {});
+    arr.forEach((element) => {
+      this.telefonos.push(
+        this.fb.group({
+          codigoPais: [element.codigoPais, Validators.required],
+          telefono: [element.telefono, Validators.required],
+        })
+      );
+    });
   }
   setEmpleos(arr: Array<any>) {
-    arr.forEach((element) => {});
+    arr.forEach((element) => {
+      this.empleos.push(
+        this.fb.group({
+          empresa: [element.empresa, Validators.required],
+          puesto: [element.puesto],
+          fechaInicio: [element.fechaInicio, Validators.required],
+          fechaFin: [element.fechaFin],
+        })
+      );
+    });
   }
   setDocumentos(arr: Array<any>) {
-    arr.forEach((element) => {});
+    arr.forEach((element) => {
+      this.documentos.push(
+        this.fb.group({
+          tipo: [element.tipo, Validators.required],
+          documento: [element.documento, Validators.required],
+        })
+      );
+    });
   }
   get correos() {
     return this.personaUnica.get('correos') as FormArray;
@@ -134,6 +167,7 @@ export class FormularioPersonaUnicaComponent implements OnInit {
     }
     this.api.PostRespuestaPersonaUnica(this.personaUnica.value).subscribe((res: any) => {
       if (res.error) {
+        console.log(this.personaUnica.value);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -152,6 +186,9 @@ export class FormularioPersonaUnicaComponent implements OnInit {
           tipo: 1,
           nombreEjecutivo: parseInt(this.credentials.credentials.idCobrador),
           nombres: [''],
+          razonSocial: '',
+          observaciones: '',
+          idPerfil: '',
         });
       }
     });

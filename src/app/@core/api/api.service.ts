@@ -25,13 +25,13 @@ export class ApiService {
   public getEmpresas = this.inputService.getEmpresas;
   //=================================================================================
   public GetPerfil(id: string): Observable<PerfilPersona> {
-    return this.http.get<PerfilPersona>(environment.serverUrl + 'personaunica/' + id, { headers: this.headers });
+    return this.http.get<PerfilPersona>(environment.serverUrl + 'perfiles/' + id, { headers: this.headers });
   }
   public GetPerfiles(): Observable<Array<PerfilPersona>> {
-    return this.http.get<Array<PerfilPersona>>(environment.serverUrl + 'personaunica', { headers: this.headers });
+    return this.http.get<Array<PerfilPersona>>(environment.serverUrl + 'perfiles', { headers: this.headers });
   }
   public PostRespuestaPersonaUnica(body: any) {
-    return this.http.post(environment.serverUrl + 'personaunica', body, { headers: this.headers });
+    return this.http.post(environment.serverUrl + 'perfiles', body, { headers: this.headers });
   }
   public query<T>(route: string, itemType: any): Observable<T[]> {
     if (!route) {
