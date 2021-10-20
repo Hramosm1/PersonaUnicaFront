@@ -8,10 +8,26 @@
           <ng-container [formGroupName]="i">
             <div class="d-flex align-items-center justify-content-between">
               <div class="row">
+                <div class="form-group col-6">
+                  <label class="form-label">Origen informacion</label>
+                  <select formControlName="origenInformacion" class="form-control form-control-rounded">
+                    <option *ngFor="let origen of tiposOrigen | async" [ngValue]="origen.id">
+                      {{ origen.tipoOrigen }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-6">
+                  <label class="form-label">Tipo telefono</label>
+                  <select formControlName="tipoTelefono" class="form-control form-control-rounded">
+                    <option *ngFor="let tipoTel of tiposTelefono | async" [ngValue]="tipoTel.id">
+                      {{ tipoTel.tipoTelefono }}
+                    </option>
+                  </select>
+                </div>
                 <div class="form-group col-4">
                   <label class="form-label">Codigo Pais</label>
                   <select formControlName="codigoPais" class="form-control form-control-rounded">
-                    <option *ngFor="let ext of telExt" [value]="'+ ' + ext.phone_code">
+                    <option *ngFor="let ext of telExt" [ngValue]="'+ ' + ext.phone_code">
                       {{ ext.nombre + ' - ' + ext.phone_code }}
                     </option>
                   </select>

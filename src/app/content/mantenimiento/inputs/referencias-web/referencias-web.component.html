@@ -1,0 +1,40 @@
+<ng-container [formGroup]="form">
+  <prx-page-header title="Redes"></prx-page-header>
+  <div class="container px-5"></div>
+  <button class="btn btn-primary float-right" (click)="agregarReferencia()">agregar referencia web</button>
+  <ng-container formArrayName="referenciasWeb">
+    <div class="row">
+      <div class="col-12" *ngFor="let ref of paginas.controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <div class="row justify-content-between align-items-center">
+            <div class="form-group col-6">
+              <label for="origen">Origen de la información</label>
+              <select formControlName="origenInformacion" class="form-control form-control-rounded">
+                <option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
+              </select>
+              <small class="text-danger">Obligatorio</small>
+            </div>
+            <div class="form-group col-6">
+              <label for="origen">Tipo pagina web</label>
+              <select formControlName="tipo" class="form-control form-control-rounded">
+                <option *ngFor="let tipo of referencias | async" [ngValue]="tipo.id">{{ tipo.tipoPaginaWeb }}</option>
+              </select>
+              <small class="text-danger">Obligatorio</small>
+            </div>
+
+            <div class="form-group col-9">
+              <label for="link">Url</label>
+              <input type="text" formControlName="link" class="form-control form-control-rounded" />
+              <small class="text-danger">Obligatorio</small>
+            </div>
+            <div class="col-3">
+              <button class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarReferencia(i)">
+                <prx-icon icon="x" size="sm"></prx-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

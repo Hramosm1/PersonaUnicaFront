@@ -6,6 +6,7 @@ import { Generos, TiposPersona } from '../inputs/models';
 import Swal from 'sweetalert2';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import * as _ from 'lodash';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'prx-formulario-persona-unica',
@@ -13,11 +14,11 @@ import * as _ from 'lodash';
   styleUrls: ['./formulario-persona-unica.component.scss'],
 })
 export class FormularioPersonaUnicaComponent implements OnInit {
-  @Input() perfil?: any;
   tipos: TiposPersona[];
   generos: Generos[];
   personaUnica: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
+  process: boolean = false;
   constructor(
     private title: Title,
     private fb: FormBuilder,
@@ -39,9 +40,9 @@ export class FormularioPersonaUnicaComponent implements OnInit {
       genero: [1, Validators.required],
       tipo: [1, Validators.required],
       razonSocial: [''],
-      fecha: [''],
+      fecha: ['', Validators.required],
       observaciones: [''],
-      personaUnica: 0,
+      personaUnica: false,
       nombreEjecutivo: [parseInt(this.credentials.credentials.idCobrador)],
       nombres: this.fb.array([]),
       correos: this.fb.array([]),
@@ -49,76 +50,13 @@ export class FormularioPersonaUnicaComponent implements OnInit {
       documentos: this.fb.array([]),
       telefonos: this.fb.array([]),
       direcciones: this.fb.array([]),
+      contactos: this.fb.array([]),
+      referenciasWeb: this.fb.array([]),
     });
     this.validacionesFormulario();
-    if (this.perfil) {
-      this.setValues();
-    } else {
-      this.nombres.push(this.fb.control('', [Validators.required]));
-    }
+    this.nombres.push(this.fb.control('', [Validators.required]));
   }
-  setValues() {
-    const base = _.omit(this.perfil, ['nombres', 'correos', 'empleos', 'documentos', 'telefonos', 'direcciones']);
-    this.personaUnica.patchValue(base);
-    this.setNombres(this.perfil.nombres);
-    this.setCorreos(this.perfil.correos);
-  }
-  setNombres(arr: Array<any>) {
-    arr.forEach((element, i) => {
-      this.nombres.push(this.fb.control(element));
-    });
-  }
-  setCorreos(arr: Array<any>) {
-    arr.forEach((element) => {
-      this.correos.push(this.fb.control(element, [Validators.required, Validators.email]));
-    });
-  }
-  setDirecciones(arr: Array<any>) {
-    arr.forEach((element) => {
-      this.direcciones.push(
-        this.fb.group({
-          departamento: [element.departamento, Validators.required],
-          municipio: [element.municipio, Validators.required],
-          zona: [element.zona, Validators.required],
-          colonia: [element.colonia],
-          direccion: [element.direccion],
-          referencia: [element.referencia],
-        })
-      );
-    });
-  }
-  settelefonos(arr: Array<any>) {
-    arr.forEach((element) => {
-      this.telefonos.push(
-        this.fb.group({
-          codigoPais: [element.codigoPais, Validators.required],
-          telefono: [element.telefono, Validators.required],
-        })
-      );
-    });
-  }
-  setEmpleos(arr: Array<any>) {
-    arr.forEach((element) => {
-      this.empleos.push(
-        this.fb.group({
-          empresa: [element.empresa, Validators.required],
-          puesto: [element.puesto],
-          fechaInicio: [element.fechaInicio, Validators.required],
-          fechaFin: [element.fechaFin],
-        })
-      );
-    });
-  }
-  setDocumentos(arr: Array<any>) {
-    arr.forEach((element) => {
-      this.documentos.push(
-        this.fb.group({
-          tipo: [element.tipo, Validators.required],
-          documento: [element.documento, Validators.required],
-        })
-      );
-    });
-  }
+
   get correos() {
     return this.personaUnica.get('correos') as FormArray;
   }
@@ -158,39 +96,46 @@ export class FormularioPersonaUnicaComponent implements OnInit {
         await this.limpiarFormArrays();
         this.nombres.push(this.fb.control('', [Validators.required]));
       }
-      console.log('termino');
     });
   }
   submit() {
+    this.process = true;
     if (this.documentos.length > 0) {
-      (this.personaUnica.get('personaUnica') as FormControl).setValue(1);
+      (this.personaUnica.get('personaUnica') as FormControl).setValue(true);
     }
-    this.api.PostRespuestaPersonaUnica(this.personaUnica.value).subscribe((res: any) => {
-      if (res.error) {
-        console.log(this.personaUnica.value);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: res.mensaje,
-        });
-      } else {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Datos Ingresados',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.personaUnica.reset({
-          genero: 1,
-          tipo: 1,
-          nombreEjecutivo: parseInt(this.credentials.credentials.idCobrador),
-          nombres: [''],
-          razonSocial: '',
-          observaciones: '',
-          idPerfil: '',
-        });
-      }
-    });
+    this.api
+      .PostRespuestaPersonaUnica(this.personaUnica.value)
+      .pipe(
+        finalize(() => {
+          this.process = false;
+        })
+      )
+      .subscribe((res: any) => {
+        if (res.error) {
+          console.log(this.personaUnica.value);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.mensaje,
+          });
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Datos Ingresados',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.personaUnica.reset({
+            genero: 1,
+            tipo: 1,
+            nombreEjecutivo: parseInt(this.credentials.credentials.idCobrador),
+            nombres: [''],
+            razonSocial: '',
+            observaciones: '',
+            idPerfil: '',
+          });
+        }
+      });
   }
 }

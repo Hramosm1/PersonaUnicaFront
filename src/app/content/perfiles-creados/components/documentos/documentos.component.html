@@ -1,0 +1,27 @@
+<prx-card>
+  <prx-card-header title="Documentos"></prx-card-header>
+  <prx-card-body
+    ><ul class="list-group">
+      <li *ngFor="let doc of documentos" class="list-group-item">
+        {{ tiposDeDocumento[doc.tipo + 1].tipoDocumento + ' - ' + doc.documento }}
+        <button class="btn btn-outline-danger float-right">eliminar</button>
+        <button class="btn btn-outline-warning float-right" (click)="openModal(editar)">editar</button>
+      </li>
+    </ul></prx-card-body
+  >
+  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+</prx-card>
+<ng-template #crear
+  ><prx-form-documentos
+    [tiposDeDocumento]="tiposDeDocumento"
+    titulo="Nuevo Documento"
+    [modalRef]="modalRef"
+  ></prx-form-documentos
+></ng-template>
+<ng-template #editar
+  ><prx-form-documentos
+    [tiposDeDocumento]="tiposDeDocumento"
+    titulo="Editar"
+    [modalRef]="modalRef"
+  ></prx-form-documentos
+></ng-template>

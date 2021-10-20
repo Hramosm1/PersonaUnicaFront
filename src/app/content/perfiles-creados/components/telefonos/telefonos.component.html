@@ -1,0 +1,29 @@
+<prx-card>
+  <prx-card-header title="Telefonos"></prx-card-header>
+  <prx-card-body
+    ><ul class="list-group">
+      <li *ngFor="let tel of telefonos" class="list-group-item">
+        {{ tel.codigoPais + ' ' + tel.telefono }} <button class="btn btn-outline-danger float-right">eliminar</button>
+        <button class="btn btn-outline-warning float-right" (click)="openModal(editar, tel.id)">editar</button>
+      </li>
+    </ul></prx-card-body
+  >
+  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+</prx-card>
+<ng-template #crear>
+  <prx-form-telefonos
+    [tiposTelefono]="tiposTelefono"
+    [tiposOrigen]="tiposOrigen"
+    titulo="Nuevo Telefono"
+    [modalRef]="modalRef"
+  ></prx-form-telefonos
+></ng-template>
+<ng-template #editar>
+  <prx-form-telefonos
+    [idEditar]="idEditar"
+    [tiposTelefono]="tiposTelefono"
+    [tiposOrigen]="tiposOrigen"
+    titulo="Editar"
+    [modalRef]="modalRef"
+  ></prx-form-telefonos
+></ng-template>

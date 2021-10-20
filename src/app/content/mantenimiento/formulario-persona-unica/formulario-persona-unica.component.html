@@ -8,7 +8,7 @@
             <div class="col-12 form-group px-5">
               <label for="tipo" class="control-label">Tipo</label>
               <select formControlName="tipo" class="form-control form-control-rounded">
-                <option [value]="obTipo.id" *ngFor="let obTipo of tipos">{{ obTipo.tipo_persona | titlecase }}</option>
+                <option [ngValue]="obTipo.id" *ngFor="let obTipo of tipos">{{ obTipo.tipoPersona | titlecase }}</option>
               </select>
             </div>
             <div class="col-6 row">
@@ -25,7 +25,7 @@
               <div *ngIf="tipo == 1" class="col-6 form-group px-5">
                 <label for="genero" class="control-label">Genero</label>
                 <select formControlName="genero" class="form-control form-control-rounded">
-                  <option [value]="obGenero.id" *ngFor="let obGenero of generos">
+                  <option [ngValue]="obGenero.id" *ngFor="let obGenero of generos">
                     {{ obGenero.genero | titlecase }}
                   </option>
                 </select>
@@ -50,6 +50,7 @@
                   bsDatepicker
                   [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
                 />
+                <small class="text-danger">Obligatorio</small>
               </div>
               <div class="col-12 form-group px-5">
                 <label for="razon social" class="control-label">Observaciones</label>
@@ -59,7 +60,7 @@
             <div class="col-6 row">
               <div *ngIf="tipo == 2" class="col-6 form-group px-5">
                 <ng-container formArrayName="nombres">
-                  <label for="razon social" class="control-label">Nombre de marca</label>
+                  <label for="razon social" class="control-label">Nombre de la empresa</label>
                   <input
                     formControlName="0"
                     type="text"
@@ -79,13 +80,15 @@
           <prx-direcciones></prx-direcciones>
           <prx-correos></prx-correos>
           <prx-empleos *ngIf="tipo == 1"></prx-empleos>
+          <prx-contactos *ngIf="tipo == 1"></prx-contactos>
+          <prx-referencias-web></prx-referencias-web>
           <div>
             <br />
             <hr />
             <button
               class="btn float-right"
               type="submit"
-              [disabled]="!personaUnica.valid"
+              [disabled]="!personaUnica.valid || process"
               [ngClass]="{ 'btn-danger': personaUnica.valid, 'btn-secondary': !personaUnica.valid }"
               (click)="submit()"
             >

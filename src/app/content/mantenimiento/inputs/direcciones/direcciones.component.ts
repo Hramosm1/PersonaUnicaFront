@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { ApiService } from '@app/@core';
+import { Observable } from 'rxjs';
+import { TiposOrigen } from '../models';
 import { departamentosjson } from './departamentos';
 
 @Component({
@@ -8,8 +11,10 @@ import { departamentosjson } from './departamentos';
   styleUrls: ['./direcciones.component.scss'],
 })
 export class DireccionesComponent implements OnInit {
+  @Input() tiposOrigen: Observable<TiposOrigen[]>;
   departamentosYMunicipios = departamentosjson;
   form: FormGroup;
+
   departamentos = Object.keys(this.departamentosYMunicipios);
   constructor(private fb: FormBuilder, private rootForm: FormGroupDirective) {}
 
@@ -30,6 +35,7 @@ export class DireccionesComponent implements OnInit {
         colonia: [''],
         direccion: [''],
         referencia: [''],
+        origenInformacion: ['', Validators.required],
       })
     );
   }

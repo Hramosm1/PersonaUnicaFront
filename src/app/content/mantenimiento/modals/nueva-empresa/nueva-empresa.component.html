@@ -18,7 +18,7 @@
                   class="form-control form-control-rounded"
                   type="text"
                   disabled
-                  [value]="tipos[tipo - 1].tipo_persona | titlecase"
+                  [value]="tipos[tipo - 1].tipoPersona | titlecase"
                 />
               </div>
               <div class="col-6 row">
@@ -53,7 +53,7 @@
               <div class="col-6 row">
                 <div class="col-6 form-group px-5">
                   <ng-container formArrayName="nombres">
-                    <label for="razon social" class="control-label">Nombre de marca</label>
+                    <label for="razon social" class="control-label">Nombre de la empresa</label>
                     <input
                       formControlName="0"
                       type="text"

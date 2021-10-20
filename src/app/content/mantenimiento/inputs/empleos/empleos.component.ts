@@ -2,7 +2,8 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ApiService } from '@app/@core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Empresas } from '../models';
+import { Observable } from 'rxjs';
+import { Empresas, TiposOrigen } from '../models';
 
 @Component({
   selector: 'prx-empleos',
@@ -14,6 +15,7 @@ export class EmpleosComponent implements OnInit {
   empresas: Array<Empresas>;
   modalRef: BsModalRef;
   indexTem: number;
+  tiposOrigen: Observable<TiposOrigen[]>;
   constructor(
     private fb: FormBuilder,
     private rootForm: FormGroupDirective,
@@ -24,6 +26,7 @@ export class EmpleosComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.rootForm.control;
     this.apis.getEmpresas().subscribe((res) => (this.empresas = res));
+    this.tiposOrigen = this.apis.getTipos<TiposOrigen>('origen');
   }
 
   openModal(template: TemplateRef<any>, i: number) {
@@ -40,7 +43,8 @@ export class EmpleosComponent implements OnInit {
         empresa: ['', Validators.required],
         puesto: [''],
         fechaInicio: [new Date(), Validators.required],
-        fechaFin: [''],
+        fechaFin: [null],
+        origenInformacion: [Number, Validators.required],
       })
     );
   }

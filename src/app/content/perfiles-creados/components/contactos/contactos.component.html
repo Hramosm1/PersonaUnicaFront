@@ -1,0 +1,28 @@
+<prx-card>
+  <prx-card-header title="Contactos"></prx-card-header>
+  <prx-card-body>
+    <ul *ngIf="contactos" class="list-group">
+      <li *ngFor="let cont of contactos" class="list-group-item">
+        {{ cont.nombreCompleto }} <button class="btn btn-outline-danger float-right">eliminar</button>
+        <button class="btn btn-outline-warning float-right" (click)="openModal(editar)">editar</button>
+      </li>
+    </ul>
+  </prx-card-body>
+  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+</prx-card>
+<ng-template #crear>
+  <prx-form-contactos
+    [tiposContacto]="tiposContacto"
+    [tiposOrigen]="tiposOrigen"
+    titulo="Nuevo contacto"
+    [modalRef]="modalRef"
+  ></prx-form-contactos
+></ng-template>
+<ng-template #editar>
+  <prx-form-contactos
+    [tiposContacto]="tiposContacto"
+    [tiposOrigen]="tiposOrigen"
+    titulo="Editar"
+    [modalRef]="modalRef"
+  ></prx-form-contactos
+></ng-template>

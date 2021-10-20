@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ titulo }}</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <form [formGroup]="telefono">
+      <div class="form-group col-6">
+        <label class="form-label">Origen informacion</label>
+        <select formControlName="origenInformacion" class="form-control form-control-rounded">
+          <option *ngFor="let origen of tiposOrigen" [ngValue]="origen.id">
+            {{ origen.tipoOrigen }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-6">
+        <label class="form-label">Tipo telefono</label>
+        <select formControlName="tipoTelefono" class="form-control form-control-rounded">
+          <option *ngFor="let tipoTel of tiposTelefono" [ngValue]="tipoTel.id">
+            {{ tipoTel.tipoTelefono }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-4">
+        <label class="form-label">Codigo Pais</label>
+        <select formControlName="codigoPais" class="form-control form-control-rounded">
+          <option *ngFor="let ext of telExt" [ngValue]="'+ ' + ext.phone_code">
+            {{ ext.nombre + ' - ' + ext.phone_code }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-8">
+        <label class="form-label">Telefono</label>
+        <input
+          formControlName="telefono"
+          class="form-control form-control-rounded"
+          type="tel"
+          placeholder="5555-5555"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer"><button (click)="submit()" class="btn btn-primary float-right">Actualizar</button></div>

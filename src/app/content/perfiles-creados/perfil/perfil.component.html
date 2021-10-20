@@ -1,0 +1,50 @@
+<ng-container *ngIf="perfil">
+  <div class="bg-contrast py-md-3">
+    <div class="container-fluid d-flex justify-content-md-between align-items-center">
+      <h1 class="title h3 d-none d-md-flex">Perfil</h1>
+    </div>
+  </div>
+
+  <div class="contact-header pt-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="media align-items-center">
+            <prx-avatar [avatar]="avatar" size="xl" class="mr-3 shadow"></prx-avatar>
+
+            <div class="media-body">
+              <h2 class="mb-0">{{ perfil.primerApellido }}</h2>
+              <p class="lead">{{ fecha }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+      <div class="col">
+        <prx-documentos [tiposDeDocumento]="tiposDocumento" [documentos]="perfil.PU_Documentos"></prx-documentos>
+      </div>
+      <div class="col">
+        <prx-telefonos
+          [tiposOrigen]="tiposOrigen"
+          [tiposTelefono]="tiposTelefono"
+          [telefonos]="perfil.PU_Telefonos"
+        ></prx-telefonos>
+      </div>
+      <div class="col"><prx-correos [tiposOrigen]="tiposOrigen" [correos]="perfil.PU_Correos"></prx-correos></div>
+      <div class="col">
+        <prx-direcciones [tiposOrigen]="tiposOrigen" [direcciones]="perfil.PU_Direcciones"></prx-direcciones>
+      </div>
+      <div class="col"><prx-empleos [empleos]="perfil.empleos"></prx-empleos></div>
+      <div class="col">
+        <prx-contactos
+          [tiposOrigen]="tiposOrigen"
+          [tiposContacto]="tiposContacto"
+          [contactos]="perfil.PU_Contactos"
+        ></prx-contactos>
+      </div>
+    </div>
+  </div>
+</ng-container>

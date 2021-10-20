@@ -8,6 +8,11 @@ const routes: Routes = [
       path: 'mantenimiento',
       loadChildren: () => import('./content/mantenimiento/mantenimiento.module').then((m) => m.MantenimientoModule),
     },
+    {
+      path: 'perfiles',
+      loadChildren: () =>
+        import('./content/perfiles-creados/perfiles-creados.module').then((m) => m.PerfilesCreadosModule),
+    },
   ]),
 
   // Fallback when no prior route is matched
@@ -19,6 +24,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
       scrollPositionRestoration: 'enabled',
+      useHash: true,
     }),
   ],
   exports: [RouterModule],

@@ -27,8 +27,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListaEmpleosComponent } from './modals/lista-empleos/lista-empleos.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NuevaEmpresaComponent } from './modals/nueva-empresa/nueva-empresa.component';
-import { ListadoComponent } from './listado/listado.component';
-import { PerfilComponent } from './perfil/perfil.component';
+import { TipoDocumentoPipe } from './pipes/tipo-documento.pipe';
+import { FiltroEmpresasPipe } from './pipes/filtro-empresas.pipe';
+import { ContactosComponent } from './inputs/contactos/contactos.component';
+import { ReferenciasWebComponent } from './inputs/referencias-web/referencias-web.component';
+import { AvatarsModule } from '@app/blocks/avatars/avatars.module';
 
 @NgModule({
   declarations: [
@@ -48,8 +51,10 @@ import { PerfilComponent } from './perfil/perfil.component';
     DocumentosComponent,
     ListaEmpleosComponent,
     NuevaEmpresaComponent,
-    ListadoComponent,
-    PerfilComponent,
+    TipoDocumentoPipe,
+    FiltroEmpresasPipe,
+    ContactosComponent,
+    ReferenciasWebComponent,
   ],
   imports: [
     CommonModule,
@@ -64,6 +69,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     BsDatepickerModule,
     ModalModule,
     NgxDatatableModule,
+    AvatarsModule,
   ],
 })
 export class MantenimientoModule {}

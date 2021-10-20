@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CodigosTelefono } from './telCodigos';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { TiposOrigen, TiposTelefono } from '../models';
+import { Observable } from 'rxjs';
+import { ApiService } from '@app/@core';
 
 @Component({
   selector: 'prx-telefonos',
@@ -9,10 +12,14 @@ import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } fro
 })
 export class TelefonosComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder, private rootForm: FormGroupDirective) {}
   telExt = CodigosTelefono;
+  tiposOrigen: Observable<Array<TiposOrigen>>;
+  tiposTelefono: Observable<Array<TiposTelefono>>;
+  constructor(private fb: FormBuilder, private rootForm: FormGroupDirective, private api: ApiService) {}
   ngOnInit(): void {
     this.form = this.rootForm.control;
+    this.tiposTelefono = this.api.getTipos<TiposTelefono>('telefono');
+    this.tiposOrigen = this.api.getTipos<TiposOrigen>('origen');
   }
   get telefonos() {
     return this.form.get('telefonos') as FormArray;
@@ -22,6 +29,8 @@ export class TelefonosComponent implements OnInit {
       this.fb.group({
         codigoPais: ['+ 502', Validators.required],
         telefono: ['', Validators.required],
+        tipoTelefono: [Number, Validators.required],
+        origenInformacion: [Number, Validators.required],
       })
     );
   }

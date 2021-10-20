@@ -19,12 +19,12 @@ export class DocumentosComponent implements OnInit {
     this.api.getTiposDocumento().subscribe((res) => (this.tiposDeDocumento = res));
   }
 
-  get documentos() {
+  public get documentos(): FormArray {
     return this.form.get('documentos') as FormArray;
   }
 
   nuevoDocumento() {
-    this.documentos.push(this.fb.group({ tipo: ['', Validators.required], documento: ['', Validators.required] }));
+    this.documentos.push(this.fb.group({ tipo: [Number, Validators.required], documento: ['', Validators.required] }));
   }
   eliminarDocumento(i: number) {
     this.documentos.removeAt(i);

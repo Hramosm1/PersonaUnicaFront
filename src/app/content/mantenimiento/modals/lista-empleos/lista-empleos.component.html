@@ -1,25 +1,31 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">titulo</h4>
+  <h4 class="modal-title pull-left">Personas Juridicas</h4>
   <button type="button" class="close" (click)="modalRef.hide()">
     <prx-icon icon="x"></prx-icon>
   </button>
 </div>
 <div class="modal-body" perfectScrollbar>
+  <div>
+    <input class="form-control" [(ngModel)]="filtro" type="text" />
+  </div>
   <ngx-datatable
     class="material"
-    [rows]="empleos"
+    [rows]="empleos | filtroEmpresas: filtro"
     [loadingIndicator]="true"
+    [limit]="5"
     [columnMode]="ColumnMode.force"
     headerHeight="auto"
     footerHeight="auto"
     rowHeight="auto"
   >
     <ngx-datatable-column name="id"></ngx-datatable-column>
-    <ngx-datatable-column name="nombre"></ngx-datatable-column>
-    <ngx-datatable-column name="razon social">
-      <ng-template let-row="row" ngx-datatable-cell-template>{{ row.razon_social }}</ng-template>
+    <ngx-datatable-column name="Razon social">
+      <ng-template let-row="row" ngx-datatable-cell-template>{{ row.razonSocial }}</ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="razon social">
+    <ngx-datatable-column name="Nombre Empresa">
+      <ng-template let-row="row" ngx-datatable-cell-template>{{ row.nombre }}</ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
       <ng-template let-row="row" ngx-datatable-cell-template
         ><button (click)="enviarInfo(row)" class="btn btn-info">Seleccionar</button></ng-template
       >

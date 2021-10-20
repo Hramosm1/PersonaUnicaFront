@@ -11,6 +11,7 @@ import { Empresas } from '../../inputs/models';
 })
 export class ListaEmpleosComponent implements OnInit {
   empleos: Empresas[];
+  filtro: string = '';
   ColumnMode = ColumnMode;
   @Input() modalRef: BsModalRef;
   @Output() seleccionado: EventEmitter<Empresas> = new EventEmitter();
@@ -21,7 +22,10 @@ export class ListaEmpleosComponent implements OnInit {
     this.actualizarCampos();
   }
   actualizarCampos(e?: any): void {
-    this.api.getEmpresas().subscribe((res) => (this.empleos = res));
+    this.api.getEmpresas().subscribe((res) => {
+      this.empleos = res;
+      console.log(this.empleos);
+    });
   }
   openModal(template: TemplateRef<any>) {
     this.chillModalRef = this.bsmodalService.show(template, { class: 'modal-xl' });

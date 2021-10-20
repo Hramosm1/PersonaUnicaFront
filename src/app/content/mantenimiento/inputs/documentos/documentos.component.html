@@ -9,8 +9,8 @@
             <div class="form-group col-5">
               <label for="tDocumento" class="form-label">Tipo de Documento</label>
               <select class="form-control form-control-rounded" formControlName="tipo">
-                <option *ngFor="let cui of tiposDeDocumento" [value]="cui.id">
-                  {{ cui.tipo_documento | uppercase }}
+                <option *ngFor="let doc of tiposDeDocumento" [ngValue]="doc.id">
+                  {{ doc.tipoDocumento | uppercase }}
                 </option>
               </select>
             </div>

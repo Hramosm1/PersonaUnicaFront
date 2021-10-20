@@ -4,21 +4,35 @@ export interface Generos {
 }
 export interface TiposDocumento {
   id: number;
-  tipo_documento: string;
+  tipoDocumento: string;
 }
 export interface TiposPersona {
   id: number;
-  tipo_persona: string;
+  tipoPersona: string;
 }
 export interface Empresas {
   id: string;
   nombre: string;
-  razon_social: string;
+  razonSocial: string;
   observaciones: string;
 }
-export interface PerfilPersona {
-  id: string;
-  nombre_ejecutivo: string;
-  fecha_creacion: Date;
-  respuesta_json: string;
+export interface TiposOrigen {
+  id: number;
+  tipoOrigen: string;
+}
+export interface TiposAccion {
+  id: number;
+  tipoAccion: string;
+}
+export interface TiposPaginaWeb {
+  id: number;
+  tipoPaginaWeb: string;
+}
+export interface TiposContacto {
+  id: number;
+  tipoContacto: string;
+}
+export interface TiposTelefono {
+  id: number;
+  tipoTelefono: string;
 }

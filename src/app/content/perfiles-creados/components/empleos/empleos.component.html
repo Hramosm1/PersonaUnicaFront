@@ -1,0 +1,14 @@
+<prx-card>
+  <prx-card-header title="Empleos"></prx-card-header>
+  <prx-card-body>
+    <ul class="list-group">
+      <li *ngFor="let empleo of empleos" class="list-group-item">
+        {{ empleo | json }} <button class="btn btn-outline-danger float-right">eliminar</button>
+        <button class="btn btn-outline-warning float-right" (click)="openModal(editar)">editar</button>
+      </li>
+    </ul>
+  </prx-card-body>
+  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+</prx-card>
+<ng-template #crear> <prx-form-empleo titulo="Nuevo empleo" [modalRef]="modalRef"></prx-form-empleo></ng-template>
+<ng-template #editar> <prx-form-empleo titulo="Editar" [modalRef]="modalRef"></prx-form-empleo></ng-template>

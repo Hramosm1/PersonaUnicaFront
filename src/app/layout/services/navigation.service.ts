@@ -24,13 +24,8 @@ export class NavigationService {
           {
             icon: { name: faListAlt },
             title: 'Listado de personas',
-            link: '/mantenimiento/listado',
+            link: '/perfiles/',
           },
-          // {
-          //   icon: { name: faPlus },
-          //   title: 'Nuevo Formulario',
-          //   link: '/mantenimiento/nuevo',
-          // },
         ],
       },
     ]);
