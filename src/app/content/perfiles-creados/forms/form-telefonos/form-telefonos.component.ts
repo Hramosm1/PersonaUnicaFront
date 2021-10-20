@@ -5,7 +5,7 @@ import { ApiService } from '@app/@core';
 import { TiposOrigen, TiposTelefono } from '@app/content/mantenimiento/inputs/models';
 import { CodigosTelefono } from '@app/content/mantenimiento/inputs/telefonos/telCodigos';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'prx-form-telefonos',
@@ -38,6 +38,14 @@ export class FormTelefonosComponent implements OnInit {
       this.api.mantenimientos('put', 'telefonos', this.telefono.value, this.idEditar).subscribe((re: any) => {
         if (re.error) {
         } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Telefono actualizado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.modalRef.hide();
         }
       });
     } else {
@@ -48,6 +56,14 @@ export class FormTelefonosComponent implements OnInit {
           .subscribe((re: any) => {
             if (re.error) {
             } else {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'telefono creado',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.modalRef.hide();
             }
           });
       });

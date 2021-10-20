@@ -5,6 +5,7 @@ import { ApiService } from '@app/@core';
 import { TiposContacto, TiposOrigen } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'prx-form-contactos',
@@ -16,6 +17,7 @@ export class FormContactosComponent implements OnInit {
   @Input() tiposOrigen: TiposOrigen[];
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
+  @Input() idEditar?: string;
   contacto: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
@@ -26,12 +28,42 @@ export class FormContactosComponent implements OnInit {
       tipoContacto: [Number, Validators.required],
     });
   }
-  async submit() {
-    const { id } = await this.rout.params.toPromise();
+  submit() {
     if (this.titulo == 'Editar') {
-      this.api.mantenimientos('put', 'contactos', this.contacto.value, id);
+      console.log('este es el editar', this.idEditar);
+      console.log('editando');
+      this.api.mantenimientos('put', 'contactos', this.contacto.value, this.idEditar).subscribe((re: any) => {
+        if (re.error) {
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Contacto actualizado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.modalRef.hide();
+        }
+      });
     } else {
-      this.api.mantenimientos('post', 'contactos', this.contacto.value);
+      this.rout.params.subscribe((re) => {
+        console.log('creando');
+        this.api
+          .mantenimientos('post', 'contactos', { idPerfil: re.id, ...this.contacto.value }, '')
+          .subscribe((re: any) => {
+            if (re.error) {
+            } else {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Contacto creado',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.modalRef.hide();
+            }
+          });
+      });
     }
   }
 }

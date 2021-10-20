@@ -1,7 +1,10 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { ApiService } from '@app/@core';
 import { TiposDocumento } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 import { PUDocumentos } from '../../tablas-model';
 
 @Component({
@@ -14,10 +17,34 @@ export class DocumentosComponent implements OnInit {
   @Input() tiposDeDocumento: TiposDocumento[];
   tipos: any;
   modalRef?: BsModalRef;
-  constructor(private modalService: BsModalService) {}
+  idEditar: string;
+  btn = false;
+  @Output() actualizar = new EventEmitter();
+  constructor(private api: ApiService, private modalService: BsModalService) {}
 
   ngOnInit(): void {}
-  openModal(template: TemplateRef<any>) {
+  eliminar(id: string) {
+    this.btn = true;
+    this.api
+      .mantenimientosDelete('documentos', id)
+      .pipe(finalize(() => (this.btn = false)))
+      .subscribe((res: any) => {
+        if (res.error) {
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Documento Eliminado',
+            text: res.documento,
+          });
+          this.actualizar.emit();
+        }
+      });
+  }
+  openModal(template: TemplateRef<any>, id?: string) {
+    if (id) {
+      this.idEditar = id;
+    }
     this.modalRef = this.modalService.show(template);
+    this.modalService.onHide.subscribe(() => this.actualizar.emit());
   }
 }

@@ -35,14 +35,14 @@ export class PerfilComponent implements OnInit {
     this.getPerfil();
     this.getTipos();
   }
-  async getTipos() {
-    this.tiposDocumento = await this.api.getTipos<TiposDocumento>('documento').toPromise();
-    this.tiposPaginaWeb = await this.api.getTipos<TiposPaginaWeb>('pagina').toPromise();
-    this.Generos = await this.api.getTipos<Generos>('genero').toPromise();
-    this.tiposContacto = await this.api.getTipos<TiposContacto>('contacto').toPromise();
-    this.tiposOrigen = await this.api.getTipos<TiposOrigen>('origen').toPromise();
-    this.tiposPersona = await this.api.getTipos<TiposPersona>('persona').toPromise();
-    this.tiposTelefono = await this.api.getTipos<TiposTelefono>('telefono').toPromise();
+  getTipos() {
+    this.api.getTipos<TiposDocumento>('documento').subscribe((res) => (this.tiposDocumento = res));
+    this.api.getTipos<TiposPaginaWeb>('pagina').subscribe((res) => (this.tiposPaginaWeb = res));
+    this.api.getTipos<Generos>('genero').subscribe((res) => (this.Generos = res));
+    this.api.getTipos<TiposContacto>('contacto').subscribe((res) => (this.tiposContacto = res));
+    this.api.getTipos<TiposOrigen>('origen').subscribe((res) => (this.tiposOrigen = res));
+    this.api.getTipos<TiposPersona>('persona').subscribe((res) => (this.tiposPersona = res));
+    this.api.getTipos<TiposTelefono>('telefono').subscribe((res) => (this.tiposTelefono = res));
   }
   get nombres() {
     return this.perfil.PU_Nombres.map((nom) => nom.nombre);
@@ -52,6 +52,10 @@ export class PerfilComponent implements OnInit {
   }
   get empleos() {
     return this.perfil.empleos;
+  }
+  actualizar(e: any) {
+    console.log('actualizo');
+    this.getPerfil();
   }
   private getPerfil() {
     this.activateRoute.params.subscribe((params) => {

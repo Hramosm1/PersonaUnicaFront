@@ -3,8 +3,11 @@
   <prx-card-body>
     <ul class="list-group">
       <li *ngFor="let mail of correos" class="list-group-item">
-        {{ mail.correo }} <button class="btn btn-outline-danger float-right">eliminar</button>
-        <button class="btn btn-outline-warning float-right" (click)="openModal(editar)">editar</button>
+        <div>{{ mail.correo }}</div>
+        <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(mail.id)">
+          eliminar
+        </button>
+        <button class="btn btn-outline-warning float-right" (click)="openModal(editar, mail.id)">editar</button>
       </li>
     </ul>
   </prx-card-body>
@@ -14,5 +17,10 @@
   <prx-form-correos [tiposOrigen]="tiposOrigen" titulo="Nuevo correo" [modalRef]="modalRef"></prx-form-correos
 ></ng-template>
 <ng-template #editar>
-  <prx-form-correos [tiposOrigen]="tiposOrigen" titulo="Editar" [modalRef]="modalRef"></prx-form-correos
+  <prx-form-correos
+    [idEditar]="idEditar"
+    [tiposOrigen]="tiposOrigen"
+    titulo="Editar"
+    [modalRef]="modalRef"
+  ></prx-form-correos
 ></ng-template>

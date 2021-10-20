@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
 import { TiposOrigen } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'prx-form-correos',
@@ -15,21 +15,52 @@ export class FormCorreosComponent implements OnInit {
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
   @Input() tiposOrigen: TiposOrigen[];
+  @Input() idEditar?: string;
   correo: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.correo = this.fb.group({
-      correo: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
       origenInformacion: [Number, Validators.required],
     });
   }
-  async submit() {
-    const { id } = await this.rout.params.toPromise();
+  submit() {
     if (this.titulo == 'Editar') {
-      this.api.mantenimientos('put', 'correos', this.correo.value, id);
+      console.log('este es el editar', this.idEditar);
+      console.log('editando');
+      this.api.mantenimientos('put', 'correos', this.correo.value, this.idEditar).subscribe((re: any) => {
+        if (re.error) {
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Correo actualizado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.modalRef.hide();
+        }
+      });
     } else {
-      this.api.mantenimientos('post', 'correos', this.correo.value);
+      this.rout.params.subscribe((re) => {
+        console.log('creando');
+        this.api
+          .mantenimientos('post', 'correos', { idPerfil: re.id, ...this.correo.value }, '')
+          .subscribe((re: any) => {
+            if (re.error) {
+            } else {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Correo creado',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.modalRef.hide();
+            }
+          });
+      });
     }
   }
 }

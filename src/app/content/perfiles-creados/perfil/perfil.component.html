@@ -24,25 +24,41 @@
   <div class="container mt-5">
     <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
       <div class="col">
-        <prx-documentos [tiposDeDocumento]="tiposDocumento" [documentos]="perfil.PU_Documentos"></prx-documentos>
+        <prx-documentos
+          [tiposDeDocumento]="tiposDocumento"
+          [documentos]="perfil.PU_Documentos"
+          (actualizar)="actualizar($event)"
+        ></prx-documentos>
       </div>
       <div class="col">
         <prx-telefonos
           [tiposOrigen]="tiposOrigen"
           [tiposTelefono]="tiposTelefono"
           [telefonos]="perfil.PU_Telefonos"
+          (actualizar)="actualizar($event)"
         ></prx-telefonos>
       </div>
-      <div class="col"><prx-correos [tiposOrigen]="tiposOrigen" [correos]="perfil.PU_Correos"></prx-correos></div>
       <div class="col">
-        <prx-direcciones [tiposOrigen]="tiposOrigen" [direcciones]="perfil.PU_Direcciones"></prx-direcciones>
+        <prx-correos
+          [tiposOrigen]="tiposOrigen"
+          [correos]="perfil.PU_Correos"
+          (actualizar)="actualizar($event)"
+        ></prx-correos>
       </div>
-      <div class="col"><prx-empleos [empleos]="perfil.empleos"></prx-empleos></div>
+      <div class="col">
+        <prx-direcciones
+          [tiposOrigen]="tiposOrigen"
+          [direcciones]="perfil.PU_Direcciones"
+          (actualizar)="actualizar($event)"
+        ></prx-direcciones>
+      </div>
+      <div class="col"><prx-empleos [empleos]="perfil.empleos" (actualizar)="actualizar($event)"></prx-empleos></div>
       <div class="col">
         <prx-contactos
           [tiposOrigen]="tiposOrigen"
           [tiposContacto]="tiposContacto"
           [contactos]="perfil.PU_Contactos"
+          (actualizar)="actualizar($event)"
         ></prx-contactos>
       </div>
     </div>

@@ -35,6 +35,7 @@ export class ApiService {
     mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos',
     id: string
   ) {
+    console.log(`environment.serverUrl}${mantenimiento}/${id}`);
     return this.http.delete(`${environment.serverUrl}${mantenimiento}/${id}`, { headers: this.headers });
   }
   //=================================================================================

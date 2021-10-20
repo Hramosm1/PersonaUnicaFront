@@ -6,6 +6,7 @@ import { departamentosjson } from '@app/content/mantenimiento/inputs/direcciones
 import { TiposOrigen } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'prx-form-direcciones',
@@ -17,6 +18,7 @@ export class FormDireccionesComponent implements OnInit {
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
   @Input() tiposOrigen: TiposOrigen[];
+  @Input() idEditar?: string;
   direccion: FormGroup;
   departamentos = Object.keys(this.departamentosYMunicipios);
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
@@ -35,12 +37,42 @@ export class FormDireccionesComponent implements OnInit {
   get departamento() {
     return this.direccion.get('departamento').value;
   }
-  async submit() {
-    const { id } = await this.rout.params.toPromise();
+  submit() {
     if (this.titulo == 'Editar') {
-      this.api.mantenimientos('put', 'direcciones', this.direccion.value, id);
+      console.log('este es el editar', this.idEditar);
+      console.log('editando');
+      this.api.mantenimientos('put', 'direcciones', this.direccion.value, this.idEditar).subscribe((re: any) => {
+        if (re.error) {
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Direccion actualizado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.modalRef.hide();
+        }
+      });
     } else {
-      this.api.mantenimientos('post', 'direcciones', this.direccion.value);
+      this.rout.params.subscribe((re) => {
+        console.log('creando');
+        this.api
+          .mantenimientos('post', 'direcciones', { idPerfil: re.id, ...this.direccion.value }, '')
+          .subscribe((re: any) => {
+            if (re.error) {
+            } else {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Direccion creado',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.modalRef.hide();
+            }
+          });
+      });
     }
   }
 }

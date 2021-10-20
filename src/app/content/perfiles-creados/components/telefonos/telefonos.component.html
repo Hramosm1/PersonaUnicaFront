@@ -3,7 +3,14 @@
   <prx-card-body
     ><ul class="list-group">
       <li *ngFor="let tel of telefonos" class="list-group-item">
-        {{ tel.codigoPais + ' ' + tel.telefono }} <button class="btn btn-outline-danger float-right">eliminar</button>
+        <div>
+          <div>
+            {{ tip[tel.tipoTelefono - 1] + ' ' + tel.codigoPais + ' ' + tel.telefono }}
+          </div>
+          <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(tel.id)">
+            eliminar
+          </button>
+        </div>
         <button class="btn btn-outline-warning float-right" (click)="openModal(editar, tel.id)">editar</button>
       </li>
     </ul></prx-card-body
