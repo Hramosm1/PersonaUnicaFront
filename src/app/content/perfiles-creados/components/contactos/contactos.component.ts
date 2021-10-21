@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@an
 import { ApiService } from '@app/@core';
 import { TiposContacto, TiposOrigen } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { PUContactos } from '../../tablas-model';
@@ -51,7 +50,7 @@ export class ContactosComponent implements OnInit {
             .subscribe((res: any) => {
               if (res.error) {
               } else {
-                swalWithBootstrapButtons.fire('Eliminado', 'Contacto Eliminado.', 'error');
+                swalWithBootstrapButtons.fire('Eliminado', 'Contácto Eliminado.', 'error');
                 this.actualizar.emit();
               }
             });

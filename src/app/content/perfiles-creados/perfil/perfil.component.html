@@ -9,27 +9,22 @@
     <div class="container-fluid">
       <form [formGroup]="perfilForm">
         <div class="row row-cols-2 row-cols-md-4">
-          <div
-            *ngFor="
-              let campo of ['primerApellido', 'segundoApellido', 'fecha', 'genero', 'razonSocial', 'observaciones']
-            "
-            class="col form-group"
-          >
-            <ng-container [ngSwitch]="campo">
+          <div *ngFor="let campo of campos" class="col form-group">
+            <ng-container [ngSwitch]="campo.campo">
               <div *ngSwitchCase="'genero'">
-                <label class="form-label">{{ campo }}</label>
-                <select [formControlName]="campo" class="form-control form-control-rounded">
+                <label class="form-label">{{ campo.titulo }}</label>
+                <select [formControlName]="campo.campo" class="form-control form-control-rounded">
                   <option *ngFor="let genero of Generos" [value]="genero.id">{{ genero.genero }}</option>
                 </select>
               </div>
               <div *ngSwitchCase="'observaciones'">
-                <label class="form-label">{{ campo }}</label>
-                <textarea [formControlName]="campo" cols="30" rows="3"></textarea>
+                <label class="form-label">{{ campo.titulo }}</label>
+                <textarea [formControlName]="campo.campo" cols="30" rows="3"></textarea>
               </div>
               <div *ngSwitchCase="'fecha'">
-                <label class="form-label">{{ campo }}</label>
+                <label class="form-label">{{ campo.titulo }}</label>
                 <input
-                  [formControlName]="campo"
+                  [formControlName]="campo.campo"
                   type="text"
                   class="form-control form-control-rounded"
                   bsDatepicker
@@ -37,8 +32,12 @@
                 />
               </div>
               <div *ngSwitchDefault>
-                <label class="form-label">{{ campo }}</label>
-                <input [formControlName]="campo" class="form-control form-control-rounded" [value]="perfil[campo]" />
+                <label class="form-label">{{ campo.titulo }}</label>
+                <input
+                  [formControlName]="campo.campo"
+                  class="form-control form-control-rounded"
+                  [value]="perfil[campo.campo]"
+                />
               </div>
             </ng-container>
           </div>

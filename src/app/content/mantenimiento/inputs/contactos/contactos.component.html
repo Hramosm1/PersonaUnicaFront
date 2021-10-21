@@ -1,7 +1,7 @@
 <ng-container [formGroup]="form">
-  <prx-page-header title="Contactos"></prx-page-header>
+  <prx-page-header title="Contáctos"></prx-page-header>
   <div class="container px-5">
-    <button class="btn btn-primary float-right" (click)="agregarContacto()">agregar Contacto</button>
+    <button class="btn btn-primary float-right" (click)="agregarContacto()">agregar contácto</button>
     <ng-container formArrayName="contactos">
       <div class="row">
         <div class="col-12" *ngFor="let contacto of contactos.controls; let i = index">
@@ -15,7 +15,7 @@
                 <small class="text-danger">Obligatorio</small>
               </div>
               <div class="form-group col-6">
-                <label for="origen">Tipo de contacto</label>
+                <label for="origen">Tipo de contácto</label>
                 <select formControlName="tipoContacto" class="form-control form-control-rounded">
                   <option *ngFor="let tipo of tiposContacto | async" [ngValue]="tipo.id">
                     {{ tipo.tipoContacto }}

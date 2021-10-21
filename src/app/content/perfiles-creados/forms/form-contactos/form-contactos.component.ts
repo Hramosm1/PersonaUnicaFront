@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
 import { TiposContacto, TiposOrigen } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -38,7 +37,7 @@ export class FormContactosComponent implements OnInit {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Contacto actualizado',
+            title: 'Contácto actualizado',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -56,7 +55,7 @@ export class FormContactosComponent implements OnInit {
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Contacto creado',
+                title: 'Contácto creado',
                 showConfirmButton: false,
                 timer: 1500,
               });

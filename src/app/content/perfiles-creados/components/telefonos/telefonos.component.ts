@@ -51,7 +51,7 @@ export class TelefonosComponent implements OnInit {
             .subscribe((res: any) => {
               if (res.error) {
               } else {
-                swalWithBootstrapButtons.fire('Eliminado', 'Telefono Eliminado.', 'error');
+                swalWithBootstrapButtons.fire('Eliminado', 'Teléfono Eliminado.', 'error');
                 this.actualizar.emit();
               }
             });

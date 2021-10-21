@@ -1,7 +1,7 @@
 <ng-container [formGroup]="form">
-  <prx-page-header title="Telefonos"></prx-page-header>
+  <prx-page-header title="Teléfonos"></prx-page-header>
   <div class="container px-5">
-    <button class="btn btn-primary float-right" (click)="agregarTelefono()">agregar telefono</button>
+    <button class="btn btn-primary float-right" (click)="agregarTelefono()">agregar teléfono</button>
     <ng-container formArrayName="telefonos">
       <div class="row row-cols-1">
         <div class="col" *ngFor="let mail of telefonos.controls; let i = index">
@@ -9,7 +9,7 @@
             <div class="d-flex align-items-center justify-content-between">
               <div class="row">
                 <div class="form-group col-6">
-                  <label class="form-label">Origen informacion</label>
+                  <label class="form-label">Origen información</label>
                   <select formControlName="origenInformacion" class="form-control form-control-rounded">
                     <option *ngFor="let origen of tiposOrigen | async" [ngValue]="origen.id">
                       {{ origen.tipoOrigen }}
@@ -17,7 +17,7 @@
                   </select>
                 </div>
                 <div class="form-group col-6">
-                  <label class="form-label">Tipo telefono</label>
+                  <label class="form-label">Tipo teléfono</label>
                   <select formControlName="tipoTelefono" class="form-control form-control-rounded">
                     <option *ngFor="let tipoTel of tiposTelefono | async" [ngValue]="tipoTel.id">
                       {{ tipoTel.tipoTelefono }}
@@ -33,7 +33,7 @@
                   </select>
                 </div>
                 <div class="form-group col-8">
-                  <label class="form-label">Telefono {{ i + 1 }}</label>
+                  <label class="form-label">teléfono {{ i + 1 }}</label>
                   <input
                     formControlName="telefono"
                     class="form-control form-control-rounded"

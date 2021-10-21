@@ -8,7 +8,7 @@
   <div class="row">
     <form [formGroup]="telefono">
       <div class="form-group col-6">
-        <label class="form-label">Origen informacion</label>
+        <label class="form-label">Origen información</label>
         <select formControlName="origenInformacion" class="form-control form-control-rounded">
           <option *ngFor="let origen of tiposOrigen" [ngValue]="origen.id">
             {{ origen.tipoOrigen }}
@@ -16,7 +16,7 @@
         </select>
       </div>
       <div class="form-group col-6">
-        <label class="form-label">Tipo telefono</label>
+        <label class="form-label">Tipo teléfono</label>
         <select formControlName="tipoTelefono" class="form-control form-control-rounded">
           <option *ngFor="let tipoTel of tiposTelefono" [ngValue]="tipoTel.id">
             {{ tipoTel.tipoTelefono }}
@@ -32,7 +32,7 @@
         </select>
       </div>
       <div class="form-group col-8">
-        <label class="form-label">Telefono</label>
+        <label class="form-label">Teléfono</label>
         <input
           formControlName="telefono"
           class="form-control form-control-rounded"

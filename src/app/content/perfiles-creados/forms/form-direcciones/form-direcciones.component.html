@@ -8,7 +8,7 @@
   <form [formGroup]="direccion">
     <div class="row">
       <div class="form-group col-6">
-        <label for="origen">Origen de la informacion</label>
+        <label for="origen">Origen de la información</label>
         <select formControlName="origenInformacion" class="form-control form-control-rounded">
           <option *ngFor="let tipo of tiposOrigen" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
         </select>
@@ -45,7 +45,7 @@
         />
       </div>
       <div class="form-group col-6">
-        <label class="control-label">Direccion</label>
+        <label class="control-label">Dirección</label>
         <input formControlName="direccion" type="text" placeholder="11av" class="form-control form-control-rounded" />
       </div>
       <div class="form-group col-4">

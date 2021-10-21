@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
-import { Avatar } from '@app/blocks/avatars/models/avatar';
 import {
   Generos,
   TiposContacto,
@@ -12,7 +11,6 @@ import {
   TiposPersona,
   TiposTelefono,
 } from '@app/content/mantenimiento/inputs/models';
-import { Observable } from 'rxjs';
 import { Perfil } from '../tablas-model';
 
 @Component({
@@ -32,6 +30,14 @@ export class PerfilComponent implements OnInit {
   tiposTelefono: TiposTelefono[];
   perfilForm: FormGroup;
   dis: boolean = true;
+  campos = [
+    { titulo: 'Primer apellido', campo: 'primerApellido' },
+    { titulo: 'Segundo apellido', campo: 'segundoApellido' },
+    { titulo: 'Fecha nacimiento / creación', campo: 'fecha' },
+    { titulo: 'Género', campo: 'genero' },
+    { titulo: 'Razón social', campo: 'razonSocial' },
+    { titulo: 'Observaciones', campo: 'observaciones' },
+  ];
 
   ngOnInit(): void {
     this.getPerfil();

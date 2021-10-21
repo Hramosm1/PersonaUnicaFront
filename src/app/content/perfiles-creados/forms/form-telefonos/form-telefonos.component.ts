@@ -41,7 +41,7 @@ export class FormTelefonosComponent implements OnInit {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Telefono actualizado',
+            title: 'Teléfono actualizado',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -59,7 +59,7 @@ export class FormTelefonosComponent implements OnInit {
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'telefono creado',
+                title: 'Teléfono creado',
                 showConfirmButton: false,
                 timer: 1500,
               });

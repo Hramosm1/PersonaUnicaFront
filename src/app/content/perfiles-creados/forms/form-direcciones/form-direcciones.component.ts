@@ -47,7 +47,7 @@ export class FormDireccionesComponent implements OnInit {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Direccion actualizado',
+            title: 'Dirección actualizado',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -65,7 +65,7 @@ export class FormDireccionesComponent implements OnInit {
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Direccion creado',
+                title: 'Dirección creado',
                 showConfirmButton: false,
                 timer: 1500,
               });

@@ -51,7 +51,7 @@ export class DireccionesComponent implements OnInit {
             .subscribe((res: any) => {
               if (res.error) {
               } else {
-                swalWithBootstrapButtons.fire('Eliminado', 'Direccion Eliminado.', 'error');
+                swalWithBootstrapButtons.fire('Eliminado', 'Dirección Eliminado.', 'error');
                 this.actualizar.emit();
               }
             });

@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">Personas Juridicas</h4>
+  <h4 class="modal-title pull-left">Organizaciones</h4>
   <button type="button" class="close" (click)="modalRef.hide()">
     <prx-icon icon="x"></prx-icon>
   </button>
@@ -19,7 +19,7 @@
     rowHeight="auto"
   >
     <ngx-datatable-column name="id"></ngx-datatable-column>
-    <ngx-datatable-column name="Razon social">
+    <ngx-datatable-column name="Razón social">
       <ng-template let-row="row" ngx-datatable-cell-template>{{ row.razonSocial }}</ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Nombre Empresa">

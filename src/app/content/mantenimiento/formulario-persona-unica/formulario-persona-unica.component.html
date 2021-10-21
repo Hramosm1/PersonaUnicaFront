@@ -23,7 +23,7 @@
               </div>
 
               <div *ngIf="tipo == 1" class="col-6 form-group px-5">
-                <label for="genero" class="control-label">Genero</label>
+                <label for="genero" class="control-label">Género</label>
                 <select formControlName="genero" class="form-control form-control-rounded">
                   <option [ngValue]="obGenero.id" *ngFor="let obGenero of generos">
                     {{ obGenero.genero | titlecase }}
@@ -31,7 +31,7 @@
                 </select>
               </div>
               <div *ngIf="tipo == 2" class="col-6 form-group px-5">
-                <label for="razon social" class="control-label">Razon social</label>
+                <label for="razon social" class="control-label">Razón social</label>
                 <input
                   formControlName="razonSocial"
                   type="text"
@@ -41,7 +41,7 @@
               </div>
               <div class="col-6 form-group px-5">
                 <label for="fechaNacimiento" class="control-label">{{
-                  tipo == 1 ? 'Fecha Nacimiento' : 'Fecha Creacion'
+                  tipo == 1 ? 'Fecha Nacimiento' : 'Fecha Creación'
                 }}</label>
                 <input
                   formControlName="fecha"
@@ -53,14 +53,14 @@
                 <small class="text-danger">Obligatorio</small>
               </div>
               <div class="col-12 form-group px-5">
-                <label for="razon social" class="control-label">Observaciones</label>
+                <label for="obs" class="control-label">Observaciones</label>
                 <textarea formControlName="observaciones" class="form-control form-control-rounded" rows="3"></textarea>
               </div>
             </div>
             <div class="col-6 row">
               <div *ngIf="tipo == 2" class="col-6 form-group px-5">
                 <ng-container formArrayName="nombres">
-                  <label for="razon social" class="control-label">Nombre de la empresa</label>
+                  <label for="emp" class="control-label">Nombre de la empresa</label>
                   <input
                     formControlName="0"
                     type="text"
