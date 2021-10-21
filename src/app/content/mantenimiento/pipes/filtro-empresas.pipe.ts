@@ -6,12 +6,13 @@ import { Empresas } from '../inputs/models';
 })
 export class FiltroEmpresasPipe implements PipeTransform {
   transform(empresas: Array<Empresas>, input: string): Array<Empresas> {
-    input = input.toUpperCase();
+    const up = input.toUpperCase();
     if (input == '') {
       return empresas;
     } else {
       return empresas.filter((empresa) => {
-        return empresa.nombre.toUpperCase().includes(input) || empresa.razonSocial.toUpperCase().includes(input);
+        const { nombre, razonSocial } = empresa;
+        return nombre?.toUpperCase().includes(up) || razonSocial?.toUpperCase().includes(up);
       });
     }
   }

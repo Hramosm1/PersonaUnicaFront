@@ -34,7 +34,6 @@ export class FormularioPersonaUnicaComponent implements OnInit {
   }
   private creacionFormulario(): void {
     this.personaUnica = this.fb.group({
-      idPerfil: '',
       primerApellido: [''],
       segundoApellido: [''],
       genero: [1, Validators.required],

@@ -16,6 +16,7 @@ export class EmpleosComponent implements OnInit {
   modalRef: BsModalRef;
   indexTem: number;
   tiposOrigen: Observable<TiposOrigen[]>;
+  nombres: string[] = [];
   constructor(
     private fb: FormBuilder,
     private rootForm: FormGroupDirective,
@@ -47,12 +48,15 @@ export class EmpleosComponent implements OnInit {
         origenInformacion: [Number, Validators.required],
       })
     );
+    this.nombres.push('');
   }
 
   eliminarEmpleo(i: number) {
     this.empleos.removeAt(i);
+    this.nombres.splice(i, 1);
   }
   asignar(value: Empresas) {
+    this.nombres[this.indexTem] = value.nombre;
     (this.empleos.at(this.indexTem) as FormControl).get('empresa').setValue(value.id);
   }
 }

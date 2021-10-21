@@ -6,7 +6,7 @@
     </prx-card-header>
     <prx-card-body>
       <ngx-datatable
-        [rows]="rows"
+        [rows]="rows | filtroLista: filtro"
         [limit]="5"
         [columnMode]="cm.force"
         rowHeight="auto"

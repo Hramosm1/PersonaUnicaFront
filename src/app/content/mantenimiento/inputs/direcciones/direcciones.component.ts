@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ApiService } from '@app/@core';
-import { Observable } from 'rxjs';
 import { TiposOrigen } from '../models';
 import { departamentosjson } from './departamentos';
 
@@ -11,15 +10,16 @@ import { departamentosjson } from './departamentos';
   styleUrls: ['./direcciones.component.scss'],
 })
 export class DireccionesComponent implements OnInit {
-  @Input() tiposOrigen: Observable<TiposOrigen[]>;
+  tiposOrigen: TiposOrigen[];
   departamentosYMunicipios = departamentosjson;
   form: FormGroup;
 
   departamentos = Object.keys(this.departamentosYMunicipios);
-  constructor(private fb: FormBuilder, private rootForm: FormGroupDirective) {}
+  constructor(private fb: FormBuilder, private rootForm: FormGroupDirective, private api: ApiService) {}
 
   ngOnInit(): void {
     this.form = this.rootForm.control;
+    this.api.getTipos<TiposOrigen>('origen').subscribe((tipos) => (this.tiposOrigen = tipos));
   }
 
   get direcciones() {

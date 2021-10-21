@@ -16,7 +16,7 @@ export class DocumentosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.rootForm.control;
-    this.api.getTiposDocumento().subscribe((res) => (this.tiposDeDocumento = res));
+    this.api.getTipos<TiposDocumento>('documento').subscribe((res) => (this.tiposDeDocumento = res));
   }
 
   public get documentos(): FormArray {

@@ -23,14 +23,14 @@ export class NuevaEmpresaComponent implements OnInit {
     this.api.getGeneros().subscribe((res) => (this.generos = res));
     this.api.getTiposPersona().subscribe((res) => (this.tipos = res));
     this.empresa = this.fb.group({
-      idPerfil: '',
       primerApellido: [''],
       segundoApellido: [''],
-      genero: [1],
-      tipo: [2],
+      genero: [1, Validators.required],
+      tipo: [2, Validators.required],
       razonSocial: [''],
-      fecha: [''],
+      fecha: ['', Validators.required],
       observaciones: [''],
+      personaUnica: false,
       nombreEjecutivo: [parseInt(this.credentials.credentials.idCobrador)],
       nombres: this.fb.array([this.fb.control('', Validators.required)]),
       correos: this.fb.array([]),
@@ -38,6 +38,8 @@ export class NuevaEmpresaComponent implements OnInit {
       documentos: this.fb.array([]),
       telefonos: this.fb.array([]),
       direcciones: this.fb.array([]),
+      contactos: this.fb.array([]),
+      referenciasWeb: this.fb.array([]),
     });
   }
   get tipo() {

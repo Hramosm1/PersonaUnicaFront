@@ -24,7 +24,6 @@ export class ListaEmpleosComponent implements OnInit {
   actualizarCampos(e?: any): void {
     this.api.getEmpresas().subscribe((res) => {
       this.empleos = res;
-      console.log(this.empleos);
     });
   }
   openModal(template: TemplateRef<any>) {

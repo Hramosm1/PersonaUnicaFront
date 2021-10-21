@@ -22,6 +22,7 @@ import { FormTelefonosComponent } from './forms/form-telefonos/form-telefonos.co
 import { FormDireccionesComponent } from './forms/form-direcciones/form-direcciones.component';
 import { FormCorreosComponent } from './forms/form-correos/form-correos.component';
 import { IconsModule } from '@app/blocks/icons/icons.module';
+import { FiltroListaPipe } from './pipes/filtro-lista.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { IconsModule } from '@app/blocks/icons/icons.module';
     FormTelefonosComponent,
     FormDireccionesComponent,
     FormCorreosComponent,
+    FiltroListaPipe,
   ],
   imports: [
     CommonModule,
