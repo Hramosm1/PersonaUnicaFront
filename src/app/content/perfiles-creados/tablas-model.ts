@@ -1,4 +1,7 @@
 export interface Perfil {
+  id: string;
+  observaciones: string;
+  razonSocial: string;
   genero: number;
   fecha: Date;
   primerApellido: string;
@@ -14,9 +17,9 @@ export interface Perfil {
   personaUnica: boolean;
 }
 export interface Listado {
-  PU_Nombres: PUNombres[];
-  PU_Documentos: PUDocumentos[];
-  fecha: Date;
+  documento: string;
+  tipoPersona: string;
+  fecha: string;
   primerApellido: string;
   segundoApellido: string;
   razonSocial: string;

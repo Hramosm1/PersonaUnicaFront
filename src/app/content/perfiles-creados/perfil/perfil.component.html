@@ -7,18 +7,46 @@
 
   <div class="contact-header pt-4">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="media align-items-center">
-            <prx-avatar [avatar]="avatar" size="xl" class="mr-3 shadow"></prx-avatar>
-
-            <div class="media-body">
-              <h2 class="mb-0">{{ perfil.primerApellido }}</h2>
-              <p class="lead">{{ fecha }}</p>
-            </div>
+      <form [formGroup]="perfilForm">
+        <div class="row row-cols-2 row-cols-md-4">
+          <div
+            *ngFor="
+              let campo of ['primerApellido', 'segundoApellido', 'fecha', 'genero', 'razonSocial', 'observaciones']
+            "
+            class="col form-group"
+          >
+            <ng-container [ngSwitch]="campo">
+              <div *ngSwitchCase="'genero'">
+                <label class="form-label">{{ campo }}</label>
+                <select [formControlName]="campo" class="form-control form-control-rounded">
+                  <option *ngFor="let genero of Generos" [value]="genero.id">{{ genero.genero }}</option>
+                </select>
+              </div>
+              <div *ngSwitchCase="'observaciones'">
+                <label class="form-label">{{ campo }}</label>
+                <textarea [formControlName]="campo" cols="30" rows="3"></textarea>
+              </div>
+              <div *ngSwitchCase="'fecha'">
+                <label class="form-label">{{ campo }}</label>
+                <input
+                  [formControlName]="campo"
+                  type="text"
+                  class="form-control form-control-rounded"
+                  bsDatepicker
+                  [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+                />
+              </div>
+              <div *ngSwitchDefault>
+                <label class="form-label">{{ campo }}</label>
+                <input [formControlName]="campo" class="form-control form-control-rounded" [value]="perfil[campo]" />
+              </div>
+            </ng-container>
+          </div>
+          <div class="col-6 d-flex justify-content-center align-items-center">
+            <button class="btn btn-primary" (click)="change()">{{ dis ? 'Editar' : 'Guardar Cambios' }}</button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <div class="container mt-5">

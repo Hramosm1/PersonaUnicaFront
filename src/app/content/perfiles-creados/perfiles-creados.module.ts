@@ -23,6 +23,8 @@ import { FormDireccionesComponent } from './forms/form-direcciones/form-direccio
 import { FormCorreosComponent } from './forms/form-correos/form-correos.component';
 import { IconsModule } from '@app/blocks/icons/icons.module';
 import { FiltroListaPipe } from './pipes/filtro-lista.pipe';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NombresComponent } from './components/nombres/nombres.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { FiltroListaPipe } from './pipes/filtro-lista.pipe';
     FormDireccionesComponent,
     FormCorreosComponent,
     FiltroListaPipe,
+    NombresComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +55,7 @@ import { FiltroListaPipe } from './pipes/filtro-lista.pipe';
     CardsModule,
     NgxDatatableModule,
     IconsModule,
+    BsDatepickerModule.forRoot(),
   ],
 })
 export class PerfilesCreadosModule {}

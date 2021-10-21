@@ -22,19 +22,37 @@ export class EmpleosComponent implements OnInit {
     console.log(this.empleos);
   }
   eliminar(id: string) {
-    this.btn = true;
-    this.api
-      .mantenimientosDelete('documentos', id)
-      .pipe(finalize(() => (this.btn = false)))
-      .subscribe((res: any) => {
-        if (res.error) {
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Documento Eliminado',
-            text: res.Documento,
-          });
-          this.actualizar.emit();
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-secondary',
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: 'Esta seguro que desea eliminar',
+        text: 'Esta accion es irreversible',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, Eliminalo',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.btn = true;
+          this.api
+            .mantenimientosDelete('empleos', id)
+            .pipe(finalize(() => (this.btn = false)))
+            .subscribe((res: any) => {
+              if (res.error) {
+              } else {
+                swalWithBootstrapButtons.fire('Eliminado', 'Empleo Eliminado.', 'error');
+                this.actualizar.emit();
+              }
+            });
         }
       });
   }

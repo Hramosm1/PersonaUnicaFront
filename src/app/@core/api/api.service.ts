@@ -54,6 +54,12 @@ export class ApiService {
   public GetPerfiles<T>(): Observable<Array<T>> {
     return this.http.get<Array<T>>(environment.serverUrl + 'perfiles', { headers: this.headers }).pipe(timeout(12000));
   }
+  public updatePerfil(id: string, body: any): Observable<{ error: boolean; mensaje?: string }> {
+    console.log(body);
+    return this.http.put<{ error: boolean; mensaje?: string }>(environment.serverUrl + 'perfiles/' + id, body, {
+      headers: this.headers,
+    });
+  }
   public PostRespuestaPersonaUnica(body: any) {
     return this.http.post(environment.serverUrl + 'perfiles', body, { headers: this.headers }).pipe(timeout(12000));
   }

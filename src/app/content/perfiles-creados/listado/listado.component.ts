@@ -18,6 +18,7 @@ export class ListadoComponent implements OnInit {
   }
   ngOnInit(): void {
     this.api.GetPerfiles<Listado>().subscribe((res) => {
+      console.log(res);
       this.rows = res;
     });
   }

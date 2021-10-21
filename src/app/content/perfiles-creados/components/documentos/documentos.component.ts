@@ -24,19 +24,37 @@ export class DocumentosComponent implements OnInit {
 
   ngOnInit(): void {}
   eliminar(id: string) {
-    this.btn = true;
-    this.api
-      .mantenimientosDelete('documentos', id)
-      .pipe(finalize(() => (this.btn = false)))
-      .subscribe((res: any) => {
-        if (res.error) {
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Documento Eliminado',
-            text: res.documento,
-          });
-          this.actualizar.emit();
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-secondary',
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: 'Esta seguro que desea eliminar',
+        text: 'Esta accion es irreversible',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, Eliminalo',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.btn = true;
+          this.api
+            .mantenimientosDelete('documentos', id)
+            .pipe(finalize(() => (this.btn = false)))
+            .subscribe((res: any) => {
+              if (res.error) {
+              } else {
+                swalWithBootstrapButtons.fire('Eliminado', 'Documento Eliminado.', 'error');
+                this.actualizar.emit();
+              }
+            });
         }
       });
   }

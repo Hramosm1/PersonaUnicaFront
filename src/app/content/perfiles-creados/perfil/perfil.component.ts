@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
 import { Avatar } from '@app/blocks/avatars/models/avatar';
@@ -20,9 +21,8 @@ import { Perfil } from '../tablas-model';
   styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
-  constructor(private activateRoute: ActivatedRoute, private api: ApiService) {}
+  constructor(private activateRoute: ActivatedRoute, private api: ApiService, private fb: FormBuilder) {}
   perfil: Perfil;
-  avatar: Avatar;
   tiposDocumento: TiposDocumento[];
   tiposPaginaWeb: TiposPaginaWeb[];
   Generos: Generos[];
@@ -30,10 +30,39 @@ export class PerfilComponent implements OnInit {
   tiposOrigen: TiposOrigen[];
   tiposPersona: TiposPersona[];
   tiposTelefono: TiposTelefono[];
+  perfilForm: FormGroup;
+  dis: boolean = true;
 
   ngOnInit(): void {
     this.getPerfil();
     this.getTipos();
+    this.perfilForm = this.fb.group({
+      primerApellido: ['', Validators.required],
+      segundoApellido: ['', Validators.required],
+      fecha: ['', Validators.required],
+      genero: [Number, Validators.required],
+      observaciones: [''],
+      razonSocial: [''],
+    });
+  }
+  change() {
+    if (this.dis) {
+      this.perfilForm.controls.primerApellido.enable();
+      this.perfilForm.controls.segundoApellido.enable();
+      this.perfilForm.controls.fecha.enable();
+      this.perfilForm.controls.genero.enable();
+      this.perfilForm.controls.razonSocial.enable();
+      this.perfilForm.controls.observaciones.enable();
+    } else {
+      this.api.updatePerfil(this.perfil.id, this.perfilForm.value).subscribe((res) => this.actualizar());
+      this.perfilForm.controls.primerApellido.disable();
+      this.perfilForm.controls.segundoApellido.disable();
+      this.perfilForm.controls.fecha.disable();
+      this.perfilForm.controls.genero.disable();
+      this.perfilForm.controls.razonSocial.disable();
+      this.perfilForm.controls.observaciones.disable();
+    }
+    this.dis = !this.dis;
   }
   getTipos() {
     this.api.getTipos<TiposDocumento>('documento').subscribe((res) => (this.tiposDocumento = res));
@@ -53,19 +82,25 @@ export class PerfilComponent implements OnInit {
   get empleos() {
     return this.perfil.empleos;
   }
-  actualizar(e: any) {
-    console.log('actualizo');
+  actualizar(e?: any) {
     this.getPerfil();
   }
   private getPerfil() {
     this.activateRoute.params.subscribe((params) => {
       this.api.GetPerfil(params.id).subscribe((perfil: Perfil) => {
-        console.log(perfil);
         this.perfil = perfil;
-        this.avatar = {
-          name: `${this.nombres.join(' ')} ${perfil.primerApellido} ${perfil.segundoApellido}`,
-          status: perfil.personaUnica ? 'Perfil unico' : 'Perfil sin documento',
-        };
+        this.perfilForm.get('primerApellido').setValue(perfil.primerApellido);
+        this.perfilForm.get('segundoApellido').setValue(perfil.segundoApellido);
+        this.perfilForm.get('fecha').setValue(new Date(perfil.fecha).toLocaleDateString());
+        this.perfilForm.get('genero').setValue(perfil.genero);
+        this.perfilForm.get('observaciones').setValue(perfil.observaciones);
+        this.perfilForm.get('razonSocial').setValue(perfil.razonSocial);
+        this.perfilForm.controls.primerApellido.disable();
+        this.perfilForm.controls.segundoApellido.disable();
+        this.perfilForm.controls.fecha.disable();
+        this.perfilForm.controls.genero.disable();
+        this.perfilForm.controls.razonSocial.disable();
+        this.perfilForm.controls.observaciones.disable();
       });
     });
   }
