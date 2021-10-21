@@ -6,7 +6,7 @@
         *ngFor="let nombre of nombres.controls; let i = index"
       >
         <div class="form-group">
-          <label for="noDocumento">Nombre {{ i + 1 }}</label>
+          <label class="control-label" for="noDocumento">Nombre {{ i + 1 }}</label>
           <input [formControlName]="i" class="form-control form-control-rounded" type="text" />
           <small class="text-danger">Obligatorio</small>
         </div>

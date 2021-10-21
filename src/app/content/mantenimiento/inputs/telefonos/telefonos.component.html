@@ -9,7 +9,7 @@
             <div class="d-flex align-items-center justify-content-between">
               <div class="row">
                 <div class="form-group col-6">
-                  <label class="form-label">Origen información</label>
+                  <label class="control-label">Origen información</label>
                   <select formControlName="origenInformacion" class="form-control form-control-rounded">
                     <option *ngFor="let origen of tiposOrigen | async" [ngValue]="origen.id">
                       {{ origen.tipoOrigen }}
@@ -17,7 +17,7 @@
                   </select>
                 </div>
                 <div class="form-group col-6">
-                  <label class="form-label">Tipo teléfono</label>
+                  <label class="control-label">Tipo teléfono</label>
                   <select formControlName="tipoTelefono" class="form-control form-control-rounded">
                     <option *ngFor="let tipoTel of tiposTelefono | async" [ngValue]="tipoTel.id">
                       {{ tipoTel.tipoTelefono }}
@@ -25,7 +25,7 @@
                   </select>
                 </div>
                 <div class="form-group col-4">
-                  <label class="form-label">Codigo Pais</label>
+                  <label class="control-label">Codigo Pais</label>
                   <select formControlName="codigoPais" class="form-control form-control-rounded">
                     <option *ngFor="let ext of telExt" [ngValue]="'+ ' + ext.phone_code">
                       {{ ext.nombre + ' - ' + ext.phone_code }}
@@ -33,7 +33,7 @@
                   </select>
                 </div>
                 <div class="form-group col-8">
-                  <label class="form-label">teléfono {{ i + 1 }}</label>
+                  <label class="control-label">teléfono {{ i + 1 }}</label>
                   <input
                     formControlName="telefono"
                     class="form-control form-control-rounded"

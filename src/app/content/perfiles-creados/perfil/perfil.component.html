@@ -19,7 +19,13 @@
               </div>
               <div *ngSwitchCase="'observaciones'">
                 <label class="form-label">{{ campo.titulo }}</label>
-                <textarea [formControlName]="campo.campo" cols="30" rows="3"></textarea>
+                <textarea
+                  maxlength="500"
+                  class="form-control form-control-rounded"
+                  [formControlName]="campo.campo"
+                  cols="30"
+                  rows="3"
+                ></textarea>
               </div>
               <div *ngSwitchCase="'fecha'">
                 <label class="form-label">{{ campo.titulo }}</label>

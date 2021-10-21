@@ -7,7 +7,7 @@
         <ng-container [formGroupName]="i">
           <div class="row justify-content-center align-items-center">
             <div class="form-group col-5">
-              <label for="tDocumento" class="form-label">Tipo de Documento</label>
+              <label class="control-label" for="tDocumento" class="form-label">Tipo de Documento</label>
               <select class="form-control form-control-rounded" formControlName="tipo">
                 <option *ngFor="let doc of tiposDeDocumento" [ngValue]="doc.id">
                   {{ doc.tipoDocumento | uppercase }}
@@ -15,7 +15,7 @@
               </select>
             </div>
             <div class="form-group col-5">
-              <label for="noDocumento">No. Documento</label>
+              <label class="control-label" for="noDocumento">No. Documento</label>
               <input
                 formControlName="documento"
                 class="form-control form-control-rounded"

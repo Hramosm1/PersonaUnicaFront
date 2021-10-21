@@ -6,15 +6,15 @@
       <div *ngFor="let empleo of empleos.controls; let i = index">
         <div class="row" [formGroupName]="i">
           <div class="form-group col-6">
-            <label for="origen">Origen de la información</label>
+            <label class="control-label" for="origen">Origen de la información</label>
             <select formControlName="origenInformacion" class="form-control form-control-rounded">
               <option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
             </select>
             <small class="text-danger">Obligatorio</small>
           </div>
           <div class="form-group col-6">
-            <label for="noDocumento">Empresa</label>
-            <label for="nombre" class="h4">: {{ nombres[i] }}</label>
+            <label class="control-label" for="noDocumento">Empresa</label>
+            <label class="control-label" for="nombre" class="h4">: {{ nombres[i] }}</label>
             <div class="input-group">
               <input type="text" disabled class="form-control" formControlName="empresa" />
               <span class="input-group-append">
@@ -25,7 +25,7 @@
             <small class="text-danger">Obligatorio</small>
           </div>
           <div class="form-group col-6">
-            <label for="noDocumento">Puesto</label>
+            <label class="control-label" for="noDocumento">Puesto</label>
             <input
               formControlName="puesto"
               class="form-control form-control-rounded"
@@ -34,7 +34,7 @@
             />
           </div>
           <div class="form-group col-6">
-            <label class="control-label">Fecha ingreso</label>
+            <label class="control-label" class="control-label">Fecha ingreso</label>
             <input
               formControlName="fechaInicio"
               type="text"
@@ -45,7 +45,7 @@
             <small class="text-danger">Obligatorio</small>
           </div>
           <div class="form-group col-6">
-            <label class="control-label">Fecha egreso</label>
+            <label class="control-label" class="control-label">Fecha egreso</label>
             <input
               formControlName="fechaFin"
               type="text"
