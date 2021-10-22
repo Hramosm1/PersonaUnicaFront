@@ -25,6 +25,7 @@ import { IconsModule } from '@app/blocks/icons/icons.module';
 import { FiltroListaPipe } from './pipes/filtro-lista.pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NombresComponent } from './components/nombres/nombres.component';
+import { MantenimientoModule } from '../mantenimiento/mantenimiento.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { NombresComponent } from './components/nombres/nombres.component';
     NgxDatatableModule,
     IconsModule,
     BsDatepickerModule.forRoot(),
+    MantenimientoModule,
   ],
 })
 export class PerfilesCreadosModule {}

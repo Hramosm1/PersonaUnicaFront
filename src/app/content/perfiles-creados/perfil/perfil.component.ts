@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
 import {
+  Empresas,
   Generos,
   TiposContacto,
   TiposDocumento,
@@ -28,6 +29,7 @@ export class PerfilComponent implements OnInit {
   tiposOrigen: TiposOrigen[];
   tiposPersona: TiposPersona[];
   tiposTelefono: TiposTelefono[];
+  empresas: Empresas[];
   perfilForm: FormGroup;
   dis: boolean = true;
   campos = [
@@ -94,6 +96,7 @@ export class PerfilComponent implements OnInit {
   private getPerfil() {
     this.activateRoute.params.subscribe((params) => {
       this.api.GetPerfil(params.id).subscribe((perfil: Perfil) => {
+        console.log(perfil);
         this.perfil = perfil;
         this.perfilForm.get('primerApellido').setValue(perfil.primerApellido);
         this.perfilForm.get('segundoApellido').setValue(perfil.segundoApellido);

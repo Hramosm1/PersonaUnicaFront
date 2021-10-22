@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ApiService } from '@app/@core';
+import { Empresas } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -12,15 +13,14 @@ import { PUEmpleos } from '../../tablas-model';
 })
 export class EmpleosComponent implements OnInit {
   @Input() empleos: PUEmpleos[];
+  empresas: Empresas[];
   modalRef?: BsModalRef;
   idEditar: string;
   btn = false;
   @Output() actualizar = new EventEmitter();
   constructor(private api: ApiService, private modalService: BsModalService) {}
 
-  ngOnInit(): void {
-    console.log(this.empleos);
-  }
+  ngOnInit(): void {}
   eliminar(id: string) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

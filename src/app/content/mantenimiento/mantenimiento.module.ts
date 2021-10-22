@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MantenimientoRoutingModule } from './mantenimiento-routing.module';
-import { NuevoComponent } from './nuevo/nuevo.component';
 import { CardsModule } from '@app/blocks/cards/cards.module';
 import { DatePickersModule } from '@app/blocks/date-pickers/date-pickers.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,7 +34,6 @@ import { AvatarsModule } from '@app/blocks/avatars/avatars.module';
 
 @NgModule({
   declarations: [
-    NuevoComponent,
     CamposDirective,
     TextoCortoComponent,
     TextoLargoComponent,
@@ -71,5 +69,6 @@ import { AvatarsModule } from '@app/blocks/avatars/avatars.module';
     NgxDatatableModule,
     AvatarsModule,
   ],
+  exports: [ListaEmpleosComponent],
 })
 export class MantenimientoModule {}
