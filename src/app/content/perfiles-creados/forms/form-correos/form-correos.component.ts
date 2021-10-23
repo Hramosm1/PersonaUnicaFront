@@ -22,7 +22,7 @@ export class FormCorreosComponent implements OnInit {
   ngOnInit(): void {
     this.correo = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
-      origenInformacion: [Number, Validators.required],
+      origenInformacion: [1, Validators.required],
     });
   }
   submit() {

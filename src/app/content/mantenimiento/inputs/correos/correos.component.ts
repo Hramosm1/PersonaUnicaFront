@@ -32,7 +32,7 @@ export class CorreosComponent implements OnInit {
     this.correos.push(
       this.fb.group({
         correo: ['', Validators.required],
-        origenInformacion: [Number, Validators.required],
+        origenInformacion: [1, Validators.required],
       })
     );
   }

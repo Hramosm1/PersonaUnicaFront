@@ -27,8 +27,8 @@ export class FormTelefonosComponent implements OnInit {
     this.telefono = this.fb.group({
       codigoPais: ['+ 502', Validators.required],
       telefono: ['', Validators.required],
-      tipoTelefono: [Number, Validators.required],
-      origenInformacion: [Number, Validators.required],
+      tipoTelefono: [1, Validators.required],
+      origenInformacion: [1, Validators.required],
     });
   }
   submit() {

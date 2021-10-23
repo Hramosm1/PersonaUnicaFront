@@ -23,8 +23,8 @@ export class FormContactosComponent implements OnInit {
   ngOnInit(): void {
     this.contacto = this.fb.group({
       nombreCompleto: ['', Validators.required],
-      origenInformacion: [Number, Validators.required],
-      tipoContacto: [Number, Validators.required],
+      origenInformacion: [1, Validators.required],
+      tipoContacto: [1, Validators.required],
     });
   }
   submit() {

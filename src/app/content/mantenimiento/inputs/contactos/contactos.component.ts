@@ -29,8 +29,8 @@ export class ContactosComponent implements OnInit {
     this.contactos.push(
       this.fb.group({
         nombreCompleto: ['', Validators.required],
-        origenInformacion: [Number, Validators.required],
-        tipoContacto: [Number, Validators.required],
+        origenInformacion: [1, Validators.required],
+        tipoContacto: [1, Validators.required],
       })
     );
   }

@@ -45,7 +45,7 @@ export class EmpleosComponent implements OnInit {
         puesto: [''],
         fechaInicio: [new Date(), Validators.required],
         fechaFin: [null],
-        origenInformacion: [Number, Validators.required],
+        origenInformacion: [1, Validators.required],
       })
     );
     this.nombres.push('');

@@ -21,7 +21,7 @@ export class FormDocumentosComponent implements OnInit {
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.documento = this.fb.group({ tipo: [Number, Validators.required], documento: ['', Validators.required] });
+    this.documento = this.fb.group({ tipo: [1, Validators.required], documento: ['', Validators.required] });
   }
   submit() {
     if (this.titulo == 'Editar') {

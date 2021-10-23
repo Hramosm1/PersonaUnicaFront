@@ -24,7 +24,7 @@ export class DocumentosComponent implements OnInit {
   }
 
   nuevoDocumento() {
-    this.documentos.push(this.fb.group({ tipo: [Number, Validators.required], documento: ['', Validators.required] }));
+    this.documentos.push(this.fb.group({ tipo: [1, Validators.required], documento: ['', Validators.required] }));
   }
   eliminarDocumento(i: number) {
     this.documentos.removeAt(i);
