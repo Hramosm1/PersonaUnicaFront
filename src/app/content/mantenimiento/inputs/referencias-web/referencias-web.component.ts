@@ -27,8 +27,8 @@ export class ReferenciasWebComponent implements OnInit {
   agregarReferencia() {
     this.paginas.push(
       this.fb.group({
-        tipo: [Number, Validators.required],
-        origenInformacion: [Number, Validators.required],
+        tipo: [1, Validators.required],
+        origenInformacion: [1, Validators.required],
         link: ['', Validators.required],
       })
     );

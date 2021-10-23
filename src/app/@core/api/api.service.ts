@@ -25,14 +25,14 @@ export class ApiService {
   public getEmpresas = this.inputService.getEmpresas;
   public mantenimientos(
     tipo: 'post' | 'put',
-    mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos',
+    mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos' | 'referenciasWeb',
     body?: any,
     id?: string
   ) {
     return this.http[tipo](`${environment.serverUrl}${mantenimiento}/${id}`, body, { headers: this.headers });
   }
   public mantenimientosDelete(
-    mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos',
+    mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos' | 'referenciasWeb',
     id: string
   ) {
     console.log(`environment.serverUrl}${mantenimiento}/${id}`);
@@ -44,15 +44,15 @@ export class ApiService {
   ): Observable<Array<T>> {
     return this.http
       .get<Array<T>>(`${environment.serverUrl}tipos/${tipo}/`, { headers: this.headers })
-      .pipe(timeout(12000));
+      .pipe(timeout(10000));
   }
   public GetPerfil(id: string): Observable<Perfil> {
     return this.http
       .get<Perfil>(environment.serverUrl + 'perfiles/' + id, { headers: this.headers })
-      .pipe(timeout(12000));
+      .pipe(timeout(18000));
   }
   public GetPerfiles<T>(): Observable<Array<T>> {
-    return this.http.get<Array<T>>(environment.serverUrl + 'perfiles', { headers: this.headers }).pipe(timeout(12000));
+    return this.http.get<Array<T>>(environment.serverUrl + 'perfiles', { headers: this.headers }).pipe(timeout(20000));
   }
   public updatePerfil(id: string, body: any): Observable<{ error: boolean; mensaje?: string }> {
     console.log(body);
@@ -61,7 +61,7 @@ export class ApiService {
     });
   }
   public PostRespuestaPersonaUnica(body: any) {
-    return this.http.post(environment.serverUrl + 'perfiles', body, { headers: this.headers }).pipe(timeout(12000));
+    return this.http.post(environment.serverUrl + 'perfiles', body, { headers: this.headers }).pipe(timeout(20000));
   }
   public query<T>(route: string, itemType: any): Observable<T[]> {
     if (!route) {

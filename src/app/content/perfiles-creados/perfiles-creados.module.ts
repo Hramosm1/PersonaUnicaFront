@@ -26,6 +26,8 @@ import { FiltroListaPipe } from './pipes/filtro-lista.pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NombresComponent } from './components/nombres/nombres.component';
 import { MantenimientoModule } from '../mantenimiento/mantenimiento.module';
+import { RedesComponent } from './components/redes/redes.component';
+import { FormRedesComponent } from './forms/form-redes/form-redes.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { MantenimientoModule } from '../mantenimiento/mantenimiento.module';
     FormCorreosComponent,
     FiltroListaPipe,
     NombresComponent,
+    RedesComponent,
+    FormRedesComponent,
   ],
   imports: [
     CommonModule,

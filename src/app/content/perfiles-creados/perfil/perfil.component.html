@@ -54,8 +54,8 @@
       </form>
     </div>
   </div>
-  <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+  <div class="container-fluid mt-5">
+    <div class="row row-cols-1 row-cols-lg-2">
       <div class="col">
         <prx-documentos
           [tiposDeDocumento]="tiposDocumento"
@@ -93,6 +93,11 @@
           [contactos]="perfil.PU_Contactos"
           (actualizar)="actualizar($event)"
         ></prx-contactos>
+        <prx-redes
+          [referenciasWeb]="perfil.PU_ReferenciasWeb"
+          [tiposOrigen]="tiposOrigen"
+          (actualizar)="actualizar($event)"
+        ></prx-redes>
       </div>
     </div>
   </div>
