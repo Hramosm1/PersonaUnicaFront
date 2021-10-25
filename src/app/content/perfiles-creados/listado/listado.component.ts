@@ -3,6 +3,8 @@ import { ApiService } from '@app/@core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Listado } from '../tablas-model';
 
+import { finalize } from 'rxjs/operators';
+
 @Component({
   selector: 'prx-listado',
   templateUrl: './listado.component.html',
@@ -13,13 +15,14 @@ export class ListadoComponent implements OnInit {
   filtro: string = '';
   cm = ColumnMode;
   rows: Listado[] = [];
-  getFecha(date: string) {
-    return new Date(date + 'T00:00:00').toLocaleDateString();
-  }
+  isLoading: boolean = true;
   ngOnInit(): void {
-    this.api.GetPerfiles<Listado>().subscribe((res) => {
-      console.log(res);
-      this.rows = res;
-    });
+    this.api
+      .GetPerfiles<Listado>()
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((res) => {
+        console.log(res);
+        this.rows = res;
+      });
   }
 }

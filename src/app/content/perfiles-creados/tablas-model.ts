@@ -19,7 +19,7 @@ export interface Perfil {
 export interface Listado {
   documento: string;
   tipoPersona: string;
-  fecha: string;
+  nombres: string;
   primerApellido: string;
   segundoApellido: string;
   razonSocial: string;

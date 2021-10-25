@@ -4,7 +4,8 @@
     ><ul class="list-group">
       <li *ngFor="let dir of direcciones" class="list-group-item">
         <p *ngFor="let cam of campos">
-          {{ cam.titulo + ' - ' + dir[cam.campo] }}
+          <b>{{ cam.titulo }}</b>
+          {{ ': ' + dir[cam.campo] }}
         </p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(dir.id)">eliminar</button>
         <button class="btn btn-outline-warning float-right" (click)="openModal(editar, dir.id)">editar</button>

@@ -29,7 +29,7 @@ export class ContactosComponent implements OnInit {
     this.contactos.push(
       this.fb.group({
         nombreCompleto: ['', Validators.required],
-        origenInformacion: [1, Validators.required],
+        origenInformacion: [parseInt(sessionStorage.getItem('origenInformacion')) | 1, Validators.required],
         tipoContacto: [1, Validators.required],
       })
     );

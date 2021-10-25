@@ -3,7 +3,7 @@
   <prx-card-body>
     <ul class="list-group">
       <li *ngFor="let ref of referenciasWeb" class="list-group-item">
-        <a target="_blank" [href]="ref.link">{{ ref.link }}</a>
+        <a target="_blank" class="italic underline" [href]="ref.link">{{ ref.link }}</a>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(ref.id)">eliminar</button>
         <button class="btn btn-outline-warning float-right" (click)="openModal(editar, ref.id)">editar</button>
       </li>

@@ -3,7 +3,10 @@
   <prx-card-body>
     <ul *ngIf="contactos" class="list-group">
       <li *ngFor="let cont of contactos" class="list-group-item">
-        <p>{{ cont.nombreCompleto }}</p>
+        <p>
+          <b>{{ cont.tipoContacto }}</b
+          >: {{ cont.nombreCompleto }}
+        </p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(cont.id)">
           eliminar
         </button>

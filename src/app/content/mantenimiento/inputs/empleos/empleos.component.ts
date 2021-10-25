@@ -43,7 +43,7 @@ export class EmpleosComponent implements OnInit {
       this.fb.group({
         empresa: ['', Validators.required],
         puesto: [''],
-        fechaInicio: [new Date(), Validators.required],
+        fechaInicio: [null],
         fechaFin: [null],
         origenInformacion: [1, Validators.required],
       })

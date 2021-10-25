@@ -3,7 +3,10 @@
   <prx-card-body
     ><ul class="list-group">
       <li *ngFor="let doc of documentos" class="list-group-item">
-        <p>{{ doc.tipo + ' - ' + doc.documento }}</p>
+        <p>
+          <b>{{ doc.tipo }}</b
+          >{{ ': ' + doc.documento }}
+        </p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(doc.id)">eliminar</button>
         <button class="btn btn-outline-warning float-right" (click)="openModal(editar, doc.id)">editar</button>
       </li>

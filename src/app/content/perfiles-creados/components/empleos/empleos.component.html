@@ -3,10 +3,10 @@
   <prx-card-body>
     <ul class="list-group">
       <li *ngFor="let empleo of empleos" class="list-group-item">
-        <p>Puesto: {{ empleo.puesto }}</p>
-        <p>Empresa: {{ empleo.empresa }}</p>
-        <p>Fecha de ingreso: {{ empleo.fechaInicio }}</p>
-        <p>Fecha de egreso: {{ empleo.fechaFin }}</p>
+        <p><b>Puesto:</b> {{ empleo.puesto }}</p>
+        <p><b>Empresa:</b> {{ empleo.empresa }}</p>
+        <p><b>Fecha de ingreso:</b> {{ empleo.fechaInicio }}</p>
+        <p><b>Fecha de egreso:</b> {{ empleo.fechaFin }}</p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(empleo.id)">
           eliminar
         </button>

@@ -22,7 +22,7 @@ export class FormNombresComponent implements OnInit {
   }
   submit() {
     if (this.titulo == 'Editar') {
-      this.api.mantenimientos('put', 'nombres', this.nombre.value, this.idEditar).subscribe((re: any) => {
+      this.api.mantenimientos('put', 'nombres', { nombre: this.nombre.value }, this.idEditar).subscribe((re: any) => {
         if (re.error) {
         } else {
           Swal.fire({

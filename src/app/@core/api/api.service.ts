@@ -37,6 +37,7 @@ export class ApiService {
     body?: any,
     id?: string
   ) {
+    console.log(body);
     return this.http[tipo](`${environment.serverUrl}${mantenimiento}/${id}`, body, { headers: this.headers });
   }
   public mantenimientosDelete(

@@ -5,6 +5,7 @@
       <input class="form-control" [(ngModel)]="filtro" type="text" />
     </prx-card-header>
     <prx-card-body>
+      <ng-container *ngIf="rows && rows.length; else loading"></ng-container>
       <ngx-datatable
         [rows]="rows | filtroLista: filtro"
         [limit]="5"
@@ -13,10 +14,10 @@
         footerHeight="auto"
         headerHeight="auto"
       >
-        <ngx-datatable-column name="fecha de constitución">
-          <ng-template let-row="row" ngx-datatable-cell-template>{{ getFecha(row.fecha) }}</ng-template>
+        <ngx-datatable-column name="Nombres">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.nombres }}</ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Nombre">
+        <ngx-datatable-column name="Apellidos / Razón social">
           <ng-template let-row="row" ngx-datatable-cell-template>
             <ng-container>
               {{ row.primerApellido + ' ' + row.segundoApellido + ' ' + row.razonSocial }}
@@ -38,3 +39,4 @@
     </prx-card-body>
   </prx-card>
 </div>
+<ng-template #loading><prx-loader [template]="'table'" [isLoading]="isLoading" [count]="3"></prx-loader></ng-template>

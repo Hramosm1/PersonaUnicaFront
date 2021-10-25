@@ -68,7 +68,7 @@ export class PerfilComponent implements OnInit {
         this.perfil = perfil;
         this.perfilForm.get('primerApellido').setValue(perfil.primerApellido);
         this.perfilForm.get('segundoApellido').setValue(perfil.segundoApellido);
-        this.perfilForm.get('fecha').setValue(new Date(perfil.fecha + 'T00:00:00'));
+        this.perfilForm.get('fecha').setValue(perfil.fecha);
         this.perfilForm.get('genero').setValue(perfil.genero);
         this.perfilForm.get('observaciones').setValue(perfil.observaciones);
         this.perfilForm.get('razonSocial').setValue(perfil.razonSocial);

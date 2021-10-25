@@ -31,7 +31,7 @@ export class CorreosComponent implements OnInit {
   agregarCorreo() {
     this.correos.push(
       this.fb.group({
-        correo: ['', Validators.required],
+        correo: ['', [Validators.required, Validators.email]],
         origenInformacion: [1, Validators.required],
       })
     );

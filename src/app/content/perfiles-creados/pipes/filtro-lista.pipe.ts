@@ -11,14 +11,14 @@ export class FiltroListaPipe implements PipeTransform {
     } else {
       const filtroUp = filtro.toUpperCase();
       return lista.filter((perfil) => {
-        const { tipoPersona, documento, razonSocial, primerApellido, segundoApellido, fecha } = perfil;
+        const { tipoPersona, documento, razonSocial, primerApellido, segundoApellido, nombres } = perfil;
         return (
           documento?.toUpperCase().includes(filtroUp) ||
           razonSocial?.toUpperCase().includes(filtroUp) ||
           primerApellido?.toUpperCase().includes(filtroUp) ||
           segundoApellido?.toUpperCase().includes(filtroUp) ||
           tipoPersona?.toUpperCase().includes(filtroUp) ||
-          new Date(fecha).toLocaleDateString()?.includes(filtroUp)
+          nombres?.toUpperCase()?.includes(filtroUp)
         );
       });
     }

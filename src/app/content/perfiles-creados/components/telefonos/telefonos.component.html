@@ -5,7 +5,8 @@
       <li *ngFor="let tel of telefonos" class="list-group-item">
         <div>
           <p>
-            {{ tip[tel.tipoTelefono - 1] + ' ' + tel.codigoPais + ' ' + tel.telefono }}
+            <b>{{ tel.tipoTelefono }}</b
+            >{{ ' ' + tel.codigoPais + tel.telefono }}
           </p>
           <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(tel.id)">
             eliminar
