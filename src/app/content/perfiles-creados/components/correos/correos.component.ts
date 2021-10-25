@@ -14,7 +14,6 @@ import { PUCorreos } from '../../tablas-model';
 })
 export class CorreosComponent implements OnInit {
   @Input() correos: PUCorreos[];
-  @Input() tiposOrigen: TiposOrigen[];
   @Output() actualizar = new EventEmitter();
   modalRef?: BsModalRef;
   idEditar: string;

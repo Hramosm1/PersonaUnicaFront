@@ -14,15 +14,16 @@ import { PUDocumentos } from '../../tablas-model';
 })
 export class DocumentosComponent implements OnInit {
   @Input() documentos: PUDocumentos[];
-  @Input() tiposDeDocumento: TiposDocumento[];
-  tipos: any;
+  tipos: TiposDocumento[];
   modalRef?: BsModalRef;
   idEditar: string;
   btn = false;
   @Output() actualizar = new EventEmitter();
   constructor(private api: ApiService, private modalService: BsModalService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.api.getTipos<TiposDocumento>('documento').subscribe((res) => (this.tipos = res));
+  }
   eliminar(id: string) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

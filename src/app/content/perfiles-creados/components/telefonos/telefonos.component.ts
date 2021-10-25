@@ -13,8 +13,6 @@ import { PUTelefonos } from '../../tablas-model';
 })
 export class TelefonosComponent implements OnInit {
   @Input() telefonos: PUTelefonos[];
-  @Input() tiposTelefono: TiposTelefono[];
-  @Input() tiposOrigen: TiposOrigen[];
   idEditar: string;
   modalRef?: BsModalRef;
   btn = false;

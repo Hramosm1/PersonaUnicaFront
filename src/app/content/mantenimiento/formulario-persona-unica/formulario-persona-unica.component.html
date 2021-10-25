@@ -22,7 +22,7 @@
                 <input formControlName="segundoApellido" type="text" class="form-control form-control-rounded" />
               </div>
 
-              <div *ngIf="tipo == 1" class="col-6 form-group px-5">
+              <div *ngIf="tipo == 1" class="col-12 form-group px-5">
                 <label for="genero" class="control-label">Género</label>
                 <select formControlName="genero" class="form-control form-control-rounded">
                   <option [ngValue]="obGenero.id" *ngFor="let obGenero of generos">
@@ -30,7 +30,7 @@
                   </option>
                 </select>
               </div>
-              <div *ngIf="tipo == 2" class="col-6 form-group px-5">
+              <div *ngIf="tipo == 2" class="col-12 form-group px-5">
                 <label for="razon social" class="control-label">Razón social</label>
                 <input
                   formControlName="razonSocial"
@@ -39,9 +39,9 @@
                   placeholder="Restaurantes McDonald's S.A."
                 />
               </div>
-              <div class="col-6 form-group px-5">
+              <div class="col-12 form-group px-5">
                 <label for="fechaNacimiento" class="control-label">{{
-                  tipo == 1 ? 'Fecha Nacimiento' : 'Fecha Creación'
+                  tipo == 1 ? 'Fecha Nacimiento' : 'Fecha de constitución'
                 }}</label>
                 <input
                   formControlName="fecha"
@@ -50,7 +50,6 @@
                   bsDatepicker
                   [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
                 />
-                <small class="text-danger">Obligatorio</small>
               </div>
               <div class="col-12 form-group px-5">
                 <label for="obs" class="control-label">Observaciones</label>
@@ -63,7 +62,7 @@
               </div>
             </div>
             <div class="col-6 row">
-              <div *ngIf="tipo == 2" class="col-6 form-group px-5">
+              <div *ngIf="tipo == 2" class="col-12 form-group px-5">
                 <ng-container formArrayName="nombres">
                   <label for="emp" class="control-label">Nombre de la empresa</label>
                   <input

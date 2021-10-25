@@ -14,7 +14,7 @@ export class ListadoComponent implements OnInit {
   cm = ColumnMode;
   rows: Listado[] = [];
   getFecha(date: string) {
-    return new Date(date).toLocaleDateString();
+    return new Date(date + 'T00:00:00').toLocaleDateString();
   }
   ngOnInit(): void {
     this.api.GetPerfiles<Listado>().subscribe((res) => {

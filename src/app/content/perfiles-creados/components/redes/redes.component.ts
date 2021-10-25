@@ -13,7 +13,6 @@ import { PUReferenciasWeb } from '../../tablas-model';
 })
 export class RedesComponent implements OnInit {
   @Input() referenciasWeb: PUReferenciasWeb[];
-  @Input() tiposOrigen: TiposOrigen[];
   @Output() actualizar = new EventEmitter();
   modalRef?: BsModalRef;
   idEditar: string;

@@ -35,7 +35,7 @@ export class DireccionesComponent implements OnInit {
         colonia: [''],
         direccion: [''],
         referencia: [''],
-        origenInformacion: ['', Validators.required],
+        origenInformacion: [1, Validators.required],
       })
     );
   }

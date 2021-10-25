@@ -2,16 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
-import {
-  Empresas,
-  Generos,
-  TiposContacto,
-  TiposDocumento,
-  TiposOrigen,
-  TiposPaginaWeb,
-  TiposPersona,
-  TiposTelefono,
-} from '@app/content/mantenimiento/inputs/models';
+import { Generos } from '@app/content/mantenimiento/inputs/models';
 import { Perfil } from '../tablas-model';
 
 @Component({
@@ -22,14 +13,7 @@ import { Perfil } from '../tablas-model';
 export class PerfilComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private api: ApiService, private fb: FormBuilder) {}
   perfil: Perfil;
-  tiposDocumento: TiposDocumento[];
-  tiposPaginaWeb: TiposPaginaWeb[];
-  Generos: Generos[];
-  tiposContacto: TiposContacto[];
-  tiposOrigen: TiposOrigen[];
-  tiposPersona: TiposPersona[];
-  tiposTelefono: TiposTelefono[];
-  empresas: Empresas[];
+  generos: Generos[];
   perfilForm: FormGroup;
   dis: boolean = true;
   campos = [
@@ -42,12 +26,13 @@ export class PerfilComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.api.getGeneros().subscribe((res) => (this.generos = res));
     this.getPerfil();
     this.getTipos();
     this.perfilForm = this.fb.group({
       primerApellido: ['', Validators.required],
       segundoApellido: ['', Validators.required],
-      fecha: ['', Validators.required],
+      fecha: [''],
       genero: [Number, Validators.required],
       observaciones: [''],
       razonSocial: [''],
@@ -72,24 +57,7 @@ export class PerfilComponent implements OnInit {
     }
     this.dis = !this.dis;
   }
-  getTipos() {
-    this.api.getTipos<TiposDocumento>('documento').subscribe((res) => (this.tiposDocumento = res));
-    this.api.getTipos<TiposPaginaWeb>('pagina').subscribe((res) => (this.tiposPaginaWeb = res));
-    this.api.getTipos<Generos>('genero').subscribe((res) => (this.Generos = res));
-    this.api.getTipos<TiposContacto>('contacto').subscribe((res) => (this.tiposContacto = res));
-    this.api.getTipos<TiposOrigen>('origen').subscribe((res) => (this.tiposOrigen = res));
-    this.api.getTipos<TiposPersona>('persona').subscribe((res) => (this.tiposPersona = res));
-    this.api.getTipos<TiposTelefono>('telefono').subscribe((res) => (this.tiposTelefono = res));
-  }
-  get nombres() {
-    return this.perfil.PU_Nombres.map((nom) => nom.nombre);
-  }
-  get fecha() {
-    return new Date(this.perfil.fecha).toLocaleDateString();
-  }
-  get empleos() {
-    return this.perfil.empleos;
-  }
+  getTipos() {}
   actualizar(e?: any) {
     this.getPerfil();
   }
@@ -100,7 +68,7 @@ export class PerfilComponent implements OnInit {
         this.perfil = perfil;
         this.perfilForm.get('primerApellido').setValue(perfil.primerApellido);
         this.perfilForm.get('segundoApellido').setValue(perfil.segundoApellido);
-        this.perfilForm.get('fecha').setValue(new Date(perfil.fecha).toLocaleDateString());
+        this.perfilForm.get('fecha').setValue(new Date(perfil.fecha + 'T00:00:00'));
         this.perfilForm.get('genero').setValue(perfil.genero);
         this.perfilForm.get('observaciones').setValue(perfil.observaciones);
         this.perfilForm.get('razonSocial').setValue(perfil.razonSocial);

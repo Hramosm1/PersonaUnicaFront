@@ -25,14 +25,30 @@ export class ApiService {
   public getEmpresas = this.inputService.getEmpresas;
   public mantenimientos(
     tipo: 'post' | 'put',
-    mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos' | 'referenciasWeb',
+    mantenimiento:
+      | 'nombres'
+      | 'contactos'
+      | 'correos'
+      | 'direcciones'
+      | 'documentos'
+      | 'empleos'
+      | 'telefonos'
+      | 'referenciasWeb',
     body?: any,
     id?: string
   ) {
     return this.http[tipo](`${environment.serverUrl}${mantenimiento}/${id}`, body, { headers: this.headers });
   }
   public mantenimientosDelete(
-    mantenimiento: 'contactos' | 'correos' | 'direcciones' | 'documentos' | 'empleos' | 'telefonos' | 'referenciasWeb',
+    mantenimiento:
+      | 'nombres'
+      | 'contactos'
+      | 'correos'
+      | 'direcciones'
+      | 'documentos'
+      | 'empleos'
+      | 'telefonos'
+      | 'referenciasWeb',
     id: string
   ) {
     console.log(`environment.serverUrl}${mantenimiento}/${id}`);
@@ -47,6 +63,7 @@ export class ApiService {
       .pipe(timeout(10000));
   }
   public GetPerfil(id: string): Observable<Perfil> {
+    console.log(environment.serverUrl + 'perfiles/' + id);
     return this.http
       .get<Perfil>(environment.serverUrl + 'perfiles/' + id, { headers: this.headers })
       .pipe(timeout(18000));

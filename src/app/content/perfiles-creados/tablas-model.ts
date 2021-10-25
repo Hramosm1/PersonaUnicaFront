@@ -6,13 +6,13 @@ export interface Perfil {
   fecha: Date;
   primerApellido: string;
   segundoApellido: string;
-  PU_Nombres: PUNombres[];
-  PU_Contactos: PUContactos[];
-  PU_Correos: PUCorreos[];
-  PU_Direcciones: PUDirecciones[];
-  PU_Documentos: PUDocumentos[];
-  PU_Telefonos: PUTelefonos[];
-  PU_ReferenciasWeb: PUReferenciasWeb[];
+  nombres: PUNombres[];
+  contactos: PUContactos[];
+  correos: PUCorreos[];
+  direcciones: PUDirecciones[];
+  documentos: PUDocumentos[];
+  telefonos: PUTelefonos[];
+  referenciasWeb: PUReferenciasWeb[];
   empleos: PUEmpleos[];
   personaUnica: boolean;
 }
@@ -26,25 +26,21 @@ export interface Listado {
 }
 export interface PUNombres {
   id: string;
-  idPerfil: string;
   nombre: string;
 }
 export interface PUDocumentos {
   id: string;
-  idPerfil: string;
   documento: string;
-  tipo: number;
+  tipo: string;
 }
 export interface PUContactos {
   id: string;
-  idPerfil: string;
   nombreCompleto: string;
-  origenInformacion: number;
-  tipoContacto: number;
+  origenInformacion: string;
+  tipoContacto: string;
 }
 export interface PUCorreos {
   id: string;
-  idPerfil: string;
   correo: string;
 }
 
@@ -56,30 +52,26 @@ export interface PUDirecciones {
   colonia: string;
   direccion: string;
   referencia: string;
-  origenInformacion: number;
-  idPerfil: string;
+  origenInformacion: string;
 }
 export interface PUTelefonos {
   id: string;
-  idPerfil: string;
   codigoPais: string;
   telefono: string;
-  tipoTelefono: number;
-  origenInformacion: number;
+  tipoTelefono: string;
+  origenInformacion: string;
 }
 export interface PUReferenciasWeb {
   id: string;
-  idPerfil: string;
-  tipo: number;
-  origenInformacion: number;
+  tipo: string;
+  origenInformacion: string;
   link: string;
 }
 export interface PUEmpleos {
-  empresa: string;
-  fechaFin: Date;
-  fechaInicio: Date;
   id: string;
-  idPerfil: string;
-  origenInformacion: Number;
+  fechaInicio: Date;
+  fechaFin: Date;
+  empresa: string;
+  origenInformacion: string;
   puesto: string;
 }

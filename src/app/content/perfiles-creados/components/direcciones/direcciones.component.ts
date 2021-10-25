@@ -14,9 +14,15 @@ import { PUDirecciones } from '../../tablas-model';
 })
 export class DireccionesComponent implements OnInit {
   @Input() direcciones: PUDirecciones[];
-  @Input() tiposOrigen: TiposOrigen[];
   @Output() actualizar = new EventEmitter();
-  campos = ['departamento', 'municipio', 'zona', 'colonia', 'direccion', 'referencia'];
+  campos = [
+    { titulo: 'Departamento', campo: 'departamento' },
+    { titulo: 'Municipio', campo: 'municipio' },
+    { titulo: 'Zona', campo: 'zona' },
+    { titulo: 'Colonia', campo: 'colonia' },
+    { titulo: 'Dirección', campo: 'direccion' },
+    { titulo: 'Referencias', campo: 'referencia' },
+  ];
   modalRef?: BsModalRef;
   idEditar: string;
   btn = false;

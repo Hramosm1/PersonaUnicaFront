@@ -13,8 +13,6 @@ import { PUContactos } from '../../tablas-model';
 })
 export class ContactosComponent implements OnInit {
   @Input() contactos: PUContactos[];
-  @Input() tiposContacto: TiposContacto[];
-  @Input() tiposOrigen: TiposOrigen[];
   @Output() actualizar = new EventEmitter();
   modalRef?: BsModalRef;
   btn = false;

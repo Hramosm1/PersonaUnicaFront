@@ -13,14 +13,7 @@
   </prx-card-body>
   <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
 </prx-card>
-<ng-template #crear>
-  <prx-form-correos [tiposOrigen]="tiposOrigen" titulo="Nuevo correo" [modalRef]="modalRef"></prx-form-correos
-></ng-template>
+<ng-template #crear> <prx-form-correos titulo="Nuevo correo" [modalRef]="modalRef"></prx-form-correos></ng-template>
 <ng-template #editar>
-  <prx-form-correos
-    [idEditar]="idEditar"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Editar"
-    [modalRef]="modalRef"
-  ></prx-form-correos
+  <prx-form-correos [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-correos
 ></ng-template>

@@ -10,7 +10,7 @@
       <div class="form-group col-6">
         <label class="form-label">Origen información</label>
         <select formControlName="origenInformacion" class="form-control form-control-rounded">
-          <option *ngFor="let origen of tiposOrigen" [ngValue]="origen.id">
+          <option *ngFor="let origen of tiposOrigen | async" [ngValue]="origen.id">
             {{ origen.tipoOrigen }}
           </option>
         </select>
@@ -18,7 +18,7 @@
       <div class="form-group col-6">
         <label class="form-label">Tipo teléfono</label>
         <select formControlName="tipoTelefono" class="form-control form-control-rounded">
-          <option *ngFor="let tipoTel of tiposTelefono" [ngValue]="tipoTel.id">
+          <option *ngFor="let tipoTel of tiposTelefono | async" [ngValue]="tipoTel.id">
             {{ tipoTel.tipoTelefono }}
           </option>
         </select>

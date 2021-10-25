@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
 import { TiposContacto, TiposOrigen } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,15 +13,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./form-contactos.component.scss'],
 })
 export class FormContactosComponent implements OnInit {
-  @Input() tiposContacto: TiposContacto[];
-  @Input() tiposOrigen: TiposOrigen[];
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
   @Input() idEditar?: string;
+  tiposContacto: Observable<TiposContacto[]>;
+  tiposOrigen: Observable<TiposOrigen[]>;
   contacto: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.tiposOrigen = this.api.getTipos('origen');
+    this.tiposContacto = this.api.getTipos('contacto');
     this.contacto = this.fb.group({
       nombreCompleto: ['', Validators.required],
       origenInformacion: [1, Validators.required],

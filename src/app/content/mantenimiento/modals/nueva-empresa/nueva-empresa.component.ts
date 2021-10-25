@@ -28,7 +28,7 @@ export class NuevaEmpresaComponent implements OnInit {
       genero: [1, Validators.required],
       tipo: [2, Validators.required],
       razonSocial: [''],
-      fecha: ['', Validators.required],
+      fecha: [''],
       observaciones: [''],
       personaUnica: false,
       nombreEjecutivo: [parseInt(this.credentials.credentials.idCobrador)],

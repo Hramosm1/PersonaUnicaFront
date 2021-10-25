@@ -5,8 +5,8 @@
       <li *ngFor="let empleo of empleos" class="list-group-item">
         <p>Puesto: {{ empleo.puesto }}</p>
         <p>Empresa: {{ empleo.empresa }}</p>
-        <p>Fecha entrada: {{ empleo.fechaInicio }}</p>
-        <p>Fecha salida: {{ empleo.fechaFin }}</p>
+        <p>Fecha de ingreso: {{ empleo.fechaInicio }}</p>
+        <p>Fecha de egreso: {{ empleo.fechaFin }}</p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(empleo.id)">
           eliminar
         </button>

@@ -11,14 +11,7 @@
   </prx-card-body>
   <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
 </prx-card>
-<ng-template #crear>
-  <prx-form-redes [tiposOrigen]="tiposOrigen" titulo="Nueva referencia web" [modalRef]="modalRef"></prx-form-redes
-></ng-template>
+<ng-template #crear> <prx-form-redes titulo="Nueva referencia web" [modalRef]="modalRef"></prx-form-redes></ng-template>
 <ng-template #editar>
-  <prx-form-redes
-    [idEditar]="idEditar"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Editar"
-    [modalRef]="modalRef"
-  ></prx-form-redes
+  <prx-form-redes [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-redes
 ></ng-template>

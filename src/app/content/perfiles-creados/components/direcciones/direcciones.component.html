@@ -3,13 +3,9 @@
   <prx-card-body
     ><ul class="list-group">
       <li *ngFor="let dir of direcciones" class="list-group-item">
-        <div>
-          <ul class="scroll">
-            <li *ngFor="let cam of campos">
-              {{ cam + ' - ' + dir[cam] }}
-            </li>
-          </ul>
-        </div>
+        <p *ngFor="let cam of campos">
+          {{ cam.titulo + ' - ' + dir[cam.campo] }}
+        </p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(dir.id)">eliminar</button>
         <button class="btn btn-outline-warning float-right" (click)="openModal(editar, dir.id)">editar</button>
       </li>
@@ -18,17 +14,8 @@
   <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
 </prx-card>
 <ng-template #crear>
-  <prx-form-direcciones
-    [tiposOrigen]="tiposOrigen"
-    titulo="Nueva dirección"
-    [modalRef]="modalRef"
-  ></prx-form-direcciones
+  <prx-form-direcciones titulo="Nueva dirección" [modalRef]="modalRef"></prx-form-direcciones
 ></ng-template>
 <ng-template #editar>
-  <prx-form-direcciones
-    [idEditar]="idEditar"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Editar"
-    [modalRef]="modalRef"
-  ></prx-form-direcciones
+  <prx-form-direcciones [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-direcciones
 ></ng-template>

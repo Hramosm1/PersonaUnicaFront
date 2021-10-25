@@ -1,9 +1,9 @@
 <prx-card>
-  <prx-card-header title="Contáctos"></prx-card-header>
+  <prx-card-header title="Contactos"></prx-card-header>
   <prx-card-body>
     <ul *ngIf="contactos" class="list-group">
       <li *ngFor="let cont of contactos" class="list-group-item">
-        <div>{{ cont.nombreCompleto }}</div>
+        <p>{{ cont.nombreCompleto }}</p>
         <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(cont.id)">
           eliminar
         </button>
@@ -14,19 +14,8 @@
   <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
 </prx-card>
 <ng-template #crear>
-  <prx-form-contactos
-    [tiposContacto]="tiposContacto"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Nuevo contácto"
-    [modalRef]="modalRef"
-  ></prx-form-contactos
+  <prx-form-contactos titulo="Nuevo contácto" [modalRef]="modalRef"></prx-form-contactos
 ></ng-template>
 <ng-template #editar>
-  <prx-form-contactos
-    [idEditar]="idEditar"
-    [tiposContacto]="tiposContacto"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Editar"
-    [modalRef]="modalRef"
-  ></prx-form-contactos
+  <prx-form-contactos [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-contactos
 ></ng-template>

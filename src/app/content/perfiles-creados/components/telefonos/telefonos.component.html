@@ -4,9 +4,9 @@
     ><ul class="list-group">
       <li *ngFor="let tel of telefonos" class="list-group-item">
         <div>
-          <div>
+          <p>
             {{ tip[tel.tipoTelefono - 1] + ' ' + tel.codigoPais + ' ' + tel.telefono }}
-          </div>
+          </p>
           <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(tel.id)">
             eliminar
           </button>
@@ -18,19 +18,8 @@
   <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
 </prx-card>
 <ng-template #crear>
-  <prx-form-telefonos
-    [tiposTelefono]="tiposTelefono"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Nuevo teléfono"
-    [modalRef]="modalRef"
-  ></prx-form-telefonos
+  <prx-form-telefonos titulo="Nuevo teléfono" [modalRef]="modalRef"></prx-form-telefonos
 ></ng-template>
 <ng-template #editar>
-  <prx-form-telefonos
-    [idEditar]="idEditar"
-    [tiposTelefono]="tiposTelefono"
-    [tiposOrigen]="tiposOrigen"
-    titulo="Editar"
-    [modalRef]="modalRef"
-  ></prx-form-telefonos
+  <prx-form-telefonos [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-telefonos
 ></ng-template>

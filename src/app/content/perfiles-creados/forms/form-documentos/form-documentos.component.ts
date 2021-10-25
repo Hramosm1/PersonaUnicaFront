@@ -15,12 +15,13 @@ import Swal from 'sweetalert2';
 export class FormDocumentosComponent implements OnInit {
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
-  @Input() tiposDeDocumento: TiposDocumento[];
+  tiposDeDocumento: Observable<TiposDocumento[]>;
   @Input() idEditar?: string;
   documento: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.tiposDeDocumento = this.api.getTipos('documento');
     this.documento = this.fb.group({ tipo: [1, Validators.required], documento: ['', Validators.required] });
   }
   submit() {

@@ -79,7 +79,7 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
   }
 
   private createForm() {
-    const us: string = localStorage.getItem('US') || 'user';
+    const us: string = localStorage.getItem('US') || '';
     const pas: string = localStorage.getItem('PS') || '';
     const remem: boolean = localStorage.getItem('REM') === 'true' || false;
     this.form = this.formBuilder.group({

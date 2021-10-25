@@ -28,6 +28,7 @@ import { NombresComponent } from './components/nombres/nombres.component';
 import { MantenimientoModule } from '../mantenimiento/mantenimiento.module';
 import { RedesComponent } from './components/redes/redes.component';
 import { FormRedesComponent } from './forms/form-redes/form-redes.component';
+import { FormNombresComponent } from './forms/form-nombres/form-nombres.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FormRedesComponent } from './forms/form-redes/form-redes.component';
     NombresComponent,
     RedesComponent,
     FormRedesComponent,
+    FormNombresComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,7 @@ import { FormRedesComponent } from './forms/form-redes/form-redes.component';
     CardsModule,
     NgxDatatableModule,
     IconsModule,
-    BsDatepickerModule.forRoot(),
+    BsDatepickerModule,
     MantenimientoModule,
   ],
 })

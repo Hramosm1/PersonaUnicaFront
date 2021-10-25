@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/@core';
 import { TiposOrigen, TiposPaginaWeb } from '@app/content/mantenimiento/inputs/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,13 +15,14 @@ import Swal from 'sweetalert2';
 export class FormRedesComponent implements OnInit {
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
-  @Input() tiposOrigen: TiposOrigen[];
   @Input() idEditar?: string;
+  tiposOrigen: Observable<TiposOrigen[]>;
   paginas: TiposPaginaWeb[];
   referencia: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.tiposOrigen = this.api.getTipos('origen');
     this.api.getTipos<TiposPaginaWeb>('pagina').subscribe((res) => (this.paginas = res));
     this.referencia = this.fb.group({
       tipo: [1, Validators.required],

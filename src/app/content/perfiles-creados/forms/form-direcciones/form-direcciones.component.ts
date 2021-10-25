@@ -17,13 +17,14 @@ export class FormDireccionesComponent implements OnInit {
   departamentosYMunicipios = departamentosjson;
   @Input() titulo: string;
   @Input() modalRef: BsModalRef;
-  @Input() tiposOrigen: TiposOrigen[];
+  tiposOrigen: Observable<TiposOrigen[]>;
   @Input() idEditar?: string;
   direccion: FormGroup;
   departamentos = Object.keys(this.departamentosYMunicipios);
   constructor(private fb: FormBuilder, private api: ApiService, private rout: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.tiposOrigen = this.api.getTipos('origen');
     this.direccion = this.fb.group({
       departamento: ['Guatemala', Validators.required],
       municipio: ['', Validators.required],

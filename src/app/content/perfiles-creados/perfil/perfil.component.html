@@ -14,7 +14,7 @@
               <div *ngSwitchCase="'genero'">
                 <label class="form-label">{{ campo.titulo }}</label>
                 <select [formControlName]="campo.campo" class="form-control form-control-rounded">
-                  <option *ngFor="let genero of Generos" [value]="genero.id">{{ genero.genero }}</option>
+                  <option *ngFor="let genero of generos" [value]="genero.id">{{ genero.genero }}</option>
                 </select>
               </div>
               <div *ngSwitchCase="'observaciones'">
@@ -57,47 +57,26 @@
   <div class="container-fluid mt-5">
     <div class="row row-cols-1 row-cols-lg-2">
       <div class="col">
-        <prx-documentos
-          [tiposDeDocumento]="tiposDocumento"
-          [documentos]="perfil.PU_Documentos"
-          (actualizar)="actualizar($event)"
-        ></prx-documentos>
+        <prx-nombres [nombres]="perfil.nombres" (actualizar)="actualizar($event)"></prx-nombres>
       </div>
       <div class="col">
-        <prx-telefonos
-          [tiposOrigen]="tiposOrigen"
-          [tiposTelefono]="tiposTelefono"
-          [telefonos]="perfil.PU_Telefonos"
-          (actualizar)="actualizar($event)"
-        ></prx-telefonos>
+        <prx-documentos [documentos]="perfil.documentos" (actualizar)="actualizar($event)"></prx-documentos>
       </div>
       <div class="col">
-        <prx-correos
-          [tiposOrigen]="tiposOrigen"
-          [correos]="perfil.PU_Correos"
-          (actualizar)="actualizar($event)"
-        ></prx-correos>
+        <prx-telefonos [telefonos]="perfil.telefonos" (actualizar)="actualizar($event)"></prx-telefonos>
       </div>
       <div class="col">
-        <prx-direcciones
-          [tiposOrigen]="tiposOrigen"
-          [direcciones]="perfil.PU_Direcciones"
-          (actualizar)="actualizar($event)"
-        ></prx-direcciones>
+        <prx-correos [correos]="perfil.correos" (actualizar)="actualizar($event)"></prx-correos>
+      </div>
+      <div class="col">
+        <prx-direcciones [direcciones]="perfil.direcciones" (actualizar)="actualizar($event)"></prx-direcciones>
       </div>
       <div class="col"><prx-empleos [empleos]="perfil.empleos" (actualizar)="actualizar($event)"></prx-empleos></div>
       <div class="col">
-        <prx-contactos
-          [tiposOrigen]="tiposOrigen"
-          [tiposContacto]="tiposContacto"
-          [contactos]="perfil.PU_Contactos"
-          (actualizar)="actualizar($event)"
-        ></prx-contactos>
-        <prx-redes
-          [referenciasWeb]="perfil.PU_ReferenciasWeb"
-          [tiposOrigen]="tiposOrigen"
-          (actualizar)="actualizar($event)"
-        ></prx-redes>
+        <prx-contactos [contactos]="perfil.contactos" (actualizar)="actualizar($event)"></prx-contactos>
+      </div>
+      <div class="col">
+        <prx-redes [referenciasWeb]="perfil.referenciasWeb" (actualizar)="actualizar($event)"></prx-redes>
       </div>
     </div>
   </div>
