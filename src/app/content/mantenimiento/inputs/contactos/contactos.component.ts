@@ -31,6 +31,7 @@ export class ContactosComponent implements OnInit {
         nombreCompleto: ['', Validators.required],
         origenInformacion: [parseInt(sessionStorage.getItem('origenInformacion')) | 1, Validators.required],
         tipoContacto: [1, Validators.required],
+        telefono: '',
       })
     );
   }

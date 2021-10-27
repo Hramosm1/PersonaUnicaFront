@@ -23,12 +23,16 @@
                 </select>
                 <small class="text-danger">Obligatorio</small>
               </div>
-              <div class="form-group col-9">
+              <div class="form-group col-6">
                 <label class="control-label" for="nCompleto">Nombre completo</label>
                 <input type="text" class="form-control form-control-rounded" formControlName="nombreCompleto" />
                 <small class="text-danger">Obligatorio</small>
               </div>
-              <div class="col-3">
+              <div class="form-group col-5">
+                <label class="control-label" for="nCompleto">Telefono</label>
+                <input type="text" class="form-control form-control-rounded" formControlName="telefono" />
+              </div>
+              <div class="col">
                 <button class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarContacto(i)">
                   <prx-icon icon="x" size="sm"></prx-icon>
                 </button>

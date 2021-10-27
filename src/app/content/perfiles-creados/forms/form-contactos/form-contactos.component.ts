@@ -28,6 +28,7 @@ export class FormContactosComponent implements OnInit {
       nombreCompleto: ['', Validators.required],
       origenInformacion: [1, Validators.required],
       tipoContacto: [1, Validators.required],
+      telefono: '',
     });
   }
   submit() {

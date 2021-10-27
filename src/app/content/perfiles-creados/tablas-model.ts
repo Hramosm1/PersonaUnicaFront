@@ -36,6 +36,7 @@ export interface PUDocumentos {
 export interface PUContactos {
   id: string;
   nombreCompleto: string;
+  telefono: string;
   origenInformacion: string;
   tipoContacto: string;
 }
