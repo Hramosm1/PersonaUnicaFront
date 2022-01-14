@@ -1,0 +1,56 @@
+<ng-container [formGroup]="form">
+  <prx-page-header title="Teléfonos"></prx-page-header>
+  <div class="container px-5">
+    <button class="btn btn-primary float-right" (click)="agregarTelefono()">agregar teléfono</button>
+    <ng-container formArrayName="telefonos">
+      <div class="row row-cols-1">
+        <div class="col" *ngFor="let mail of telefonos.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="row">
+                <div class="form-group col-6">
+                  <label class="control-label">Origen información</label>
+                  <select formControlName="origenInformacion" class="form-control form-control-rounded">
+                    <option *ngFor="let origen of tiposOrigen | async" [ngValue]="origen.id">
+                      {{ origen.tipoOrigen }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-6">
+                  <label class="control-label">Tipo teléfono</label>
+                  <select formControlName="tipoTelefono" class="form-control form-control-rounded">
+                    <option *ngFor="let tipoTel of tiposTelefono | async" [ngValue]="tipoTel.id">
+                      {{ tipoTel.tipoTelefono }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-4">
+                  <label class="control-label">Codigo Pais</label>
+                  <select formControlName="codigoPais" class="form-control form-control-rounded">
+                    <option *ngFor="let ext of telExt" [ngValue]="'+ ' + ext.phone_code">
+                      {{ ext.nombre + ' - ' + ext.phone_code }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-8">
+                  <label class="control-label">Teléfono {{ i + 1 }}</label>
+                  <input
+                    formControlName="telefono"
+                    class="form-control form-control-rounded"
+                    type="tel"
+                    placeholder="5555-5555"
+                  />
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-outline-secondary btn-circle btn-sm" type="button" (click)="quitarTelefono(i)">
+                  <prx-icon icon="x" size="sm"></prx-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

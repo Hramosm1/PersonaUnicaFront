@@ -1,0 +1,42 @@
+<div class="container">
+  <prx-page-header title="Listado personas ingresadas"> </prx-page-header>
+  <prx-card>
+    <prx-card-header>
+      <input class="form-control" [(ngModel)]="filtro" type="text" />
+    </prx-card-header>
+    <prx-card-body>
+      <ng-container *ngIf="rows && rows.length; else loading"></ng-container>
+      <ngx-datatable
+        [rows]="rows | filtroLista: filtro"
+        [limit]="5"
+        [columnMode]="cm.force"
+        rowHeight="auto"
+        footerHeight="auto"
+        headerHeight="auto"
+      >
+        <ngx-datatable-column name="Nombres">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.nombres }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Apellidos / Razón social">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <ng-container>
+              {{ row.primerApellido + ' ' + row.segundoApellido + ' ' + row.razonSocial }}
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="documento">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.documento }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="tipo">
+          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.tipoPersona }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Editar">
+          <ng-template let-row="row" ngx-datatable-cell-template
+            ><a class="btn btn-outline-warning" [routerLink]="['/perfiles/perfil/' + row.id]">Editar</a></ng-template
+          >
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </prx-card-body>
+  </prx-card>
+</div>
+<ng-template #loading><prx-loader [template]="'table'" [isLoading]="isLoading" [count]="3"></prx-loader></ng-template>

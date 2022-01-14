@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ titulo }}</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="documento">
+    <div class="row">
+      <div class="form-group col-5">
+        <label for="tDocumento" class="form-label">Tipo de Documento</label>
+        <select class="form-control form-control-rounded" formControlName="tipo">
+          <option *ngFor="let doc of tiposDeDocumento | async" [ngValue]="doc.id">
+            {{ doc.tipoDocumento | uppercase }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-7">
+        <label for="noDocumento">No. Documento</label>
+        <input
+          formControlName="documento"
+          class="form-control form-control-rounded"
+          type="text"
+          placeholder="22222222"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer"><button (click)="submit()" class="btn btn-primary float-right">Actualizar</button></div>

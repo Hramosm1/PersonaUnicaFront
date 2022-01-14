@@ -1,0 +1,70 @@
+<ng-container [formGroup]="form">
+  <prx-page-header title="Empleos"></prx-page-header>
+  <div class="container px-5">
+    <button class="btn btn-primary float-right" type="button" (click)="agregarEmpleo()">Agregar Empleo</button>
+    <ng-container formArrayName="empleos">
+      <div *ngFor="let empleo of empleos.controls; let i = index">
+        <div class="row" [formGroupName]="i">
+          <div class="form-group col-6">
+            <label class="control-label" for="origen">Origen de la información</label>
+            <select formControlName="origenInformacion" class="form-control form-control-rounded">
+              <option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
+            </select>
+            <small class="text-danger">Obligatorio</small>
+          </div>
+          <div class="form-group col-6">
+            <label class="control-label" for="noDocumento">Empresa</label>
+            <label class="control-label" for="nombre" class="h4">: {{ nombres[i] }}</label>
+            <div class="input-group">
+              <input type="text" disabled class="form-control" formControlName="empresa" />
+              <span class="input-group-append">
+                <button type="button" (click)="openModal(empresas, i)" class="input-group-text">
+                  <prx-icon icon="server"></prx-icon></button
+              ></span>
+            </div>
+            <small class="text-danger">Obligatorio</small>
+          </div>
+          <div class="form-group col-6">
+            <label class="control-label" for="noDocumento">Puesto</label>
+            <input
+              formControlName="puesto"
+              class="form-control form-control-rounded"
+              type="text"
+              placeholder="Desarrollador"
+            />
+          </div>
+          <div class="form-group col-6">
+            <label class="control-label" class="control-label">Fecha ingreso</label>
+            <input
+              formControlName="fechaInicio"
+              type="text"
+              placeholder="Date Picker"
+              class="form-control form-control-rounded"
+              bsDatepicker
+            />
+            <small class="text-danger">Obligatorio</small>
+          </div>
+          <div class="form-group col-6">
+            <label class="control-label" class="control-label">Fecha egreso</label>
+            <input
+              formControlName="fechaFin"
+              type="text"
+              placeholder="Date Picker"
+              class="form-control form-control-rounded"
+              bsDatepicker
+            />
+            <small class="form-text text-muted">si es trabajo actual dejar en blanco</small>
+          </div>
+          <div class="col">
+            <button class="btn btn-outline-secondary btn-circle btn-sm float-right" (click)="eliminarEmpleo(i)">
+              <prx-icon icon="x" size="sm"></prx-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+<ng-template #empresas>
+  <prx-lista-empleos [modalRef]="modalRef" (seleccionado)="asignar($event)"></prx-lista-empleos>
+</ng-template>

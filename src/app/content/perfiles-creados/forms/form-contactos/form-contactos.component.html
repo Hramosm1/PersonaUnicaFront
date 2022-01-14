@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ titulo }}</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="contacto">
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="origen">Origen de la información</label>
+        <select formControlName="origenInformacion" class="form-control form-control-rounded">
+          <option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
+        </select>
+        <small class="text-danger">Obligatorio</small>
+      </div>
+      <div class="form-group col-6">
+        <label for="origen">Tipo de contácto</label>
+        <select formControlName="tipoContacto" class="form-control form-control-rounded">
+          <option *ngFor="let tipo of tiposContacto | async" [ngValue]="tipo.id">
+            {{ tipo.tipoContacto }}
+          </option>
+        </select>
+        <small class="text-danger">Obligatorio</small>
+      </div>
+      <div class="form-group col-12">
+        <label for="nCompleto">Nombre completo</label>
+        <input type="text" class="form-control form-control-rounded" formControlName="nombreCompleto" />
+        <small class="text-danger">Obligatorio</small>
+      </div>
+      <div class="form-group col-12">
+        <label for="nCompleto">Telefono</label>
+        <input type="text" class="form-control form-control-rounded" maxlength="15" formControlName="telefono" />
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer"><button (click)="submit()" class="btn btn-primary float-right">Actualizar</button></div>

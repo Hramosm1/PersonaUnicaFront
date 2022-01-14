@@ -1,0 +1,17 @@
+<prx-card>
+  <prx-card-header title="Referencias web"></prx-card-header>
+  <prx-card-body>
+    <ul class="list-group">
+      <li *ngFor="let ref of referenciasWeb" class="list-group-item">
+        <a target="_blank" class="italic underline" [href]="ref.link">{{ ref.link }}</a>
+        <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(ref.id)">eliminar</button>
+        <button class="btn btn-outline-warning float-right" (click)="openModal(editar, ref.id)">editar</button>
+      </li>
+    </ul>
+  </prx-card-body>
+  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+</prx-card>
+<ng-template #crear> <prx-form-redes titulo="Nueva referencia web" [modalRef]="modalRef"></prx-form-redes></ng-template>
+<ng-template #editar>
+  <prx-form-redes [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-redes
+></ng-template>
