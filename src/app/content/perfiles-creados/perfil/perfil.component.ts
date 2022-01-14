@@ -17,11 +17,11 @@ export class PerfilComponent implements OnInit {
   perfilForm: FormGroup;
   dis: boolean = true;
   campos = [
-    { titulo: 'Primer apellido', campo: 'primerApellido' },
-    { titulo: 'Segundo apellido', campo: 'segundoApellido' },
+    { titulo: 'Primer apellido', campo: 'primerApellido', ocultar: 2 },
+    { titulo: 'Segundo apellido', campo: 'segundoApellido', ocultar: 2 },
     { titulo: 'Fecha nacimiento / creación', campo: 'fecha' },
     { titulo: 'Género', campo: 'genero' },
-    { titulo: 'Razón social', campo: 'razonSocial' },
+    { titulo: 'Razón social', campo: 'razonSocial', ocultar: 1 },
     { titulo: 'Observaciones', campo: 'observaciones' },
   ];
 
@@ -64,8 +64,8 @@ export class PerfilComponent implements OnInit {
   private getPerfil() {
     this.activateRoute.params.subscribe((params) => {
       this.api.GetPerfil(params.id).subscribe((perfil: Perfil) => {
-        console.log(perfil);
         this.perfil = perfil;
+        this.campos = this.campos.filter((x) => x.ocultar != perfil.tipo);
         this.perfilForm.get('primerApellido').setValue(perfil.primerApellido);
         this.perfilForm.get('segundoApellido').setValue(perfil.segundoApellido);
         this.perfilForm.get('fecha').setValue(perfil.fecha);

@@ -1,14 +1,14 @@
 <ng-container *ngIf="perfil">
   <div class="bg-contrast py-md-3">
     <div class="container-fluid d-flex justify-content-md-between align-items-center">
-      <h1 class="title h3 d-none d-md-flex">Perfil</h1>
+      <h1 class="title h3 d-none d-md-flex">Perfil: {{ perfil.tipoPersona }}</h1>
     </div>
   </div>
 
   <div class="contact-header pt-4">
     <div class="container-fluid">
       <form [formGroup]="perfilForm">
-        <div class="row row-cols-2 row-cols-md-4">
+        <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4">
           <div *ngFor="let campo of campos" class="col form-group">
             <ng-container [ngSwitch]="campo.campo">
               <div *ngSwitchCase="'genero'">
@@ -71,7 +71,9 @@
       <div class="col">
         <prx-direcciones [direcciones]="perfil.direcciones" (actualizar)="actualizar($event)"></prx-direcciones>
       </div>
-      <div class="col"><prx-empleos [empleos]="perfil.empleos" (actualizar)="actualizar($event)"></prx-empleos></div>
+      <div class="col">
+        <prx-empleos [empleos]="perfil.empleos" (actualizar)="actualizar($event)"></prx-empleos>
+      </div>
       <div class="col">
         <prx-contactos [contactos]="perfil.contactos" (actualizar)="actualizar($event)"></prx-contactos>
       </div>

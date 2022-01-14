@@ -15,6 +15,8 @@ export interface Perfil {
   referenciasWeb: PUReferenciasWeb[];
   empleos: PUEmpleos[];
   personaUnica: boolean;
+  tipo: number;
+  tipoPersona: string;
 }
 export interface Listado {
   documento: string;
