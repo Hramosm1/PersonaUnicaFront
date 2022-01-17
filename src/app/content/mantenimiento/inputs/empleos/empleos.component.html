@@ -16,7 +16,7 @@
             <label class="control-label" for="noDocumento">Empresa</label>
             <label class="control-label" for="nombre" class="h4">: {{ nombres[i] }}</label>
             <div class="input-group">
-              <input type="text" disabled class="form-control" formControlName="empresa" />
+              <input type="text" hidden="true" disabled class="form-control" formControlName="empresa" />
               <span class="input-group-append">
                 <button type="button" (click)="openModal(empresas, i)" class="input-group-text">
                   <prx-icon icon="server"></prx-icon></button
