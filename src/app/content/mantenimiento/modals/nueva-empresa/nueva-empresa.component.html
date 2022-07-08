@@ -1,92 +1,102 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">titulo</h4>
-  <button type="button" class="close" (click)="modalRef.hide()">
-    <prx-icon icon="x"></prx-icon>
-  </button>
+	<h4 class="modal-title pull-left">titulo</h4>
+	<button type="button" class="close" (click)="modalRef.hide()">
+		<prx-icon icon="x"></prx-icon>
+	</button>
 </div>
 <div class="modal-body">
-  <div class="container">
-    <prx-card>
-      <prx-card-header title="Formulario Persona Unica"></prx-card-header>
-      <prx-card-body>
-        <div class="container mt-5">
-          <form [formGroup]="empresa">
-            <div class="row">
-              <div *ngIf="tipos" class="col-12 form-group px-5">
-                <label for="tipo" class="control-label">Tipo</label>
-                <input
-                  class="form-control form-control-rounded"
-                  type="text"
-                  disabled
-                  [value]="tipos[tipo - 1].tipoPersona | titlecase"
-                />
-              </div>
-              <div class="col-6 row">
-                <div class="col-12 form-group px-5">
-                  <label for="razon social" class="control-label">Razón social</label>
-                  <input
-                    formControlName="razonSocial"
-                    type="text"
-                    class="form-control form-control-rounded"
-                    placeholder="Restaurantes McDonald's S.A."
-                  />
-                </div>
-                <div class="col-12 form-group px-5">
-                  <label for="fecha" class="control-label">Fecha de constitución</label>
-                  <input
-                    formControlName="fecha"
-                    type="text"
-                    class="form-control form-control-rounded"
-                    bsDatepicker
-                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
-                  />
-                </div>
-                <div class="col-12 form-group px-5">
-                  <label for="obs" class="control-label">Observaciones</label>
-                  <textarea
-                    maxlength="500"
-                    formControlName="observaciones"
-                    class="form-control form-control-rounded"
-                    rows="3"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="col-6 row">
-                <div class="col-12 form-group px-5">
-                  <ng-container formArrayName="nombres">
-                    <label for="emp" class="control-label">Nombre de la empresa</label>
-                    <input
-                      formControlName="0"
-                      type="text"
-                      class="form-control form-control-rounded"
-                      placeholder="McDonald's"
-                    />
-                    <small class="text-danger">Obligatorio</small>
-                  </ng-container>
-                </div>
-              </div>
-            </div>
-            <prx-documentos></prx-documentos>
-            <prx-telefonos></prx-telefonos>
-            <prx-direcciones></prx-direcciones>
-            <prx-correos></prx-correos>
-            <div>
-              <br />
-              <hr />
-              <button
-                class="btn float-right"
-                [ngClass]="{ 'btn-danger': empresa.valid, 'btn-secondary': !empresa.valid }"
-                type="submit"
-                [disabled]="!empresa.valid"
-                (click)="submit()"
-              >
-                Crear
-              </button>
-            </div>
-          </form>
-        </div>
-      </prx-card-body>
-      <prx-card-footer></prx-card-footer>
-    </prx-card>
-  </div>
+	<div class="container">
+		<prx-card>
+			<prx-card-header title="Formulario Persona Unica"></prx-card-header>
+			<prx-card-body>
+				<div class="container mt-5">
+					<form [formGroup]="empresa">
+						<div class="row">
+							<div *ngIf="tipos" class="col-12 form-group px-5">
+								<label for="tipo" class="control-label">Tipo</label>
+								<input
+									class="form-control form-control-rounded"
+									type="text"
+									disabled
+									[value]="tipos[tipo - 1].tipoPersona | titlecase"
+								/>
+							</div>
+							<div class="col-6 row">
+								<div class="col-12 form-group px-5">
+									<label for="razon social" class="control-label"
+										>Razón social</label
+									>
+									<input
+										formControlName="razonSocial"
+										type="text"
+										class="form-control form-control-rounded"
+										placeholder="Restaurantes McDonald's S.A."
+									/>
+								</div>
+								<div class="col-12 form-group px-5">
+									<label for="fecha" class="control-label"
+										>Fecha de constitución</label
+									>
+									<input
+										formControlName="fecha"
+										type="text"
+										class="form-control form-control-rounded"
+										bsDatepicker
+										[bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+									/>
+								</div>
+								<div class="col-12 form-group px-5">
+									<label for="obs" class="control-label">Observaciones</label>
+									<textarea
+										maxlength="500"
+										formControlName="observaciones"
+										class="form-control form-control-rounded"
+										rows="3"
+									></textarea>
+								</div>
+							</div>
+							<div class="col-6 row">
+								<div class="col-12 form-group px-5">
+									<ng-container formArrayName="nombres">
+										<label for="emp" class="control-label"
+											>Nombre de la empresa</label
+										>
+										<input
+											formControlName="0"
+											type="text"
+											class="form-control form-control-rounded"
+											placeholder="McDonald's"
+										/>
+										<small class="text-danger">Obligatorio</small>
+									</ng-container>
+								</div>
+							</div>
+						</div>
+						<prx-documentos></prx-documentos>
+						<prx-telefonos></prx-telefonos>
+						<prx-direcciones></prx-direcciones>
+						<prx-correos></prx-correos>
+						<prx-referencias-web></prx-referencias-web>
+						<div>
+							<br />
+							<hr />
+							<button
+								class="btn float-right"
+								[ngClass]="{
+									'btn-danger': empresa.valid,
+									'btn-secondary': !empresa.valid
+								}"
+								type="submit"
+								[disabled]="!empresa.valid"
+								(click)="submit()"
+							>
+								Crear
+							</button>
+						</div>
+					</form>
+				</div>
+			</prx-card-body>
+			<prx-card-footer></prx-card-footer>
+		</prx-card>
+	</div>
 </div>

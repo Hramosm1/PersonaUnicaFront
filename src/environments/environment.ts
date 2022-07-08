@@ -11,12 +11,12 @@
 import { env } from './.env';
 
 export const environment = {
-  production: false,
-  hmr: true,
-  version: env.npm_package_version + '-dev',
-  serverUrl: 'http://localhost:3001/node/api/',
-  defaultLanguage: 'en-US',
-  supportedLanguages: ['en-US', 'es-ES'],
+	production: false,
+	hmr: true,
+	version: env.npm_package_version + '-dev',
+	serverUrl: 'http://localhost:9421/node/api/',
+	defaultLanguage: 'en-US',
+	supportedLanguages: ['en-US', 'es-ES'],
 };
 //http://192.168.8.28/node/api/
 /*

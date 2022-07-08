@@ -3,20 +3,20 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-vertical-toggler',
-  templateUrl: './vertical-toggler.component.html',
-  styleUrls: ['./vertical-toggler.component.scss'],
+	selector: 'prx-vertical-toggler',
+	templateUrl: './vertical-toggler.component.html',
+	styleUrls: ['./vertical-toggler.component.scss'],
 })
 export class VerticalTogglerComponent extends BaseComponent implements OnInit {
-  angleDown = faChevronDown;
+	angleDown = faChevronDown;
 
-  @HostBinding('class.toggled')
-  @Input()
-  toggled: boolean;
+	@HostBinding('class.toggled')
+	@Input()
+	toggled: boolean;
 
-  constructor() {
-    super('vertical-toggler');
-  }
+	constructor() {
+		super('vertical-toggler');
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

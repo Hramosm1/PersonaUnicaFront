@@ -1,24 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'prx-img',
-  templateUrl: './img.component.html',
-  styleUrls: ['./img.component.scss'],
+	selector: 'prx-img',
+	templateUrl: './img.component.html',
+	styleUrls: ['./img.component.scss'],
 })
 export class ImgComponent implements OnInit {
-  @Input()
-  image: string;
+	@Input()
+	image: string;
 
-  @Input()
-  responsive: boolean = true;
+	@Input()
+	responsive: boolean = true;
 
-  @Input()
-  isMockup: boolean = false;
+	@Input()
+	isMockup: boolean = false;
 
-  @Input()
-  imgClass: string;
+	@Input()
+	imgClass: string;
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

@@ -8,8 +8,8 @@ import { AlertComponent } from './alert/alert.component';
 const exports = [AlertComponent];
 
 @NgModule({
-  declarations: [AlertComponent],
-  imports: [CommonModule, AlertModule, IconsModule],
-  exports: [...exports],
+	declarations: [AlertComponent],
+	imports: [CommonModule, AlertModule, IconsModule],
+	exports: [...exports],
 })
 export class AlertsModule {}

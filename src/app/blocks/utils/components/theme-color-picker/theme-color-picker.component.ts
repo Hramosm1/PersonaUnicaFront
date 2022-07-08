@@ -3,41 +3,41 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { ThemeColor, ColorsService } from '@core';
 
 @Component({
-  selector: 'prx-theme-color-picker',
-  templateUrl: './theme-color-picker.component.html',
-  styleUrls: ['./theme-color-picker.component.scss'],
+	selector: 'prx-theme-color-picker',
+	templateUrl: './theme-color-picker.component.html',
+	styleUrls: ['./theme-color-picker.component.scss'],
 })
 export class ThemeColorPickerComponent implements OnInit {
-  colors: ThemeColor[];
+	colors: ThemeColor[];
 
-  icons = {
-    angleDown: faAngleDown,
-  };
+	icons = {
+		angleDown: faAngleDown,
+	};
 
-  @Input()
-  dropup: boolean = false;
+	@Input()
+	dropup: boolean = false;
 
-  @Input()
-  color: string = 'primary';
+	@Input()
+	color: string = 'primary';
 
-  @Input()
-  current: ThemeColor = null;
+	@Input()
+	current: ThemeColor = null;
 
-  @Output()
-  change: EventEmitter<ThemeColor> = new EventEmitter<ThemeColor>();
+	@Output()
+	change: EventEmitter<ThemeColor> = new EventEmitter<ThemeColor>();
 
-  constructor(private colorService: ColorsService) {}
+	constructor(private colorService: ColorsService) {}
 
-  ngOnInit() {
-    this.colors = this.colorService.ThemeColors;
+	ngOnInit() {
+		this.colors = this.colorService.ThemeColors;
 
-    if (!this.current) {
-      this.current = this.colors.find((e) => e.value == 'primary');
-    }
-  }
+		if (!this.current) {
+			this.current = this.colors.find((e) => e.value == 'primary');
+		}
+	}
 
-  onChange(color: ThemeColor) {
-    this.current = color;
-    this.change.emit(color);
-  }
+	onChange(color: ThemeColor) {
+		this.current = color;
+		this.change.emit(color);
+	}
 }

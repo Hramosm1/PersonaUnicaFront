@@ -5,7 +5,7 @@ import { StartRoutingModule } from './start-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [WelcomeComponent],
-  imports: [UtilsModule, StartRoutingModule],
+	declarations: [WelcomeComponent],
+	imports: [UtilsModule, StartRoutingModule],
 })
 export class StartModule {}

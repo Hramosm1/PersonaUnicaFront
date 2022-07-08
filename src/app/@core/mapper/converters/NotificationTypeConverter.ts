@@ -13,48 +13,48 @@ const logger = new Logger('NotificationIconConverter');
  * We want to place our own values which in this case will map to specific 'icon names' we'll display accordingly the type of the notification
  */
 export function NotificationTypeConverter() {
-  return function (target: any, key: string) {
-    const setter = function (newValue: string) {
-      logger.debug(` ==> Setter`, target);
-      this.__type = newValue;
-      logger.debug(`This:`, this);
-    };
+	return function (target: any, key: string) {
+		const setter = function (newValue: string) {
+			logger.debug(` ==> Setter`, target);
+			this.__type = newValue;
+			logger.debug(`This:`, this);
+		};
 
-    const getter = function () {
-      logger.debug(` ==> Getter`, target);
-      let newVal = this.__type;
+		const getter = function () {
+			logger.debug(` ==> Getter`, target);
+			let newVal = this.__type;
 
-      switch (this.__type) {
-        case 'notification':
-          newVal = 'volume-2';
-          break;
-        case 'achievement':
-          newVal = 'award';
-          break;
-        case 'general':
-          newVal = 'arrow-right-circle';
-          break;
-        case 'comment':
-          newVal = 'message-circle';
-          break;
-        case 'support':
-          newVal = 'life-buoy';
-          break;
-        case 'new':
-          newVal = 'file-text';
-          break;
-      }
+			switch (this.__type) {
+				case 'notification':
+					newVal = 'volume-2';
+					break;
+				case 'achievement':
+					newVal = 'award';
+					break;
+				case 'general':
+					newVal = 'arrow-right-circle';
+					break;
+				case 'comment':
+					newVal = 'message-circle';
+					break;
+				case 'support':
+					newVal = 'life-buoy';
+					break;
+				case 'new':
+					newVal = 'file-text';
+					break;
+			}
 
-      return newVal;
-    };
+			return newVal;
+		};
 
-    if (delete target[key]) {
-      Object.defineProperty(target, key, {
-        get: getter,
-        set: setter,
-        enumerable: true,
-        configurable: true,
-      });
-    }
-  };
+		if (delete target[key]) {
+			Object.defineProperty(target, key, {
+				get: getter,
+				set: setter,
+				enumerable: true,
+				configurable: true,
+			});
+		}
+	};
 }

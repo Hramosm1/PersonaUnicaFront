@@ -11,17 +11,17 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { AccordionGroupComponent } from './accordion-group/accordion-group.component';
 
 const exports = [
-  CardComponent,
-  CardHeaderComponent,
-  CardBodyComponent,
-  CardFooterComponent,
-  AccordionComponent,
-  AccordionGroupComponent,
+	CardComponent,
+	CardHeaderComponent,
+	CardBodyComponent,
+	CardFooterComponent,
+	AccordionComponent,
+	AccordionGroupComponent,
 ];
 
 @NgModule({
-  declarations: [...exports],
-  imports: [CommonModule, CollapseModule, NavigationsModule],
-  exports: exports,
+	declarations: [...exports],
+	imports: [CommonModule, CollapseModule, NavigationsModule],
+	exports: exports,
 })
 export class CardsModule {}

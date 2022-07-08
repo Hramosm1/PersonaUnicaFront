@@ -1,47 +1,54 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	Output,
+	EventEmitter,
+	HostBinding,
+} from '@angular/core';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-accordion-group',
-  templateUrl: './accordion-group.component.html',
-  styleUrls: ['./accordion-group.component.scss'],
+	selector: 'prx-accordion-group',
+	templateUrl: './accordion-group.component.html',
+	styleUrls: ['./accordion-group.component.scss'],
 })
 export class AccordionGroupComponent extends BaseComponent implements OnInit {
-  protected _isOpen = false;
+	protected _isOpen = false;
 
-  /** turn on/off animation */
-  isAnimated = true;
+	/** turn on/off animation */
+	isAnimated = true;
 
-  @Input()
-  heading: string;
+	@Input()
+	heading: string;
 
-  @Input()
-  isDisabled: boolean;
+	@Input()
+	isDisabled: boolean;
 
-  @HostBinding('class.accordion-group-open')
-  @Input()
-  get isOpen(): boolean {
-    return this._isOpen;
-  }
-  set isOpen(value: boolean) {
-    if (value !== this.isOpen) {
-      this._isOpen = value;
-    }
-  }
+	@HostBinding('class.accordion-group-open')
+	@Input()
+	get isOpen(): boolean {
+		return this._isOpen;
+	}
+	set isOpen(value: boolean) {
+		if (value !== this.isOpen) {
+			this._isOpen = value;
+		}
+	}
 
-  @Output()
-  isOpenChange: EventEmitter<any> = new EventEmitter<any>();
+	@Output()
+	isOpenChange: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
-    super('accordion-group');
-  }
+	constructor() {
+		super('accordion-group');
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  toggleOpen() {
-    if (!this.isDisabled) {
-      this.isOpen = !this.isOpen;
-      this.isOpenChange.emit({ target: this, isOpen: this.isOpen });
-    }
-  }
+	toggleOpen() {
+		if (!this.isDisabled) {
+			this.isOpen = !this.isOpen;
+			this.isOpenChange.emit({ target: this, isOpen: this.isOpen });
+		}
+	}
 }

@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-card-body',
-  templateUrl: './card-body.component.html',
-  styleUrls: ['./card-body.component.scss'],
+	selector: 'prx-card-body',
+	templateUrl: './card-body.component.html',
+	styleUrls: ['./card-body.component.scss'],
 })
 export class CardBodyComponent extends BaseComponent implements OnInit {
-  constructor() {
-    super('card-body');
-  }
+	constructor() {
+		super('card-body');
+	}
 
-  ngOnInit(): void {}
+	ngOnInit(): void {}
 }

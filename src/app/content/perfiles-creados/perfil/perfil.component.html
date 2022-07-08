@@ -1,83 +1,127 @@
 <ng-container *ngIf="perfil">
-  <div class="bg-contrast py-md-3">
-    <div class="container-fluid d-flex justify-content-md-between align-items-center">
-      <h1 class="title h3 d-none d-md-flex">Perfil</h1>
-    </div>
-  </div>
+	<div class="bg-contrast py-md-3">
+		<div
+			class="
+				container-fluid
+				d-flex
+				justify-content-md-between
+				align-items-center
+			"
+		>
+			<h1 class="title h3 d-none d-md-flex">
+				Perfil: {{ perfil.tipoPersona }}
+			</h1>
+		</div>
+	</div>
 
-  <div class="contact-header pt-4">
-    <div class="container-fluid">
-      <form [formGroup]="perfilForm">
-        <div class="row row-cols-2 row-cols-md-4">
-          <div *ngFor="let campo of campos" class="col form-group">
-            <ng-container [ngSwitch]="campo.campo">
-              <div *ngSwitchCase="'genero'">
-                <label class="form-label">{{ campo.titulo }}</label>
-                <select [formControlName]="campo.campo" class="form-control form-control-rounded">
-                  <option *ngFor="let genero of generos" [value]="genero.id">{{ genero.genero }}</option>
-                </select>
-              </div>
-              <div *ngSwitchCase="'observaciones'">
-                <label class="form-label">{{ campo.titulo }}</label>
-                <textarea
-                  maxlength="500"
-                  class="form-control form-control-rounded"
-                  [formControlName]="campo.campo"
-                  cols="30"
-                  rows="3"
-                ></textarea>
-              </div>
-              <div *ngSwitchCase="'fecha'">
-                <label class="form-label">{{ campo.titulo }}</label>
-                <input
-                  [formControlName]="campo.campo"
-                  type="text"
-                  class="form-control form-control-rounded"
-                  bsDatepicker
-                  [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
-                />
-              </div>
-              <div *ngSwitchDefault>
-                <label class="form-label">{{ campo.titulo }}</label>
-                <input
-                  [formControlName]="campo.campo"
-                  class="form-control form-control-rounded"
-                  [value]="perfil[campo.campo]"
-                />
-              </div>
-            </ng-container>
-          </div>
-          <div class="col-6 d-flex justify-content-center align-items-center">
-            <button class="btn btn-primary" (click)="change()">{{ dis ? 'Editar' : 'Guardar Cambios' }}</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="container-fluid mt-5">
-    <div class="row row-cols-1 row-cols-lg-2">
-      <div class="col">
-        <prx-nombres [nombres]="perfil.nombres" (actualizar)="actualizar($event)"></prx-nombres>
-      </div>
-      <div class="col">
-        <prx-documentos [documentos]="perfil.documentos" (actualizar)="actualizar($event)"></prx-documentos>
-      </div>
-      <div class="col">
-        <prx-telefonos [telefonos]="perfil.telefonos" (actualizar)="actualizar($event)"></prx-telefonos>
-      </div>
-      <div class="col">
-        <prx-correos [correos]="perfil.correos" (actualizar)="actualizar($event)"></prx-correos>
-      </div>
-      <div class="col">
-        <prx-direcciones [direcciones]="perfil.direcciones" (actualizar)="actualizar($event)"></prx-direcciones>
-      </div>
-      <div class="col"><prx-empleos [empleos]="perfil.empleos" (actualizar)="actualizar($event)"></prx-empleos></div>
-      <div class="col">
-        <prx-contactos [contactos]="perfil.contactos" (actualizar)="actualizar($event)"></prx-contactos>
-      </div>
-      <div class="col">
-        <prx-redes [referenciasWeb]="perfil.referenciasWeb" (actualizar)="actualizar($event)"></prx-redes>
-      </div>
-    </div>
-  </div>
+	<div class="contact-header pt-4">
+		<div class="container-fluid">
+			<form [formGroup]="perfilForm">
+				<div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4">
+					<div *ngFor="let campo of campos" class="col form-group">
+						<ng-container [ngSwitch]="campo.campo">
+							<div *ngSwitchCase="'genero'">
+								<label class="form-label">{{ campo.titulo }}</label>
+								<select
+									[formControlName]="campo.campo"
+									class="form-control form-control-rounded"
+								>
+									<option *ngFor="let genero of generos" [value]="genero.id">
+										{{ genero.genero }}
+									</option>
+								</select>
+							</div>
+							<div *ngSwitchCase="'observaciones'">
+								<label class="form-label">{{ campo.titulo }}</label>
+								<textarea
+									maxlength="500"
+									class="form-control form-control-rounded"
+									[formControlName]="campo.campo"
+									cols="30"
+									rows="3"
+								></textarea>
+							</div>
+							<div *ngSwitchCase="'fecha'">
+								<label class="form-label">{{ campo.titulo }}</label>
+								<input
+									[formControlName]="campo.campo"
+									type="text"
+									class="form-control form-control-rounded"
+									bsDatepicker
+									[bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+								/>
+							</div>
+							<div *ngSwitchDefault>
+								<label class="form-label">{{ campo.titulo }}</label>
+								<input
+									[formControlName]="campo.campo"
+									class="form-control form-control-rounded"
+									[value]="perfil[campo.campo]"
+								/>
+							</div>
+						</ng-container>
+					</div>
+					<div class="col-6 d-flex justify-content-center align-items-center">
+						<button class="btn btn-primary" (click)="change()">
+							{{ dis ? 'Editar' : 'Guardar Cambios' }}
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="container-fluid mt-5">
+		<div class="row row-cols-1 row-cols-lg-2">
+			<div class="col">
+				<prx-nombres
+					[organizacion]="perfil.tipoPersona === 'Persona'"
+					[nombres]="perfil.nombres"
+					(actualizar)="actualizar($event)"
+				>
+				</prx-nombres>
+			</div>
+			<div class="col">
+				<prx-documentos
+					[documentos]="perfil.documentos"
+					(actualizar)="actualizar($event)"
+				></prx-documentos>
+			</div>
+			<div class="col">
+				<prx-telefonos
+					[telefonos]="perfil.telefonos"
+					(actualizar)="actualizar($event)"
+				></prx-telefonos>
+			</div>
+			<div class="col">
+				<prx-correos
+					[correos]="perfil.correos"
+					(actualizar)="actualizar($event)"
+				></prx-correos>
+			</div>
+			<div class="col">
+				<prx-direcciones
+					[direcciones]="perfil.direcciones"
+					(actualizar)="actualizar($event)"
+				></prx-direcciones>
+			</div>
+			<div class="col">
+				<prx-empleos
+					[empleos]="perfil.empleos"
+					(actualizar)="actualizar($event)"
+				></prx-empleos>
+			</div>
+			<div class="col">
+				<prx-contactos
+					[contactos]="perfil.contactos"
+					(actualizar)="actualizar($event)"
+				></prx-contactos>
+			</div>
+			<div class="col">
+				<prx-redes
+					[referenciasWeb]="perfil.referenciasWeb"
+					(actualizar)="actualizar($event)"
+				></prx-redes>
+			</div>
+		</div>
+	</div>
 </ng-container>

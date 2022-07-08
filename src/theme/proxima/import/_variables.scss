@@ -119,7 +119,8 @@ $dropdown-body-max-height: 380px;
 $dropdown-bg-color: $white;
 $dropdown-nav-min-width: 350px;
 $dropdown-box-shadow-color: rgba($color-dark, 0.2);
-$dropdown-box-shadow: 0 0 15px 1px $dropdown-box-shadow-color, 0 0 1px rgba(0, 0, 0, 0.2);
+$dropdown-box-shadow: 0 0 15px 1px $dropdown-box-shadow-color,
+	0 0 1px rgba(0, 0, 0, 0.2);
 
 //
 $input-hover-border-color: $gray-500;
@@ -149,10 +150,10 @@ $placeholder-title--height: 12px;
 $placeholder-bolt--width: 70px;
 $placeholder-bolt--bg-color: $gray-100;
 $placeholder-bolt--bg-image: linear-gradient(
-  90deg,
-  $placeholder-bar--bg-color,
-  $placeholder-bolt--bg-color,
-  $placeholder-bar--bg-color
+	90deg,
+	$placeholder-bar--bg-color,
+	$placeholder-bolt--bg-color,
+	$placeholder-bar--bg-color
 );
 
 // CARDS
@@ -216,7 +217,8 @@ $chart-sparkline-height: 35px !default;
 $chart-legend-margin-top: 2.5rem !default;
 $chart-legend-font-size: $font-size-sm !default;
 $chart-legend-color: $text-muted !default;
-$chart-legend-height: $chart-legend-margin-top + $chart-legend-font-size * $line-height-base !default;
+$chart-legend-height: $chart-legend-margin-top + $chart-legend-font-size *
+	$line-height-base !default;
 
 // CARDS
 $card-fade-height: 300px;

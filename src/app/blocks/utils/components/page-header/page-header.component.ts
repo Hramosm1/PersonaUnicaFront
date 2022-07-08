@@ -1,34 +1,42 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	AfterViewInit,
+	Input,
+	ViewChild,
+	ElementRef,
+	ChangeDetectorRef,
+} from '@angular/core';
 
 @Component({
-  selector: 'prx-page-header',
-  templateUrl: './page-header.component.html',
-  styleUrls: ['./page-header.component.scss'],
+	selector: 'prx-page-header',
+	templateUrl: './page-header.component.html',
+	styleUrls: ['./page-header.component.scss'],
 })
 export class PageHeaderComponent implements OnInit, AfterViewInit {
-  @Input()
-  title: string;
+	@Input()
+	title: string;
 
-  @Input()
-  pre: string;
+	@Input()
+	pre: string;
 
-  @Input()
-  sub: string;
+	@Input()
+	sub: string;
 
-  @Input()
-  hasNavigation: boolean;
+	@Input()
+	hasNavigation: boolean;
 
-  @ViewChild('toolsView', { static: false })
-  toolsView: ElementRef;
+	@ViewChild('toolsView', { static: false })
+	toolsView: ElementRef;
 
-  toolsHidden: boolean;
+	toolsHidden: boolean;
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+	constructor(private cdRef: ChangeDetectorRef) {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  ngAfterViewInit() {
-    this.toolsHidden = this.toolsView.nativeElement.children.length === 0;
-    this.cdRef.detectChanges();
-  }
+	ngAfterViewInit() {
+		this.toolsHidden = this.toolsView.nativeElement.children.length === 0;
+		this.cdRef.detectChanges();
+	}
 }

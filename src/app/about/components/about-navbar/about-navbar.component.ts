@@ -5,41 +5,41 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 const STICKY_POINT = 90;
 
 @Component({
-  selector: 'prx-about-navbar',
-  templateUrl: './about-navbar.component.html',
-  styleUrls: ['./about-navbar.component.scss'],
+	selector: 'prx-about-navbar',
+	templateUrl: './about-navbar.component.html',
+	styleUrls: ['./about-navbar.component.scss'],
 })
 export class AboutNavbarComponent implements OnInit {
-  icons = {
-    buy: faCreditCard,
-    demos: faChevronRight,
-  };
+	icons = {
+		buy: faCreditCard,
+		demos: faChevronRight,
+	};
 
-  @Input()
-  useOnlyDarkLogo: boolean;
+	@Input()
+	useOnlyDarkLogo: boolean;
 
-  @Input()
-  darkLinks: boolean;
+	@Input()
+	darkLinks: boolean;
 
-  navbarExpanded: boolean;
-  navbarSticky: boolean;
+	navbarExpanded: boolean;
+	navbarSticky: boolean;
 
-  @HostListener('window:scroll', ['$event'])
-  handleScroll() {
-    const windowScroll = window.pageYOffset;
+	@HostListener('window:scroll', ['$event'])
+	handleScroll() {
+		const windowScroll = window.pageYOffset;
 
-    if (windowScroll >= STICKY_POINT) {
-      this.navbarSticky = true;
-    } else {
-      this.navbarSticky = false;
-    }
-  }
+		if (windowScroll >= STICKY_POINT) {
+			this.navbarSticky = true;
+		} else {
+			this.navbarSticky = false;
+		}
+	}
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  toggleNavbar() {
-    this.navbarExpanded = !this.navbarExpanded;
-  }
+	toggleNavbar() {
+		this.navbarExpanded = !this.navbarExpanded;
+	}
 }

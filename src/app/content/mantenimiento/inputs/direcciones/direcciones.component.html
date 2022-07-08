@@ -1,76 +1,110 @@
 <ng-container [formGroup]="form">
-  <prx-page-header title="Direcciones"></prx-page-header>
-  <div class="container px-5">
-    <button class="btn btn-primary float-right" type="button" (click)="agregarDireccion()">Agregar dirección</button>
-    <ng-container formArrayName="direcciones">
-      <div *ngFor="let dir of direcciones.controls; let i = index">
-        <div class="row" [formGroupName]="i">
-          <div class="form-group col-6">
-            <label class="control-label" for="origen">Origen de la información</label>
-            <select formControlName="origenInformacion" class="form-control form-control-rounded">
-              <option *ngFor="let tipo of tiposOrigen" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
-            </select>
-            <small class="text-danger">Obligatorio</small>
-          </div>
-          <div *ngIf="departamentos" class="form-group col-6">
-            <label class="control-label" for="noDocumento">Departamento</label>
-            <select formControlName="departamento" class="form-control form-control-rounded">
-              <option *ngFor="let dep of departamentos" [ngValue]="dep">{{ dep }}</option>
-            </select>
-            <small class="text-danger">Obligatorio</small>
-          </div>
-          <div *ngIf="direcciones.length > 0" class="form-group col-6">
-            <label class="control-label" for="noDocumento">Municipio</label>
-            <select formControlName="municipio" class="form-control form-control-rounded">
-              <option
-                *ngFor="let muni of departamentosYMunicipios[direcciones.at(i).value.departamento]"
-                [ngValue]="muni"
-              >
-                {{ muni }}
-              </option>
-            </select>
-            <small class="text-danger">Obligatorio</small>
-          </div>
-          <div class="form-group col-6">
-            <label class="control-label">Zona</label>
-            <input formControlName="zona" type="number" min="0" max="25" class="form-control form-control-rounded" />
-            <small class="text-danger">Obligatorio</small>
-          </div>
-          <div class="form-group col-6">
-            <label class="control-label">Colonia</label>
-            <input
-              formControlName="colonia"
-              type="text"
-              placeholder="col. mariscal"
-              class="form-control form-control-rounded"
-            />
-          </div>
-          <div class="form-group col-6">
-            <label class="control-label">Dirección</label>
-            <input
-              formControlName="direccion"
-              type="text"
-              placeholder="11av"
-              class="form-control form-control-rounded"
-            />
-          </div>
-          <div class="form-group col-4">
-            <label class="control-label">Referencia</label>
-            <textarea
-              maxlength="500"
-              formControlName="referencia"
-              placeholder="Junto a heladeria"
-              class="form-control form-control-rounded"
-              rows="3"
-            ></textarea>
-          </div>
-          <div class="col-2">
-            <button class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarDireccion(i)">
-              <prx-icon icon="x" size="sm"></prx-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
+	<prx-page-header title="Direcciones"></prx-page-header>
+	<div class="container px-5">
+		<button
+			class="btn btn-primary float-right"
+			type="button"
+			(click)="agregarDireccion()"
+		>
+			Agregar dirección
+		</button>
+		<ng-container formArrayName="direcciones">
+			<div *ngFor="let dir of direcciones.controls; let i = index">
+				<div class="row" [formGroupName]="i">
+					<div class="form-group col-6">
+						<label class="control-label" for="origen"
+							>Origen de la información</label
+						>
+						<select
+							formControlName="origenInformacion"
+							class="form-control form-control-rounded"
+						>
+							<option *ngFor="let tipo of tiposOrigen" [ngValue]="tipo.id">
+								{{ tipo.tipoOrigen }}
+							</option>
+						</select>
+						<small class="text-danger">Obligatorio</small>
+					</div>
+					<div *ngIf="departamentos" class="form-group col-6">
+						<label class="control-label" for="noDocumento">Departamento</label>
+						<select
+							formControlName="departamento"
+							class="form-control form-control-rounded"
+						>
+							<option *ngFor="let dep of departamentos" [ngValue]="dep">
+								{{ dep }}
+							</option>
+						</select>
+						<small class="text-danger">Obligatorio</small>
+					</div>
+					<div *ngIf="direcciones.length > 0" class="form-group col-6">
+						<label class="control-label" for="noDocumento">Municipio</label>
+						<select
+							formControlName="municipio"
+							class="form-control form-control-rounded"
+						>
+							<option
+								*ngFor="
+									let muni of departamentosYMunicipios[
+										direcciones.at(i).value.departamento
+									]
+								"
+								[ngValue]="muni"
+							>
+								{{ muni }}
+							</option>
+						</select>
+						<small class="text-danger">Obligatorio</small>
+					</div>
+					<div class="form-group col-6">
+						<label class="control-label">Zona</label>
+						<input
+							formControlName="zona"
+							type="number"
+							min="0"
+							max="25"
+							class="form-control form-control-rounded"
+						/>
+						<small class="text-danger">Obligatorio</small>
+					</div>
+					<div class="form-group col-6">
+						<label class="control-label">Colonia</label>
+						<input
+							formControlName="colonia"
+							type="text"
+							placeholder="col. mariscal"
+							class="form-control form-control-rounded"
+						/>
+					</div>
+					<div class="form-group col-6">
+						<label class="control-label">Dirección</label>
+						<input
+							formControlName="direccion"
+							type="text"
+							placeholder="11av"
+							class="form-control form-control-rounded"
+						/>
+					</div>
+					<div class="form-group col-4">
+						<label class="control-label">Referencia</label>
+						<textarea
+							maxlength="500"
+							formControlName="referencia"
+							placeholder="Junto a heladeria"
+							class="form-control form-control-rounded"
+							rows="3"
+						></textarea>
+					</div>
+					<div class="col-2">
+						<button
+							class="btn btn-outline-secondary btn-circle btn-sm"
+							(click)="eliminarDireccion(i)"
+						>
+							<prx-icon icon="x" size="sm"></prx-icon>
+						</button>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+	</div>
 </ng-container>

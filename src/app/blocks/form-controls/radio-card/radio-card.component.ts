@@ -1,37 +1,44 @@
-import { Component, OnInit, Input, forwardRef, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	forwardRef,
+	ChangeDetectorRef,
+	AfterViewInit,
+} from '@angular/core';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { BaseRadio } from '../radio/base-radio';
 import { ColorScheme } from '@core';
 
 @Component({
-  selector: 'prx-radio-card',
-  templateUrl: './radio-card.component.html',
-  styleUrls: ['./radio-card.component.scss'],
-  providers: [
-    {
-      provide: BaseRadio,
-      useExisting: forwardRef(() => RadioCardComponent),
-    },
-  ],
+	selector: 'prx-radio-card',
+	templateUrl: './radio-card.component.html',
+	styleUrls: ['./radio-card.component.scss'],
+	providers: [
+		{
+			provide: BaseRadio,
+			useExisting: forwardRef(() => RadioCardComponent),
+		},
+	],
 })
 export class RadioCardComponent extends BaseRadio implements OnInit {
-  check = faCheck;
+	check = faCheck;
 
-  @Input()
-  showMark: boolean = false;
+	@Input()
+	showMark: boolean = false;
 
-  @Input()
-  theme: ColorScheme = ColorScheme.Primary;
+	@Input()
+	theme: ColorScheme = ColorScheme.Primary;
 
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-  hostClasses() {
-    const classes = super.hostClasses();
+	hostClasses() {
+		const classes = super.hostClasses();
 
-    return [...classes, `radio-${this.theme}`];
-  }
+		return [...classes, `radio-${this.theme}`];
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

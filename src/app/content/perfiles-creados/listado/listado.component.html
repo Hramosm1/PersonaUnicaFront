@@ -1,42 +1,140 @@
 <div class="container">
-  <prx-page-header title="Listado personas ingresadas"> </prx-page-header>
-  <prx-card>
-    <prx-card-header>
-      <input class="form-control" [(ngModel)]="filtro" type="text" />
-    </prx-card-header>
-    <prx-card-body>
-      <ng-container *ngIf="rows && rows.length; else loading"></ng-container>
-      <ngx-datatable
-        [rows]="rows | filtroLista: filtro"
-        [limit]="5"
-        [columnMode]="cm.force"
-        rowHeight="auto"
-        footerHeight="auto"
-        headerHeight="auto"
-      >
-        <ngx-datatable-column name="Nombres">
-          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.nombres }}</ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Apellidos / Razón social">
-          <ng-template let-row="row" ngx-datatable-cell-template>
-            <ng-container>
-              {{ row.primerApellido + ' ' + row.segundoApellido + ' ' + row.razonSocial }}
-            </ng-container>
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="documento">
-          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.documento }}</ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="tipo">
-          <ng-template let-row="row" ngx-datatable-cell-template>{{ row.tipoPersona }}</ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Editar">
-          <ng-template let-row="row" ngx-datatable-cell-template
-            ><a class="btn btn-outline-warning" [routerLink]="['/perfiles/perfil/' + row.id]">Editar</a></ng-template
-          >
-        </ngx-datatable-column>
-      </ngx-datatable>
-    </prx-card-body>
-  </prx-card>
+	<prx-page-header title="Listado personas ingresadas"> </prx-page-header>
+	<prx-card>
+		<prx-card-header>
+			<button class="btn btn-primary" (click)="openModal(filtrar)">
+				Filtrar<prx-icon [icon]="filtro"></prx-icon>
+			</button>
+			<button class="btn btn-danger" *ngIf="filtros" (click)="reset()">
+				Quitar filtros
+			</button>
+		</prx-card-header>
+		<prx-card-body>
+			<ng-container *ngIf="rows; else loading">
+				<ngx-datatable
+					[rows]="rows"
+					[limit]="page.take"
+					[columnMode]="cm.force"
+					[externalPaging]="true"
+					[count]="page.totalElements"
+					rowHeight="auto"
+					footerHeight="auto"
+					headerHeight="auto"
+					(page)="setPage($event)"
+				>
+					<ngx-datatable-column name="Nombres">
+						<ng-template let-row="row" ngx-datatable-cell-template>{{
+							getNombres(row.PU_Nombres)
+						}}</ng-template>
+					</ngx-datatable-column>
+					<ngx-datatable-column name="Apellidos / Razón social">
+						<ng-template let-row="row" ngx-datatable-cell-template>
+							<ng-container>
+								{{
+									row.primerApellido +
+										' ' +
+										row.segundoApellido +
+										' ' +
+										row.razonSocial
+								}}
+							</ng-container>
+						</ng-template>
+					</ngx-datatable-column>
+					<ngx-datatable-column name="documento">
+						<ng-template let-row="row" ngx-datatable-cell-template>{{
+							row.PU_Documentos.length > 0 ? row.PU_Documentos[0].documento : ''
+						}}</ng-template>
+					</ngx-datatable-column>
+					<ngx-datatable-column name="tipo">
+						<ng-template let-row="row" ngx-datatable-cell-template>{{
+							row.PU_TiposPersona.tipoPersona
+						}}</ng-template>
+					</ngx-datatable-column>
+					<ngx-datatable-column name="Editar">
+						<ng-template let-row="row" ngx-datatable-cell-template
+							><a
+								class="btn btn-outline-warning"
+								[routerLink]="['/perfiles/perfil/' + row.id]"
+								>Editar</a
+							></ng-template
+						>
+					</ngx-datatable-column>
+				</ngx-datatable></ng-container
+			>
+		</prx-card-body>
+	</prx-card>
 </div>
-<ng-template #loading><prx-loader [template]="'table'" [isLoading]="isLoading" [count]="3"></prx-loader></ng-template>
+<ng-template #filtrar>
+	<div class="modal-body">
+		<form [formGroup]="formulario" (ngSubmit)="busqueda()">
+			<div class="form-group">
+				<label for="fnombre" class="control-label">Nombre</label>
+				<input
+					type="text"
+					formControlName="nombre"
+					class="form-control form-control-rounded"
+				/>
+			</div>
+			<ng-container *ngIf="(tipo | async) == 1">
+				<div class="form-group">
+					<label for="fpApellido" class="control-label">Primer apellido</label>
+					<input
+						type="text"
+						formControlName="primerApellido"
+						class="form-control form-control-rounded"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="fSApellido" class="control-label">Segundo apellido</label>
+					<input
+						type="text"
+						formControlName="segundoApellido"
+						class="form-control form-control-rounded"
+					/>
+				</div>
+			</ng-container>
+			<ng-container *ngIf="(tipo | async) == 2">
+				<div class="form-group">
+					<label for="fRazon" class="control-label">Razón social</label>
+					<input
+						type="text"
+						formControlName="razonSocial"
+						class="form-control form-control-rounded"
+					/>
+				</div>
+			</ng-container>
+			<div class="form-group">
+				<label for="fDocumento" class="control-label">Documento</label>
+				<input
+					type="text"
+					formControlName="documento"
+					class="form-control form-control-rounded"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="fTipo" class="control-label">Tipo</label>
+				<select
+					formControlName="tipo"
+					class="form-control form-control-rounded"
+				>
+					<option selected disabled></option>
+					<option [value]="1">Persona</option>
+					<option [value]="2">Organización</option>
+				</select>
+			</div>
+			<div class="d-flex flex-row-reverse">
+				<button type="submit" class="btn btn-primary">Buscar</button>
+				<button (click)="modalRef.hide()" class="btn btn-danger">
+					cancelar
+				</button>
+			</div>
+		</form>
+	</div></ng-template
+>
+<ng-template #loading
+	><prx-loader
+		[template]="'table'"
+		[isLoading]="isLoading"
+		[count]="3"
+	></prx-loader
+></ng-template>

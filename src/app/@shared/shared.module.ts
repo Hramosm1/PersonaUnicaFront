@@ -13,23 +13,23 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { UnsanitizePipe } from './pipes/unsanitize.pipe';
 
 const exportModules = [
-  // external modules
-  CommonModule,
-  HttpClientModule,
-  RouterModule,
-  TranslateModule,
-  PerfectScrollbarModule,
+	// external modules
+	CommonModule,
+	HttpClientModule,
+	RouterModule,
+	TranslateModule,
+	PerfectScrollbarModule,
 
-  // custom modules
-  BootstrapModule,
-  CardsModule,
-  IconsModule,
-  FormControlsModule,
+	// custom modules
+	BootstrapModule,
+	CardsModule,
+	IconsModule,
+	FormControlsModule,
 ];
 
 @NgModule({
-  declarations: [UnsanitizePipe],
-  imports: [...exportModules],
-  exports: [UnsanitizePipe, ...exportModules],
+	declarations: [UnsanitizePipe],
+	imports: [...exportModules],
+	exports: [UnsanitizePipe, ...exportModules],
 })
 export class SharedModule {}

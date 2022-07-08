@@ -18,12 +18,12 @@ $gray-light: $color-gray-light !default;
 
 $theme-colors: () !default;
 $theme-colors: (
-  gray: $gray,
-  gray-light: $gray-light,
-  alternate: $color-alternate,
-  contrast: $color-contrast,
-  darker: $color-darker,
-  black: $color-black,
+	gray: $gray,
+	gray-light: $gray-light,
+	alternate: $color-alternate,
+	contrast: $color-contrast,
+	darker: $color-darker,
+	black: $color-black,
 );
 
 // Options
@@ -49,36 +49,36 @@ $spacer: 1rem !default;
 
 $spacers: () !default;
 $spacers: (
-  6: (
-    $spacer * 6,
-  ),
-  7: (
-    $spacer * 7,
-  ),
-  8: (
-    $spacer * 8,
-  ),
-  9: (
-    $spacer * 9,
-  ),
-  10: (
-    $spacer * 12,
-  ),
-  11: (
-    $spacer * 14,
-  ),
-  12: (
-    $spacer * 16,
-  ),
-  13: (
-    $spacer * 18,
-  ),
-  14: (
-    $spacer * 20,
-  ),
-  15: (
-    $spacer * 22,
-  ),
+	6: (
+		$spacer * 6,
+	),
+	7: (
+		$spacer * 7,
+	),
+	8: (
+		$spacer * 8,
+	),
+	9: (
+		$spacer * 9,
+	),
+	10: (
+		$spacer * 12,
+	),
+	11: (
+		$spacer * 14,
+	),
+	12: (
+		$spacer * 16,
+	),
+	13: (
+		$spacer * 18,
+	),
+	14: (
+		$spacer * 20,
+	),
+	15: (
+		$spacer * 22,
+	),
 );
 
 // Body
@@ -93,11 +93,11 @@ $body-color: $color-5-light !default;
 // adapting to different screen sizes, for use in media queries.
 
 $grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
 ) !default;
 
 // Grid containers
@@ -105,10 +105,10 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1260px,
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1260px,
 ) !default;
 
 // Links
@@ -252,7 +252,8 @@ $custom-switch-indicator-size: 1rem !default;
 $custom-switch-indicator-border-radius: $custom-switch-indicator-size / 2 !default;
 
 $custom-switch-height: 1.375rem !default;
-$custom-switch-spacing: ($custom-switch-height - $custom-switch-indicator-size) / 2 !default;
+$custom-switch-spacing: ($custom-switch-height - $custom-switch-indicator-size) /
+	2 !default;
 //$custom-switch-indicator-bg: $white !default;
 //$custom-switch-indicator-active-bg: $white !default;
 

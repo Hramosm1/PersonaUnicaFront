@@ -10,8 +10,8 @@ import { IconComponent } from './components/icon/icon.component';
 const featherIcons = allIcons;
 
 @NgModule({
-  declarations: [IconComponent],
-  imports: [CommonModule, FontAwesomeModule, FeatherModule.pick(featherIcons)],
-  exports: [FontAwesomeModule, FeatherModule, IconComponent],
+	declarations: [IconComponent],
+	imports: [CommonModule, FontAwesomeModule, FeatherModule.pick(featherIcons)],
+	exports: [FontAwesomeModule, FeatherModule, IconComponent],
 })
 export class IconsModule {}
