@@ -2,14 +2,14 @@ import { NotificationTypeConverter } from '@core/mapper/converters/NotificationT
 import { NotificationPriorityConverter } from '@core/mapper/converters/NotificationPriorityConverter';
 
 export class Notification {
-  description: string;
-  time: string;
+	description: string;
+	time: string;
 
-  @NotificationTypeConverter()
-  type: string;
+	@NotificationTypeConverter()
+	type: string;
 
-  @NotificationPriorityConverter()
-  priority: string;
+	@NotificationPriorityConverter()
+	priority: string;
 
-  constructor() {}
+	constructor() {}
 }

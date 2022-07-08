@@ -2,20 +2,20 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-fade-content',
-  templateUrl: './fade-content.component.html',
-  styleUrls: ['./fade-content.component.scss'],
+	selector: 'prx-fade-content',
+	templateUrl: './fade-content.component.html',
+	styleUrls: ['./fade-content.component.scss'],
 })
 export class FadeContentComponent extends BaseComponent implements OnInit {
-  @Input()
-  contentClass: string;
+	@Input()
+	contentClass: string;
 
-  @Input()
-  height: number;
+	@Input()
+	height: number;
 
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

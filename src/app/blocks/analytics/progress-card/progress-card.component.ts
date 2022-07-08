@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'prx-progress-card',
-  templateUrl: './progress-card.component.html',
-  styleUrls: ['./progress-card.component.scss'],
+	selector: 'prx-progress-card',
+	templateUrl: './progress-card.component.html',
+	styleUrls: ['./progress-card.component.scss'],
 })
 export class ProgressCardComponent implements OnInit {
-  @Input()
-  value: number;
+	@Input()
+	value: number;
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

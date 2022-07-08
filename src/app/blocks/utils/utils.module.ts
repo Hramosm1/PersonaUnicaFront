@@ -24,35 +24,35 @@ import { FlagComponent } from './components/flag/flag.component';
 import { ImgComponent } from './components/img/img.component';
 
 const exports = [
-  ThemeColorPickerComponent,
-  LoaderComponent,
-  PageHeaderComponent,
-  PageOverlayComponent,
-  VerticalTogglerComponent,
-  FadeContentComponent,
-  LabelInfoComponent,
-  AddressComponent,
-  FlagComponent,
-  ImgComponent,
+	ThemeColorPickerComponent,
+	LoaderComponent,
+	PageHeaderComponent,
+	PageOverlayComponent,
+	VerticalTogglerComponent,
+	FadeContentComponent,
+	LabelInfoComponent,
+	AddressComponent,
+	FlagComponent,
+	ImgComponent,
 
-  HtmlCleanPipe,
-  HtmlPipe,
-  ToggleOpenDirective,
-  OpenParentDirective,
-  StickyDirective,
+	HtmlCleanPipe,
+	HtmlPipe,
+	ToggleOpenDirective,
+	OpenParentDirective,
+	StickyDirective,
 ];
 
 @NgModule({
-  declarations: [...exports, ImgComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    BsDropdownModule,
-    PerfectScrollbarModule,
-    IconsModule,
-    CardsModule,
-    NavigationsModule,
-  ],
-  exports,
+	declarations: [...exports, ImgComponent],
+	imports: [
+		CommonModule,
+		RouterModule,
+		BsDropdownModule,
+		PerfectScrollbarModule,
+		IconsModule,
+		CardsModule,
+		NavigationsModule,
+	],
+	exports,
 })
 export class UtilsModule {}

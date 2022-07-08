@@ -1,12 +1,12 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  ContentChildren,
-  forwardRef,
-  QueryList,
-  AfterContentInit,
-  OnDestroy,
+	Component,
+	OnInit,
+	Input,
+	ContentChildren,
+	forwardRef,
+	QueryList,
+	AfterContentInit,
+	OnDestroy,
 } from '@angular/core';
 import { BaseComponent } from '@core';
 import { AccordionGroupComponent } from '../accordion-group/accordion-group.component';
@@ -14,64 +14,67 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject, merge } from 'rxjs';
 
 @Component({
-  selector: 'prx-accordion',
-  templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss'],
+	selector: 'prx-accordion',
+	templateUrl: './accordion.component.html',
+	styleUrls: ['./accordion.component.scss'],
 })
-export class AccordionComponent extends BaseComponent implements OnInit, OnDestroy, AfterContentInit {
-  protected destroy$ = new Subject<void>();
+export class AccordionComponent
+	extends BaseComponent
+	implements OnInit, OnDestroy, AfterContentInit
+{
+	protected destroy$ = new Subject<void>();
 
-  /** turn on/off animation */
-  @Input()
-  isAnimated = false;
+	/** turn on/off animation */
+	@Input()
+	isAnimated = false;
 
-  /** if `true` expanding one item will close all others */
-  @Input()
-  closeOthers: boolean = true;
+	/** if `true` expanding one item will close all others */
+	@Input()
+	closeOthers: boolean = true;
 
-  @ContentChildren(forwardRef(() => AccordionGroupComponent))
-  cards: QueryList<AccordionGroupComponent>;
+	@ContentChildren(forwardRef(() => AccordionGroupComponent))
+	cards: QueryList<AccordionGroupComponent>;
 
-  constructor() {
-    super('accordion');
-  }
+	constructor() {
+		super('accordion');
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
+	}
 
-  ngAfterContentInit() {
-    this.watchCardsForChanges();
+	ngAfterContentInit() {
+		this.watchCardsForChanges();
 
-    this.cards.changes.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.watchCardsForChanges();
-    });
-  }
+		this.cards.changes.pipe(takeUntil(this.destroy$)).subscribe(() => {
+			this.watchCardsForChanges();
+		});
+	}
 
-  protected watchCardsForChanges() {
-    if (!this.cards || !this.cards.length) {
-      return;
-    }
+	protected watchCardsForChanges() {
+		if (!this.cards || !this.cards.length) {
+			return;
+		}
 
-    merge(...this.cards.map((card) => card.isOpenChange))
-      .pipe(takeUntil(merge(this.cards.changes, this.destroy$)))
-      .subscribe((value: any) => {
-        this.closeOtherPanels(value.target);
-      });
-  }
+		merge(...this.cards.map((card) => card.isOpenChange))
+			.pipe(takeUntil(merge(this.cards.changes, this.destroy$)))
+			.subscribe((value: any) => {
+				this.closeOtherPanels(value.target);
+			});
+	}
 
-  closeOtherPanels(openGroup: AccordionGroupComponent): void {
-    if (!this.closeOthers) {
-      return;
-    }
+	closeOtherPanels(openGroup: AccordionGroupComponent): void {
+		if (!this.closeOthers) {
+			return;
+		}
 
-    this.cards.forEach((group: AccordionGroupComponent) => {
-      if (group !== openGroup) {
-        group.isOpen = false;
-      }
-    });
-  }
+		this.cards.forEach((group: AccordionGroupComponent) => {
+			if (group !== openGroup) {
+				group.isOpen = false;
+			}
+		});
+	}
 }

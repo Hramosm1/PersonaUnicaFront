@@ -1,18 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'prx-avatar-info',
-  templateUrl: './avatar-info.component.html',
-  styleUrls: ['./avatar-info.component.scss'],
+	selector: 'prx-avatar-info',
+	templateUrl: './avatar-info.component.html',
+	styleUrls: ['./avatar-info.component.scss'],
 })
 export class AvatarInfoComponent implements OnInit {
-  @Input()
-  name: string;
+	@Input()
+	name: string;
 
-  @Input()
-  info: string;
+	@Input()
+	info: string;
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit(): void {}
+	ngOnInit(): void {}
 }

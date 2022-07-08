@@ -1,64 +1,100 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">{{ titulo }}</h4>
-  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-    <span aria-hidden="true" class="visually-hidden">&times;</span>
-  </button>
+	<h4 class="modal-title pull-left">{{ titulo }}</h4>
+	<button
+		type="button"
+		class="btn-close close pull-right"
+		aria-label="Close"
+		(click)="modalRef?.hide()"
+	>
+		<span aria-hidden="true" class="visually-hidden">&times;</span>
+	</button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="direccion">
-    <div class="row">
-      <div class="form-group col-6">
-        <label for="origen">Origen de la información</label>
-        <select formControlName="origenInformacion" class="form-control form-control-rounded">
-          <option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
-        </select>
-        <small class="text-danger">Obligatorio</small>
-      </div>
-      <div *ngIf="departamentos" class="form-group col-6">
-        <label for="noDocumento">Departamento</label>
-        <select formControlName="departamento" class="form-control form-control-rounded">
-          <option *ngFor="let dep of departamentos" [ngValue]="dep">{{ dep }}</option>
-        </select>
-        <small class="text-danger">Obligatorio</small>
-      </div>
-      <div class="form-group col-6">
-        <label for="noDocumento">Municipio</label>
-        <select formControlName="municipio" class="form-control form-control-rounded">
-          <option *ngFor="let muni of departamentosYMunicipios[departamento]" [ngValue]="muni">
-            {{ muni }}
-          </option>
-        </select>
-        <small class="text-danger">Obligatorio</small>
-      </div>
-      <div class="form-group col-6">
-        <label class="control-label">Zona</label>
-        <input formControlName="zona" type="number" min="0" max="25" class="form-control form-control-rounded" />
-        <small class="text-danger">Obligatorio</small>
-      </div>
-      <div class="form-group col-6">
-        <label class="control-label">Colonia</label>
-        <input
-          formControlName="colonia"
-          type="text"
-          placeholder="col. mariscal"
-          class="form-control form-control-rounded"
-        />
-      </div>
-      <div class="form-group col-6">
-        <label class="control-label">Dirección</label>
-        <input formControlName="direccion" type="text" placeholder="11av" class="form-control form-control-rounded" />
-      </div>
-      <div class="form-group col-4">
-        <label class="control-label">Referencia</label>
-        <textarea
-          maxlength="500"
-          formControlName="referencia"
-          placeholder="Junto a heladeria"
-          class="form-control form-control-rounded"
-          rows="3"
-        ></textarea>
-      </div>
-    </div>
-  </form>
+	<form [formGroup]="direccion">
+		<div class="row">
+			<div class="form-group col-6">
+				<label for="origen">Origen de la información</label>
+				<select
+					formControlName="origenInformacion"
+					class="form-control form-control-rounded"
+				>
+					<option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">
+						{{ tipo.tipoOrigen }}
+					</option>
+				</select>
+				<small class="text-danger">Obligatorio</small>
+			</div>
+			<div *ngIf="departamentos" class="form-group col-6">
+				<label for="noDocumento">Departamento</label>
+				<select
+					formControlName="departamento"
+					class="form-control form-control-rounded"
+				>
+					<option *ngFor="let dep of departamentos" [ngValue]="dep">
+						{{ dep }}
+					</option>
+				</select>
+				<small class="text-danger">Obligatorio</small>
+			</div>
+			<div class="form-group col-6">
+				<label for="noDocumento">Municipio</label>
+				<select
+					formControlName="municipio"
+					class="form-control form-control-rounded"
+				>
+					<option
+						*ngFor="let muni of departamentosYMunicipios[departamento]"
+						[ngValue]="muni"
+					>
+						{{ muni }}
+					</option>
+				</select>
+				<small class="text-danger">Obligatorio</small>
+			</div>
+			<div class="form-group col-6">
+				<label class="control-label">Zona</label>
+				<input
+					formControlName="zona"
+					type="number"
+					min="0"
+					max="25"
+					class="form-control form-control-rounded"
+				/>
+				<small class="text-danger">Obligatorio</small>
+			</div>
+			<div class="form-group col-6">
+				<label class="control-label">Colonia</label>
+				<input
+					formControlName="colonia"
+					type="text"
+					placeholder="col. mariscal"
+					class="form-control form-control-rounded"
+				/>
+			</div>
+			<div class="form-group col-6">
+				<label class="control-label">Dirección</label>
+				<input
+					formControlName="direccion"
+					type="text"
+					placeholder="11av"
+					class="form-control form-control-rounded"
+				/>
+			</div>
+			<div class="form-group col-4">
+				<label class="control-label">Referencia</label>
+				<textarea
+					maxlength="500"
+					formControlName="referencia"
+					placeholder="Junto a heladeria"
+					class="form-control form-control-rounded"
+					rows="3"
+				></textarea>
+			</div>
+		</div>
+	</form>
 </div>
-<div class="modal-footer"><button (click)="submit()" class="btn btn-primary float-right">Actualizar</button></div>
+<div class="modal-footer">
+	<button (click)="submit()" class="btn btn-primary float-right">
+		Actualizar
+	</button>
+</div>

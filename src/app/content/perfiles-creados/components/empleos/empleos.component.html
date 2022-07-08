@@ -1,22 +1,41 @@
 <prx-card>
-  <prx-card-header title="Empleos"></prx-card-header>
-  <prx-card-body>
-    <ul class="list-group">
-      <li *ngFor="let empleo of empleos" class="list-group-item">
-        <p><b>Puesto:</b> {{ empleo.puesto }}</p>
-        <p><b>Empresa:</b> {{ empleo.empresa }}</p>
-        <p><b>Fecha de ingreso:</b> {{ empleo.fechaInicio }}</p>
-        <p><b>Fecha de egreso:</b> {{ empleo.fechaFin }}</p>
-        <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(empleo.id)">
-          eliminar
-        </button>
-        <button class="btn btn-outline-warning float-right" (click)="openModal(editar, empleo.id)">editar</button>
-      </li>
-    </ul>
-  </prx-card-body>
-  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+	<prx-card-header title="Empleos"></prx-card-header>
+	<prx-card-body>
+		<ul class="list-group">
+			<li *ngFor="let empleo of empleos" class="list-group-item">
+				<p><b>Puesto:</b> {{ empleo.puesto }}</p>
+				<p><b>Empresa:</b> {{ empleo.empresa }}</p>
+				<p><b>Fecha de ingreso:</b> {{ empleo.fechaInicio }}</p>
+				<p><b>Fecha de egreso:</b> {{ empleo.fechaFin }}</p>
+				<button
+					class="btn btn-outline-danger float-right"
+					[disabled]="btn"
+					(click)="eliminar(empleo.id)"
+				>
+					eliminar
+				</button>
+				<button
+					class="btn btn-outline-warning float-right"
+					(click)="openModal(editar, empleo.id)"
+				>
+					editar
+				</button>
+			</li>
+		</ul>
+	</prx-card-body>
+	<prx-card-footer
+		><button class="btn btn-primary" (click)="openModal(crear)">
+			Nuevo
+		</button></prx-card-footer
+	>
 </prx-card>
-<ng-template #crear> <prx-form-empleo titulo="Nuevo empleo" [modalRef]="modalRef"></prx-form-empleo></ng-template>
+<ng-template #crear>
+	<prx-form-empleo titulo="Nuevo empleo" [modalRef]="modalRef"></prx-form-empleo
+></ng-template>
 <ng-template #editar>
-  <prx-form-empleo [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-empleo
+	<prx-form-empleo
+		[idEditar]="idEditar"
+		titulo="Editar"
+		[modalRef]="modalRef"
+	></prx-form-empleo
 ></ng-template>

@@ -2,17 +2,17 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+	selector: 'prx-card',
+	templateUrl: './card.component.html',
+	styleUrls: ['./card.component.scss'],
 })
 export class CardComponent extends BaseComponent implements OnInit {
-  @Input()
-  title: string;
+	@Input()
+	title: string;
 
-  constructor() {
-    super('card');
-  }
+	constructor() {
+		super('card');
+	}
 
-  ngOnInit(): void {}
+	ngOnInit(): void {}
 }

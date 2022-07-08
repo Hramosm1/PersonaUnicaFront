@@ -6,8 +6,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LanguageSelectorComponent } from './language-selector.component';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, BsDropdownModule],
-  declarations: [LanguageSelectorComponent],
-  exports: [LanguageSelectorComponent],
+	imports: [CommonModule, TranslateModule, BsDropdownModule],
+	declarations: [LanguageSelectorComponent],
+	exports: [LanguageSelectorComponent],
 })
 export class I18nModule {}

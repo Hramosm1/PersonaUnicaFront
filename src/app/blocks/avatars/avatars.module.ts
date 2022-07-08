@@ -8,8 +8,8 @@ import { AvatarInfoComponent } from './avatar-info/avatar-info.component';
 import { AvatarListComponent } from './avatar-list/avatar-list.component';
 
 @NgModule({
-  declarations: [AvatarComponent, AvatarListComponent, AvatarInfoComponent],
-  imports: [CommonModule, IconsModule, FileUploadModule],
-  exports: [AvatarComponent, AvatarListComponent, AvatarInfoComponent],
+	declarations: [AvatarComponent, AvatarListComponent, AvatarInfoComponent],
+	imports: [CommonModule, IconsModule, FileUploadModule],
+	exports: [AvatarComponent, AvatarListComponent, AvatarInfoComponent],
 })
 export class AvatarsModule {}

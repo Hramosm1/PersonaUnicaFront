@@ -3,23 +3,23 @@ import { AvatarListItem, AvatarSize } from '../models/avatar';
 
 @Directive()
 export class AvatarList {
-  @Input()
-  avatars: AvatarListItem[];
+	@Input()
+	avatars: AvatarListItem[];
 
-  @Input()
-  size: AvatarSize;
+	@Input()
+	size: AvatarSize;
 
-  @Input()
-  display: number;
+	@Input()
+	display: number;
 
-  @Input()
-  showTooltip: boolean = true;
+	@Input()
+	showTooltip: boolean = true;
 
-  get displayItems(): number {
-    return this.display ? this.display : this.avatars.length;
-  }
+	get displayItems(): number {
+		return this.display ? this.display : this.avatars.length;
+	}
 
-  get remainingItems(): number {
-    return this.display ? this.avatars.length - this.display : 0;
-  }
+	get remainingItems(): number {
+		return this.display ? this.avatars.length - this.display : 0;
+	}
 }

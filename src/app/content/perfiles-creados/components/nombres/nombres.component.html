@@ -1,24 +1,42 @@
 <prx-card>
-  <prx-card-header title="Nombres"></prx-card-header>
-  <prx-card-body
-    ><ul class="list-group">
-      <li *ngFor="let nombre of nombres" class="list-group-item">
-        <p>{{ nombre.nombre }}</p>
-        <button
-          class="btn btn-outline-danger float-right"
-          *ngIf="nombres.length > 0"
-          [disabled]="btn"
-          (click)="eliminar(nombre.id)"
-        >
-          eliminar
-        </button>
-        <button class="btn btn-outline-warning float-right" (click)="openModal(editar, nombre.id)">editar</button>
-      </li>
-    </ul></prx-card-body
-  >
-  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+	<prx-card-header title="Nombres"></prx-card-header>
+	<prx-card-body>
+		<ul class="list-group">
+			<li *ngFor="let nombre of nombres" class="list-group-item">
+				<p>{{ nombre.nombre }}</p>
+				<button
+					class="btn btn-outline-danger float-right"
+					*ngIf="nombres.length > 0 && organizacion"
+					[disabled]="btn"
+					(click)="eliminar(nombre.id)"
+				>
+					eliminar
+				</button>
+				<button
+					class="btn btn-outline-warning float-right"
+					(click)="openModal(editar, nombre.id)"
+				>
+					editar
+				</button>
+			</li>
+		</ul>
+	</prx-card-body>
+	<prx-card-footer
+		><button class="btn btn-primary" (click)="openModal(crear)">
+			Nuevo
+		</button></prx-card-footer
+	>
 </prx-card>
-<ng-template #crear><prx-form-nombres titulo="Nombre nuevo" [modalRef]="modalRef"></prx-form-nombres></ng-template>
-<ng-template #editar
-  ><prx-form-nombres [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-nombres
-></ng-template>
+<ng-template #crear>
+	<prx-form-nombres
+		titulo="Nombre nuevo"
+		[modalRef]="modalRef"
+	></prx-form-nombres>
+</ng-template>
+<ng-template #editar>
+	<prx-form-nombres
+		[idEditar]="idEditar"
+		titulo="Editar"
+		[modalRef]="modalRef"
+	></prx-form-nombres>
+</ng-template>

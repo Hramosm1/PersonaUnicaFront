@@ -1,63 +1,91 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">{{ titulo }}</h4>
-  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-    <span aria-hidden="true" class="visually-hidden">&times;</span>
-  </button>
+	<h4 class="modal-title pull-left">{{ titulo }}</h4>
+	<button
+		type="button"
+		class="btn-close close pull-right"
+		aria-label="Close"
+		(click)="modalRef?.hide()"
+	>
+		<span aria-hidden="true" class="visually-hidden">&times;</span>
+	</button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="empleo">
-    <div class="form-group col-6">
-      <label for="origen">Origen de la información</label>
-      <select formControlName="origenInformacion" class="form-control form-control-rounded">
-        <option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
-      </select>
-      <small class="text-danger">Obligatorio</small>
-    </div>
-    <div class="form-group col-6">
-      <label for="noDocumento">Empresa : {{ empresa }}</label>
-      <div class="input-group">
-        <input type="text" disabled class="form-control" formControlName="empresa" />
-        <span class="input-group-append">
-          <button type="button" class="input-group-text" (click)="openModal(empresas)">
-            <prx-icon icon="server"></prx-icon></button
-        ></span>
-      </div>
-      <small class="text-danger">Obligatorio</small>
-    </div>
-    <div class="form-group col-6">
-      <label for="noDocumento">Puesto</label>
-      <input
-        formControlName="puesto"
-        class="form-control form-control-rounded"
-        type="text"
-        placeholder="Desarrollador"
-      />
-    </div>
-    <div class="form-group col-6">
-      <label class="control-label">Fecha ingreso</label>
-      <input
-        formControlName="fechaInicio"
-        type="text"
-        placeholder="Date Picker"
-        class="form-control form-control-rounded"
-        bsDatepicker
-      />
-      <small class="text-danger">Obligatorio</small>
-    </div>
-    <div class="form-group col-6">
-      <label class="control-label">Fecha egreso</label>
-      <input
-        formControlName="fechaFin"
-        type="text"
-        placeholder="Date Picker"
-        class="form-control form-control-rounded"
-        bsDatepicker
-      />
-      <small class="form-text text-muted">si es trabajo actual dejar en blanco</small>
-    </div>
-  </form>
+	<form [formGroup]="empleo">
+		<div class="form-group col-6">
+			<label for="origen">Origen de la información</label>
+			<select
+				formControlName="origenInformacion"
+				class="form-control form-control-rounded"
+			>
+				<option *ngFor="let tipo of tiposOrigen | async" [ngValue]="tipo.id">
+					{{ tipo.tipoOrigen }}
+				</option>
+			</select>
+			<small class="text-danger">Obligatorio</small>
+		</div>
+		<div class="form-group col-6">
+			<label for="noDocumento">Empresa : {{ empresa }}</label>
+			<div class="input-group">
+				<input
+					type="text"
+					disabled
+					class="form-control"
+					formControlName="empresa"
+				/>
+				<span class="input-group-append">
+					<button
+						type="button"
+						class="input-group-text"
+						(click)="openModal(empresas)"
+					>
+						<prx-icon icon="server"></prx-icon></button
+				></span>
+			</div>
+			<small class="text-danger">Obligatorio</small>
+		</div>
+		<div class="form-group col-6">
+			<label for="noDocumento">Puesto</label>
+			<input
+				formControlName="puesto"
+				class="form-control form-control-rounded"
+				type="text"
+				placeholder="Desarrollador"
+			/>
+		</div>
+		<div class="form-group col-6">
+			<label class="control-label">Fecha ingreso</label>
+			<input
+				formControlName="fechaInicio"
+				type="text"
+				placeholder="Date Picker"
+				class="form-control form-control-rounded"
+				bsDatepicker
+			/>
+			<small class="text-danger">Obligatorio</small>
+		</div>
+		<div class="form-group col-6">
+			<label class="control-label">Fecha egreso</label>
+			<input
+				formControlName="fechaFin"
+				type="text"
+				placeholder="Date Picker"
+				class="form-control form-control-rounded"
+				bsDatepicker
+			/>
+			<small class="form-text text-muted"
+				>si es trabajo actual dejar en blanco</small
+			>
+		</div>
+	</form>
 </div>
-<div class="modal-footer"><button class="btn btn-primary float-right" (click)="submit()">Actualizar</button></div>
+<div class="modal-footer">
+	<button class="btn btn-primary float-right" (click)="submit()">
+		Actualizar
+	</button>
+</div>
 <ng-template #empresas>
-  <prx-lista-empleos [modalRef]="modalRef2" (seleccionado)="asignar($event)"></prx-lista-empleos>
+	<prx-lista-empleos
+		[modalRef]="modalRef2"
+		(seleccionado)="asignar($event)"
+	></prx-lista-empleos>
 </ng-template>

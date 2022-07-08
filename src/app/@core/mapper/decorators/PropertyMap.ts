@@ -17,15 +17,15 @@ const logger = new Logger('PropertyMap');
  * @param sourceProperty
  */
 export function PropertyMap(sourceProperty: string) {
-  logger.debug('sourceProperty', sourceProperty);
+	logger.debug('sourceProperty', sourceProperty);
 
-  return function (target: any, key: string) {
-    logger.debug('PM.Target', target, key);
+	return function (target: any, key: string) {
+		logger.debug('PM.Target', target, key);
 
-    if (!target.constructor._propertyMap) {
-      target.constructor._propertyMap = {};
-    }
+		if (!target.constructor._propertyMap) {
+			target.constructor._propertyMap = {};
+		}
 
-    target.constructor._propertyMap[key] = sourceProperty;
-  };
+		target.constructor._propertyMap[key] = sourceProperty;
+	};
 }

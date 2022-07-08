@@ -17,20 +17,27 @@ import { RadioComponent } from './radio/radio.component';
 import { RadioGroupComponent } from './radio-group/radio-group.component';
 
 const exports = [
-  CheckboxComponent,
-  ButtonComponent,
-  ButtonLanguageSelectorComponent,
-  ToggleComponent,
-  RadioCardComponent,
-  RadioComponent,
-  RadioGroupComponent,
+	CheckboxComponent,
+	ButtonComponent,
+	ButtonLanguageSelectorComponent,
+	ToggleComponent,
+	RadioCardComponent,
+	RadioComponent,
+	RadioGroupComponent,
 ];
 
 const exportsModule = [FormsModule, ReactiveFormsModule];
 
 @NgModule({
-  declarations: [...exports],
-  imports: [CommonModule, IconsModule, BsDropdownModule, TranslateModule, CardsModule, ...exportsModule],
-  exports: [...exports, ...exportsModule],
+	declarations: [...exports],
+	imports: [
+		CommonModule,
+		IconsModule,
+		BsDropdownModule,
+		TranslateModule,
+		CardsModule,
+		...exportsModule,
+	],
+	exports: [...exports, ...exportsModule],
 })
 export class FormControlsModule {}

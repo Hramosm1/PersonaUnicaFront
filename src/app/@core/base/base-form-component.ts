@@ -4,6 +4,6 @@ import { Directive } from '@angular/core';
 
 @Directive()
 export class BaseFormComponent extends BaseComponent {
-  public error: string;
-  public form: FormGroup;
+	public error: string;
+	public form: FormGroup;
 }

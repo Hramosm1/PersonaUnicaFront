@@ -11,11 +11,23 @@ import { BreadcrumComponent } from './breadcrum/breadcrum.component';
 import { DropdownIconComponent } from './dropdown-icon/dropdown-icon.component';
 import { TabbarComponent } from './tabbar/tabbar.component';
 
-const exports = [ContextMenuComponent, NavLinkComponent, BreadcrumComponent, DropdownIconComponent, TabbarComponent];
+const exports = [
+	ContextMenuComponent,
+	NavLinkComponent,
+	BreadcrumComponent,
+	DropdownIconComponent,
+	TabbarComponent,
+];
 
 @NgModule({
-  declarations: [...exports],
-  imports: [CommonModule, BsDropdownModule, PerfectScrollbarModule, IconsModule, RouterModule],
-  exports,
+	declarations: [...exports],
+	imports: [
+		CommonModule,
+		BsDropdownModule,
+		PerfectScrollbarModule,
+		IconsModule,
+		RouterModule,
+	],
+	exports,
 })
 export class NavigationsModule {}

@@ -12,8 +12,13 @@ import { HomeStepComponent } from './components/home-step/home-step.component';
 import { SkipService } from './services/skip.service';
 
 @NgModule({
-  imports: [SharedModule, UtilsModule, WizardsModule, HomeRoutingModule],
-  declarations: [HomeComponent, WelcomeComponent, HomeStepComponent, GetStartedComponent],
-  providers: [SkipService],
+	imports: [SharedModule, UtilsModule, WizardsModule, HomeRoutingModule],
+	declarations: [
+		HomeComponent,
+		WelcomeComponent,
+		HomeStepComponent,
+		GetStartedComponent,
+	],
+	providers: [SkipService],
 })
 export class HomeModule {}
