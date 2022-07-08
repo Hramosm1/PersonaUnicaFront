@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'prx-about-screen',
-  templateUrl: './about-screen.component.html',
-  styleUrls: ['./about-screen.component.scss'],
+	selector: 'prx-about-screen',
+	templateUrl: './about-screen.component.html',
+	styleUrls: ['./about-screen.component.scss'],
 })
 export class AboutScreenComponent implements OnInit {
-  @Input()
-  name: string;
+	@Input()
+	name: string;
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit(): void {}
+	ngOnInit(): void {}
 }

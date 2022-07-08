@@ -17,25 +17,30 @@ import { NavigationsModule } from '../navigations/navigations.module';
 import { WizardNavigationPrevNextComponent } from './navigation/wizard-navigation-prev-next/wizard-navigation-prev-next.component';
 import { WizardTabbedComponent } from './wizard-tabbed/wizard-tabbed.component';
 
-const exports = [WizardCircledComponent, WizardBulletedComponent, WizardTabbedComponent, WizardStepComponent];
+const exports = [
+	WizardCircledComponent,
+	WizardBulletedComponent,
+	WizardTabbedComponent,
+	WizardStepComponent,
+];
 
 @NgModule({
-  declarations: [
-    BaseWizard,
-    WizardNavigationComponent,
-    WizardNavigationBulletComponent,
-    WizardNavigationPrevNextComponent,
-    ...exports,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    TranslateModule,
-    CdkStepperModule,
-    IconsModule,
-    NavigationsModule,
-    FormControlsModule,
-  ],
-  exports: [...exports],
+	declarations: [
+		BaseWizard,
+		WizardNavigationComponent,
+		WizardNavigationBulletComponent,
+		WizardNavigationPrevNextComponent,
+		...exports,
+	],
+	imports: [
+		CommonModule,
+		RouterModule,
+		TranslateModule,
+		CdkStepperModule,
+		IconsModule,
+		NavigationsModule,
+		FormControlsModule,
+	],
+	exports: [...exports],
 })
 export class WizardsModule {}

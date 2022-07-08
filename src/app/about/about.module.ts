@@ -29,41 +29,48 @@ import { AboutOotbComponent } from './components/about-ootb/about-ootb.component
  * The following will lazy load highlight.js core script (~9.6KB) + the selected languages bundle (each lang. ~1kb)
  */
 export function getHighlightLanguages() {
-  return {
-    typescript: () => import('highlight.js/lib/languages/typescript'),
-    json: () => import('highlight.js/lib/languages/json'),
-    html: () => import('highlight.js/lib/languages/htmlbars'),
-  };
+	return {
+		typescript: () => import('highlight.js/lib/languages/typescript'),
+		json: () => import('highlight.js/lib/languages/json'),
+		html: () => import('highlight.js/lib/languages/htmlbars'),
+	};
 }
 
 @NgModule({
-  imports: [SharedModule, ScrollToModule.forRoot(), UtilsModule, SwiperModule, HighlightModule, AboutRoutingModule],
-  declarations: [
-    AboutComponent,
-    AboutHeaderComponent,
-    AboutFeaturesComponent,
-    AboutSelectionComponent,
-    AboutPurchaseComponent,
-    AboutFooterComponent,
-    AboutDemoComponent,
-    AboutSectionComponent,
-    AboutNavbarComponent,
-    AboutSliderIconsComponent,
-    AboutBeautifulInterfaceComponent,
-    AboutAllComponentsComponent,
-    AboutProximaComponent,
-    AboutLayoutsComponent,
-    AboutScreenComponent,
-    AboutShowcaseScreensComponent,
-    AboutOotbComponent,
-  ],
-  providers: [
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        languages: getHighlightLanguages(),
-      },
-    },
-  ],
+	imports: [
+		SharedModule,
+		ScrollToModule.forRoot(),
+		UtilsModule,
+		SwiperModule,
+		HighlightModule,
+		AboutRoutingModule,
+	],
+	declarations: [
+		AboutComponent,
+		AboutHeaderComponent,
+		AboutFeaturesComponent,
+		AboutSelectionComponent,
+		AboutPurchaseComponent,
+		AboutFooterComponent,
+		AboutDemoComponent,
+		AboutSectionComponent,
+		AboutNavbarComponent,
+		AboutSliderIconsComponent,
+		AboutBeautifulInterfaceComponent,
+		AboutAllComponentsComponent,
+		AboutProximaComponent,
+		AboutLayoutsComponent,
+		AboutScreenComponent,
+		AboutShowcaseScreensComponent,
+		AboutOotbComponent,
+	],
+	providers: [
+		{
+			provide: HIGHLIGHT_OPTIONS,
+			useValue: {
+				languages: getHighlightLanguages(),
+			},
+		},
+	],
 })
 export class AboutModule {}

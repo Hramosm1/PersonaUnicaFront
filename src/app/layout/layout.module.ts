@@ -31,32 +31,42 @@ import { HeaderNavbarItemComponent } from './components/header-components/header
 import { VerticalLayoutDefaultComponent } from './vertical/vertical-layout-default/vertical-layout-default.component';
 import { HorizontalLayoutDefaultComponent } from './horizontal/horizontal-layout-default/horizontal-layout-default.component';
 
-const exports = [VerticalLayoutDefaultComponent, HorizontalLayoutDefaultComponent];
+const exports = [
+	VerticalLayoutDefaultComponent,
+	HorizontalLayoutDefaultComponent,
+];
 
 @NgModule({
-  declarations: [
-    ...exports,
-    HeaderComponent,
-    HeaderSearchComponent,
-    HeaderMenuAppsComponent,
-    HeaderMenuMessagesComponent,
-    HeaderMenuNotificationsComponent,
-    HeaderUserAccountComponent,
-    QuickSidenavComponent,
-    SidenavComponent,
-    MenuTogglerComponent,
-    MainBodyComponent,
-    FooterComponent,
-    QuickSidenavTasksComponent,
-    QuickSidenavContactsComponent,
-    QuickSidenavSettingsComponent,
-    SidenavItemComponent,
-    SidenavLinkComponent,
-    HeaderToolbarComponent,
-    HeaderNavbarComponent,
-    HeaderNavbarItemComponent,
-  ],
-  imports: [SharedModule, UtilsModule, ProgressModule, TimelinesModule, AvatarsModule, NavigationsModule],
-  exports,
+	declarations: [
+		...exports,
+		HeaderComponent,
+		HeaderSearchComponent,
+		HeaderMenuAppsComponent,
+		HeaderMenuMessagesComponent,
+		HeaderMenuNotificationsComponent,
+		HeaderUserAccountComponent,
+		QuickSidenavComponent,
+		SidenavComponent,
+		MenuTogglerComponent,
+		MainBodyComponent,
+		FooterComponent,
+		QuickSidenavTasksComponent,
+		QuickSidenavContactsComponent,
+		QuickSidenavSettingsComponent,
+		SidenavItemComponent,
+		SidenavLinkComponent,
+		HeaderToolbarComponent,
+		HeaderNavbarComponent,
+		HeaderNavbarItemComponent,
+	],
+	imports: [
+		SharedModule,
+		UtilsModule,
+		ProgressModule,
+		TimelinesModule,
+		AvatarsModule,
+		NavigationsModule,
+	],
+	exports,
 })
 export class LayoutModule {}

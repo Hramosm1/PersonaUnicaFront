@@ -8,22 +8,39 @@ import { AuthRegisterComponent } from './components/auth-register/auth-register.
 import { extract } from '@app/i18n';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AuthShellComponent,
-    children: [
-      { path: '', redirectTo: '/login', pathMatch: 'full' },
-      { path: 'login', component: AuthLoginComponent, data: { title: extract('Login') } },
-      { path: 'register', component: AuthRegisterComponent, data: { title: extract('Register') } },
-      { path: 'forgot', component: AuthForgotPasswordComponent, data: { title: extract('Forgot Password') } },
-    ],
-  },
+	{
+		path: '',
+		component: AuthShellComponent,
+		children: [
+			{ path: '', redirectTo: '/login', pathMatch: 'full' },
+			{
+				path: 'login',
+				component: AuthLoginComponent,
+				data: { title: extract('Login') },
+			},
+			{
+				path: 'register',
+				component: AuthRegisterComponent,
+				data: { title: extract('Register') },
+			},
+			{
+				path: 'forgot',
+				component: AuthForgotPasswordComponent,
+				data: { title: extract('Forgot Password') },
+			},
+		],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class AuthRoutingModule {
-  static declarations = [AuthForgotPasswordComponent, AuthLoginComponent, AuthRegisterComponent, AuthShellComponent];
+	static declarations = [
+		AuthForgotPasswordComponent,
+		AuthLoginComponent,
+		AuthRegisterComponent,
+		AuthShellComponent,
+	];
 }

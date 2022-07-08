@@ -3,22 +3,22 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BreadcrumComponent } from './breadcrum.component';
 
 describe('BreadcrumComponent', () => {
-  let component: BreadcrumComponent;
-  let fixture: ComponentFixture<BreadcrumComponent>;
+	let component: BreadcrumComponent;
+	let fixture: ComponentFixture<BreadcrumComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [BreadcrumComponent],
-    }).compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [BreadcrumComponent],
+		}).compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BreadcrumComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(BreadcrumComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

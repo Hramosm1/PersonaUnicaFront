@@ -1,38 +1,55 @@
 <ng-container [formGroup]="form">
-  <prx-page-header title="Correos"></prx-page-header>
-  <div class="container px-5">
-    <button class="btn btn-primary float-right" (click)="agregarCorreo()">agregar correo</button>
-    <ng-container formArrayName="correos">
-      <div class="row">
-        <div class="col-12" *ngFor="let mail of correos.controls; let i = index">
-          <ng-container [formGroupName]="i">
-            <div class="row justify-content-between align-items-center">
-              <div class="form-group col-4">
-                <label class="control-label" for="origen">Origen de la información</label>
-                <select formControlName="origenInformacion" class="form-control form-control-rounded">
-                  <option *ngFor="let tipo of tiposOrigen" [ngValue]="tipo.id">{{ tipo.tipoOrigen }}</option>
-                </select>
-                <small class="text-danger">Obligatorio</small>
-              </div>
-              <div class="form-group col-5">
-                <label class="control-label" for="correo">Correo {{ i + 1 }}</label>
-                <input
-                  formControlName="correo"
-                  class="form-control form-control-rounded"
-                  type="email"
-                  placeholder="example@gmail.com"
-                />
-                <small class="text-danger">Obligatorio</small>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-outline-secondary btn-circle btn-sm" (click)="eliminarCorreo(i)">
-                  <prx-icon icon="x" size="sm"></prx-icon>
-                </button>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-    </ng-container>
-  </div>
+	<prx-page-header title="Correos"></prx-page-header>
+	<div class="container px-5">
+		<button class="btn btn-primary float-right" (click)="agregarCorreo()">
+			agregar correo
+		</button>
+		<ng-container formArrayName="correos">
+			<div class="row">
+				<div
+					class="col-12"
+					*ngFor="let mail of correos.controls; let i = index"
+				>
+					<ng-container [formGroupName]="i">
+						<div class="row justify-content-between align-items-center">
+							<div class="form-group col-4">
+								<label class="control-label" for="origen"
+									>Origen de la información</label
+								>
+								<select
+									formControlName="origenInformacion"
+									class="form-control form-control-rounded"
+								>
+									<option *ngFor="let tipo of tiposOrigen" [ngValue]="tipo.id">
+										{{ tipo.tipoOrigen }}
+									</option>
+								</select>
+								<small class="text-danger">Obligatorio</small>
+							</div>
+							<div class="form-group col-5">
+								<label class="control-label" for="correo"
+									>Correo {{ i + 1 }}</label
+								>
+								<input
+									formControlName="correo"
+									class="form-control form-control-rounded"
+									type="email"
+									placeholder="example@gmail.com"
+								/>
+								<small class="text-danger">Obligatorio</small>
+							</div>
+							<div class="col-3">
+								<button
+									class="btn btn-outline-secondary btn-circle btn-sm"
+									(click)="eliminarCorreo(i)"
+								>
+									<prx-icon icon="x" size="sm"></prx-icon>
+								</button>
+							</div>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</ng-container>
+	</div>
 </ng-container>

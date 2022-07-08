@@ -3,50 +3,50 @@ import { faBars, faAlignRight } from '@fortawesome/free-solid-svg-icons';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-header-toolbar',
-  templateUrl: './header-toolbar.component.html',
-  styleUrls: ['./header-toolbar.component.scss'],
+	selector: 'prx-header-toolbar',
+	templateUrl: './header-toolbar.component.html',
+	styleUrls: ['./header-toolbar.component.scss'],
 })
 export class HeaderToolbarComponent extends BaseComponent implements OnInit {
-  icons = {
-    faBars,
-    faAlignRight,
-  };
+	icons = {
+		faBars,
+		faAlignRight,
+	};
 
-  @Input()
-  quickSidenavCollapsed: boolean;
+	@Input()
+	quickSidenavCollapsed: boolean;
 
-  @Input()
-  sidenavCollapsed: boolean;
+	@Input()
+	sidenavCollapsed: boolean;
 
-  @Output()
-  quickSidenavToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output()
+	quickSidenavToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @Output()
-  sidenavToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output()
+	sidenavToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @Input()
-  branded: boolean = false;
+	@Input()
+	branded: boolean = false;
 
-  menuHidden = true;
+	menuHidden = true;
 
-  constructor() {
-    super('header-toolbar');
-  }
+	constructor() {
+		super('header-toolbar');
+	}
 
-  toggleQuickSidenav() {
-    this.quickSidenavCollapsed = !this.quickSidenavCollapsed;
-    this.quickSidenavToggled.emit(this.quickSidenavCollapsed);
-  }
+	toggleQuickSidenav() {
+		this.quickSidenavCollapsed = !this.quickSidenavCollapsed;
+		this.quickSidenavToggled.emit(this.quickSidenavCollapsed);
+	}
 
-  toggleSidenav() {
-    this.sidenavCollapsed = !this.sidenavCollapsed;
-    this.sidenavToggled.emit(this.sidenavCollapsed);
-  }
+	toggleSidenav() {
+		this.sidenavCollapsed = !this.sidenavCollapsed;
+		this.sidenavToggled.emit(this.sidenavCollapsed);
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  toggleMenu() {
-    this.menuHidden = !this.menuHidden;
-  }
+	toggleMenu() {
+		this.menuHidden = !this.menuHidden;
+	}
 }

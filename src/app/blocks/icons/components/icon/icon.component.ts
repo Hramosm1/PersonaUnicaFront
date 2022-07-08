@@ -4,28 +4,28 @@ import { BaseComponent } from '@core';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  selector: 'prx-icon',
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+	selector: 'prx-icon',
+	templateUrl: './icon.component.html',
+	styleUrls: ['./icon.component.scss'],
 })
 export class IconComponent extends BaseComponent implements OnInit {
-  @Input()
-  icon: IconDefinition | string;
+	@Input()
+	icon: IconDefinition | string;
 
-  @Input()
-  size: SizeProp | 'md';
+	@Input()
+	size: SizeProp | 'md';
 
-  get useFontAwesome(): boolean {
-    return this.isFontAwesome(this.icon);
-  }
+	get useFontAwesome(): boolean {
+		return this.isFontAwesome(this.icon);
+	}
 
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  isFontAwesome(icon: IconDefinition | string): icon is IconDefinition {
-    return !!(icon as IconDefinition).prefix;
-  }
+	isFontAwesome(icon: IconDefinition | string): icon is IconDefinition {
+		return !!(icon as IconDefinition).prefix;
+	}
 }

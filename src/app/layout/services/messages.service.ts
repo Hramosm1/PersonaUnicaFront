@@ -5,16 +5,16 @@ import { Observable } from 'rxjs';
 import { Message } from '../models/message';
 
 const routes = {
-  messages: () => `/messages`,
+	messages: () => `/messages`,
 };
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class MessagesService {
-  constructor(private api: ApiService) {}
+	constructor(private api: ApiService) {}
 
-  getLatestMessages(): Observable<Message[]> {
-    return this.api.query<Message>(routes.messages(), Message);
-  }
+	getLatestMessages(): Observable<Message[]> {
+		return this.api.query<Message>(routes.messages(), Message);
+	}
 }

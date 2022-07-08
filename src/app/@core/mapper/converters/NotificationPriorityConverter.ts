@@ -13,45 +13,45 @@ const logger = new Logger('NotificationTypeConverter');
  * We want to place our own values which in this case will map to a css classes we'll place to change the color acording to the priority
  */
 export function NotificationPriorityConverter() {
-  return function NotificationTypeConverter(target: any, key: string) {
-    const setter = function (newVal: any) {
-      logger.debug(` ==> Setter: ${key} => ${newVal}`);
-      this.__priority = newVal;
-      logger.debug(`This:`, this);
-    };
+	return function NotificationTypeConverter(target: any, key: string) {
+		const setter = function (newVal: any) {
+			logger.debug(` ==> Setter: ${key} => ${newVal}`);
+			this.__priority = newVal;
+			logger.debug(`This:`, this);
+		};
 
-    const getter = function () {
-      logger.debug(` ==> Getter: ${key} => ${this.__priority}`);
-      let newVal = this.__priority;
+		const getter = function () {
+			logger.debug(` ==> Getter: ${key} => ${this.__priority}`);
+			let newVal = this.__priority;
 
-      switch (this.__priority) {
-        case 'urgent':
-          newVal = 'danger';
-          break;
-        case 'high':
-          newVal = 'warning';
-          break;
-        case 'normal':
-          newVal = 'dark';
-          break;
-        case 'medium':
-          newVal = 'info';
-          break;
-        case 'low':
-          newVal = 'success';
-          break;
-      }
+			switch (this.__priority) {
+				case 'urgent':
+					newVal = 'danger';
+					break;
+				case 'high':
+					newVal = 'warning';
+					break;
+				case 'normal':
+					newVal = 'dark';
+					break;
+				case 'medium':
+					newVal = 'info';
+					break;
+				case 'low':
+					newVal = 'success';
+					break;
+			}
 
-      return newVal;
-    };
+			return newVal;
+		};
 
-    if (delete target[key]) {
-      Object.defineProperty(target, key, {
-        get: getter,
-        set: setter,
-        enumerable: true,
-        configurable: true,
-      });
-    }
-  };
+		if (delete target[key]) {
+			Object.defineProperty(target, key, {
+				get: getter,
+				set: setter,
+				enumerable: true,
+				configurable: true,
+			});
+		}
+	};
 }

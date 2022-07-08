@@ -3,16 +3,16 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { BaseComponent } from '@core';
 
 @Component({
-  selector: 'prx-header-search',
-  templateUrl: './header-search.component.html',
-  styleUrls: ['./header-search.component.scss'],
+	selector: 'prx-header-search',
+	templateUrl: './header-search.component.html',
+	styleUrls: ['./header-search.component.scss'],
 })
 export class HeaderSearchComponent extends BaseComponent implements OnInit {
-  search = faSearch;
+	search = faSearch;
 
-  constructor() {
-    super('search-form');
-  }
+	constructor() {
+		super('search-form');
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

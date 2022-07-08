@@ -1,4 +1,4 @@
 export enum AlertStyle {
-  Thin = 'thin',
-  Outline = 'outline',
+	Thin = 'thin',
+	Outline = 'outline',
 }

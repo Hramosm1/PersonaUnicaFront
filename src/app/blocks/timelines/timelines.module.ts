@@ -7,8 +7,8 @@ import { VerticalTimelineBasicComponent } from './vertical-timeline-basic/vertic
 const exports = [VerticalTimelineBasicComponent];
 
 @NgModule({
-  declarations: [...exports],
-  imports: [CommonModule, FormControlsModule],
-  exports,
+	declarations: [...exports],
+	imports: [CommonModule, FormControlsModule],
+	exports,
 })
 export class TimelinesModule {}

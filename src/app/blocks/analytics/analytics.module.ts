@@ -7,11 +7,15 @@ import { ProgressCardComponent } from './progress-card/progress-card.component';
 import { StatCardComponent } from './stat-card/stat-card.component';
 import { ValueProgressComponent } from './value-progress/value-progress.component';
 
-const exports = [ProgressCardComponent, StatCardComponent, ValueProgressComponent];
+const exports = [
+	ProgressCardComponent,
+	StatCardComponent,
+	ValueProgressComponent,
+];
 
 @NgModule({
-  declarations: [...exports],
-  imports: [CommonModule, ProgressModule, CardsModule],
-  exports,
+	declarations: [...exports],
+	imports: [CommonModule, ProgressModule, CardsModule],
+	exports,
 })
 export class AnalyticsModule {}

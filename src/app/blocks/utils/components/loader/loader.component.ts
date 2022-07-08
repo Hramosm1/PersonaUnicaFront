@@ -1,33 +1,33 @@
 import { Component, OnChanges, Input } from '@angular/core';
 
 @Component({
-  selector: 'prx-loader',
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss'],
+	selector: 'prx-loader',
+	templateUrl: './loader.component.html',
+	styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnChanges {
-  // Indicates if the component shows the loading bars
-  @Input() isLoading = true;
+	// Indicates if the component shows the loading bars
+	@Input() isLoading = true;
 
-  // Which template to use
-  @Input() template: string;
+	// Which template to use
+	@Input() template: string;
 
-  // Total number of bars-groups to use
-  @Input() count: number = 5;
+	// Total number of bars-groups to use
+	@Input() count: number = 5;
 
-  // The message to show when there no items
-  @Input() emptyMessage: string;
+	// The message to show when there no items
+	@Input() emptyMessage: string;
 
-  // URL for when there no items on the collection
-  @Input() emptyUrl: string;
+	// URL for when there no items on the collection
+	@Input() emptyUrl: string;
 
-  items: number[];
+	items: number[];
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  ngOnChanges() {
-    this.items = Array(this.count).fill(0);
-  }
+	ngOnChanges() {
+		this.items = Array(this.count).fill(0);
+	}
 }

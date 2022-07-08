@@ -1,24 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'prx-about-section',
-  templateUrl: './about-section.component.html',
-  styleUrls: ['./about-section.component.scss'],
+	selector: 'prx-about-section',
+	templateUrl: './about-section.component.html',
+	styleUrls: ['./about-section.component.scss'],
 })
 export class AboutSectionComponent implements OnInit {
-  @Input()
-  cssClass: string;
+	@Input()
+	cssClass: string;
 
-  @Input()
-  containerClass: string;
+	@Input()
+	containerClass: string;
 
-  @Input()
-  id: string;
+	@Input()
+	id: string;
 
-  @Input()
-  fluid: true;
+	@Input()
+	fluid: true;
 
-  constructor() {}
+	constructor() {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 }

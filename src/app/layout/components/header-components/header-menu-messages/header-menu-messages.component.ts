@@ -7,35 +7,38 @@ import { Logger, BaseComponent } from '@core';
 
 const logger = new Logger('HeaderMenuMessagesComponent');
 @Component({
-  selector: 'prx-header-menu-messages',
-  templateUrl: './header-menu-messages.component.html',
-  styleUrls: ['./header-menu-messages.component.scss'],
+	selector: 'prx-header-menu-messages',
+	templateUrl: './header-menu-messages.component.html',
+	styleUrls: ['./header-menu-messages.component.scss'],
 })
-export class HeaderMenuMessagesComponent extends BaseComponent implements OnInit {
-  protected loaded: boolean = false;
+export class HeaderMenuMessagesComponent
+	extends BaseComponent
+	implements OnInit
+{
+	protected loaded: boolean = false;
 
-  iconClose = faTimes;
-  messages: any[] = [];
+	iconClose = faTimes;
+	messages: any[] = [];
 
-  constructor(private messagesService: MessagesService) {
-    super();
-    this.isLoading = true;
-  }
+	constructor(private messagesService: MessagesService) {
+		super();
+		this.isLoading = true;
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  onOpenChange(status: boolean) {
-    if (status && !this.loaded) {
-      this.loaded = !this.loaded;
+	onOpenChange(status: boolean) {
+		if (status && !this.loaded) {
+			this.loaded = !this.loaded;
 
-      this.messagesService
-        .getLatestMessages()
-        //.pipe()
-        .subscribe((messages: Message[]) => {
-          logger.debug('Messages', messages);
-          this.isLoading = false;
-          this.messages = [...messages, ...messages];
-        });
-    }
-  }
+			this.messagesService
+				.getLatestMessages()
+				//.pipe()
+				.subscribe((messages: Message[]) => {
+					logger.debug('Messages', messages);
+					this.isLoading = false;
+					this.messages = [...messages, ...messages];
+				});
+		}
+	}
 }

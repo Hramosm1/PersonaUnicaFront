@@ -8,37 +8,40 @@ import { Logger, BaseComponent } from '@core';
 const logger = new Logger('HeaderMenuNotificationsComponent');
 
 @Component({
-  selector: 'prx-header-menu-notifications',
-  templateUrl: './header-menu-notifications.component.html',
-  styleUrls: ['./header-menu-notifications.component.scss'],
+	selector: 'prx-header-menu-notifications',
+	templateUrl: './header-menu-notifications.component.html',
+	styleUrls: ['./header-menu-notifications.component.scss'],
 })
-export class HeaderMenuNotificationsComponent extends BaseComponent implements OnInit {
-  protected loaded: boolean = false;
+export class HeaderMenuNotificationsComponent
+	extends BaseComponent
+	implements OnInit
+{
+	protected loaded: boolean = false;
 
-  iconClose = faTimes;
-  notifications: Notification[];
+	iconClose = faTimes;
+	notifications: Notification[];
 
-  constructor(private notificationService: NotificationsService) {
-    super();
+	constructor(private notificationService: NotificationsService) {
+		super();
 
-    this.isLoading = true;
-  }
+		this.isLoading = true;
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  onOpenChange(status: boolean) {
-    if (status && !this.loaded) {
-      this.loaded = !this.loaded;
+	onOpenChange(status: boolean) {
+		if (status && !this.loaded) {
+			this.loaded = !this.loaded;
 
-      this.notificationService
-        //
-        .getLatestNotifications()
-        .subscribe((notifications) => {
-          logger.debug('Notifications', notifications);
+			this.notificationService
+				//
+				.getLatestNotifications()
+				.subscribe((notifications) => {
+					logger.debug('Notifications', notifications);
 
-          this.isLoading = false;
-          this.notifications = notifications;
-        });
-    }
-  }
+					this.isLoading = false;
+					this.notifications = notifications;
+				});
+		}
+	}
 }

@@ -1,19 +1,41 @@
 <prx-card>
-  <prx-card-header title="Correos"></prx-card-header>
-  <prx-card-body>
-    <ul class="list-group">
-      <li *ngFor="let mail of correos" class="list-group-item">
-        <div>{{ mail.correo }}</div>
-        <button class="btn btn-outline-danger float-right" [disabled]="btn" (click)="eliminar(mail.id)">
-          eliminar
-        </button>
-        <button class="btn btn-outline-warning float-right" (click)="openModal(editar, mail.id)">editar</button>
-      </li>
-    </ul>
-  </prx-card-body>
-  <prx-card-footer><button class="btn btn-primary" (click)="openModal(crear)">Nuevo</button></prx-card-footer>
+	<prx-card-header title="Correos"></prx-card-header>
+	<prx-card-body>
+		<ul class="list-group">
+			<li *ngFor="let mail of correos" class="list-group-item">
+				<div>{{ mail.correo }}</div>
+				<button
+					class="btn btn-outline-danger float-right"
+					[disabled]="btn"
+					(click)="eliminar(mail.id)"
+				>
+					eliminar
+				</button>
+				<button
+					class="btn btn-outline-warning float-right"
+					(click)="openModal(editar, mail.id)"
+				>
+					editar
+				</button>
+			</li>
+		</ul>
+	</prx-card-body>
+	<prx-card-footer
+		><button class="btn btn-primary" (click)="openModal(crear)">
+			Nuevo
+		</button></prx-card-footer
+	>
 </prx-card>
-<ng-template #crear> <prx-form-correos titulo="Nuevo correo" [modalRef]="modalRef"></prx-form-correos></ng-template>
+<ng-template #crear>
+	<prx-form-correos
+		titulo="Nuevo correo"
+		[modalRef]="modalRef"
+	></prx-form-correos
+></ng-template>
 <ng-template #editar>
-  <prx-form-correos [idEditar]="idEditar" titulo="Editar" [modalRef]="modalRef"></prx-form-correos
+	<prx-form-correos
+		[idEditar]="idEditar"
+		titulo="Editar"
+		[modalRef]="modalRef"
+	></prx-form-correos
 ></ng-template>
