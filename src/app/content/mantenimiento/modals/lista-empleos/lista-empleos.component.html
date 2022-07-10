@@ -5,18 +5,21 @@
 	</button>
 </div>
 <div class="modal-body" perfectScrollbar>
-	<div>
-		<input class="form-control" [(ngModel)]="filtro" type="text" />
-	</div>
+	<form>
+		<input class="form-control" [formControl]="filtro" type="text" />
+	</form>
 	<ngx-datatable
 		class="material"
-		[rows]="empleos | filtroEmpresas: filtro"
+		[rows]="empleos"
 		[loadingIndicator]="true"
-		[limit]="5"
+		[count]="page.totalElements"
+		[limit]="page.take"
+		[externalPaging]="true"
 		[columnMode]="ColumnMode.force"
 		headerHeight="auto"
 		footerHeight="auto"
 		rowHeight="auto"
+		(page)="setPage($event)"
 	>
 		<ngx-datatable-column name="id"></ngx-datatable-column>
 		<ngx-datatable-column name="Razón social">
@@ -26,7 +29,7 @@
 		</ngx-datatable-column>
 		<ngx-datatable-column name="Nombre Empresa">
 			<ng-template let-row="row" ngx-datatable-cell-template>{{
-				row.nombre
+				row.PU_Nombres[0].nombre || ''
 			}}</ng-template>
 		</ngx-datatable-column>
 		<ngx-datatable-column name="">
@@ -53,6 +56,6 @@
 <ng-template #formNew>
 	<prx-nueva-empresa
 		[modalRef]="chillModalRef"
-		(cerrarModal)="actualizarCampos($event)"
+		(cerrarModal)="setPage({ offset: 0 })"
 	></prx-nueva-empresa>
 </ng-template>

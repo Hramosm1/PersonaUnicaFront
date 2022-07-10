@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Empresas, Generos, TiposDocumento, TiposPersona } from './models';
+import { Generos, TiposDocumento, TiposPersona } from './models';
 import { TokenService } from '@core/authentication/token.service';
-import { map } from 'rxjs/operators';
+import { Page } from '@app/@shared/models/page';
+import { EmpresasList } from '@app/content/perfiles-creados/tablas-model';
 
 @Injectable({
 	providedIn: 'root',
@@ -28,7 +29,10 @@ export class InputsService {
 			headers: this.headers,
 		});
 	}
-	public getEmpresas(): Observable<any> {
-		return this.http.get('empresas', { headers: this.headers });
+	public getEmpresas(page: Page, filter: string): Observable<EmpresasList> {
+		return this.http.get<EmpresasList>(
+			`empresas/${page.take}/${page.pageNumber}/${filter}`,
+			{ headers: this.headers }
+		);
 	}
 }

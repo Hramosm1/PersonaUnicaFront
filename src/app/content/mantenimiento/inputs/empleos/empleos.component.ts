@@ -19,7 +19,6 @@ import { Empresas, TiposOrigen } from '../models';
 })
 export class EmpleosComponent implements OnInit {
 	form: FormGroup;
-	empresas: Array<Empresas>;
 	modalRef: BsModalRef;
 	indexTem: number;
 	tiposOrigen: Observable<TiposOrigen[]>;
@@ -33,7 +32,6 @@ export class EmpleosComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.form = this.rootForm.control;
-		this.apis.getEmpresas().subscribe((res) => (this.empresas = res));
 		this.tiposOrigen = this.apis.getTipos<TiposOrigen>('origen');
 	}
 
@@ -64,8 +62,8 @@ export class EmpleosComponent implements OnInit {
 		this.empleos.removeAt(i);
 		this.nombres.splice(i, 1);
 	}
-	asignar(value: Empresas) {
-		this.nombres[this.indexTem] = value.nombre;
+	asignar(value: any) {
+		this.nombres[this.indexTem] = value.PU_Nombres[0].nombre;
 		(this.empleos.at(this.indexTem) as FormControl)
 			.get('empresa')
 			.setValue(value.id);

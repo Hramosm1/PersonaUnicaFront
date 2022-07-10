@@ -37,7 +37,6 @@
 							<input
 								type="text"
 								hidden="true"
-								disabled
 								class="form-control"
 								formControlName="empresa"
 							/>
@@ -105,8 +104,10 @@
 	</div>
 </ng-container>
 <ng-template #empresas>
-	<prx-lista-empleos
-		[modalRef]="modalRef"
-		(seleccionado)="asignar($event)"
-	></prx-lista-empleos>
+	<div class="modal-body">
+		<prx-lista-empleos
+			[modalRef]="modalRef"
+			(seleccionado)="asignar($event)"
+		></prx-lista-empleos>
+	</div>
 </ng-template>
