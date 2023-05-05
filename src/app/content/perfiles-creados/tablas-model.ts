@@ -24,6 +24,10 @@ export interface Listado {
 	pageData: Page;
 	data: Perfiles[];
 }
+export interface EmpresasList {
+	pageData: Page;
+	data: any[];
+}
 interface Perfiles {
 	primerApellido: string;
 	segundoApellido: string;
